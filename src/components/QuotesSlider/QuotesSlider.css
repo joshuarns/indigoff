@@ -1,0 +1,143 @@
+/* Espacio solo por arriba: el gap entre secciones = 1x token (como turf). */
+.quotes {
+  padding: var(--section-space) 0 0;
+  overflow: hidden;
+}
+
+/* Contenedor relativo para posicionar las zonas de navegación encima. */
+.quotes__stage {
+  position: relative;
+}
+
+/* El swiper empieza en el gutter del sitio (alineado con el contenedor de
+   1320px) y su borde izquierdo recorta el clon del loop, para que a la
+   izquierda NO sobresalga ninguna tarjeta (como en turf.design). A la derecha
+   sigue sangrando hasta el borde de la pantalla. */
+.quotes__swiper {
+  width: auto;
+  margin-left: var(--page-gutter);
+}
+
+/* --- Zonas de navegación con cursor de flecha (prev / next) --- */
+.quotes__nav {
+  position: absolute;
+  top: 0;
+  width: 50%;
+  height: 100%;
+  z-index: 10;
+  border: none;
+  background: transparent;
+  padding: 0;
+  margin: 0;
+}
+
+.quotes__nav--prev {
+  left: 0;
+  cursor: url('/cursor-prev.svg') 50 50, w-resize;
+}
+
+.quotes__nav--next {
+  right: 0;
+  cursor: url('/cursor-next.svg') 50 50, e-resize;
+}
+
+.quotes__slide {
+  width: auto;
+  height: auto;
+}
+
+/* Título + descripción como primer slide (misma columna que una tarjeta) */
+.quotes__slide--head {
+  display: flex;
+  align-items: center;
+}
+
+.quotes__head {
+  max-width: 500px;
+  padding-right: 1.5rem;
+}
+
+.quotes__title {
+  font-size: clamp(1.6rem, 2.4vw, 2.4rem);
+  font-weight: 300;
+  line-height: 1.2;
+  letter-spacing: -0.01em;
+  color: var(--color-text);
+}
+
+.quotes__desc {
+  margin-top: 1.25rem;
+  font-size: clamp(1rem, 1.15vw, 1.15rem);
+  line-height: 1.5;
+  color: var(--color-text-muted);
+}
+
+/* --- Tarjeta --- */
+.quote-card {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  width: 100%;
+  height: clamp(500px, 44vw, 640px);
+  border-radius: 30px;
+  padding: clamp(1.75rem, 2.6vw, 2.75rem);
+  user-select: none;
+}
+
+/* Tarjeta con imagen de fondo */
+.quote-card--image {
+  position: relative;
+  background-size: cover;
+  background-position: center;
+  overflow: hidden;
+}
+
+/* Degradado inferior para que el autor se lea sobre la imagen. */
+.quote-card--image::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    180deg,
+    rgba(0, 0, 0, 0) 45%,
+    rgba(0, 0, 0, 0.55) 100%
+  );
+  pointer-events: none;
+}
+
+.quote-card__author {
+  position: relative; /* por encima del degradado */
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+}
+
+/* Marca (logo + palabra) en tarjetas destacadas, ej. "indigoff Air" */
+.quote-card__brand {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+}
+
+.quote-card__logo {
+  height: 30px;
+  width: auto;
+  display: block;
+}
+
+.quote-card__brand-word {
+  font-size: 1.9rem;
+  font-weight: 400;
+  line-height: 1;
+  color: #ffffff;
+}
+
+.quote-card__name {
+  font-size: 1.15rem;
+}
+
+.quote-card__company {
+  font-size: 1rem;
+  font-weight: 700;
+}

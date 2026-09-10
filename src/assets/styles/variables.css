@@ -1,0 +1,39 @@
+/* Variables globales de diseño (design tokens) */
+:root {
+  /* Colores */
+  --color-primary: #4f46e5;
+  --color-primary-dark: #4338ca;
+  --color-text: #1f2937;
+  --color-text-muted: #6b7280;
+  --color-bg: #ffffff;
+  --color-bg-alt: #f9fafb;
+  --color-border: #e5e7eb;
+
+  /* Tipografía */
+  --font-base: system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+  --font-size-base: 16px;
+  --line-height-base: 1.6;
+
+  /* Espaciado */
+  --space-xs: 0.5rem;
+  --space-sm: 1rem;
+  --space-md: 1.5rem;
+  --space-lg: 3rem;
+
+  /* Espacio vertical estándar entre secciones (mismo que turf: 60→120px).
+     Se aplica arriba y abajo de cada sección para un ritmo uniforme. */
+  --section-space: clamp(60px, 8vw, 120px);
+
+  /* Layout */
+  /* Contenedor responsive como turf: crece con el viewport en vez de quedar
+     fijo. Coincide con turf: 1320px @1440, 1440px @1920. Tope 1600px. */
+  --container-max: min(1600px, calc(25vw + 960px));
+  /* Margen lateral: alinea el contenido con el borde del contenedor (1320)
+     en pantallas anchas, y deja 1rem de aire en pantallas angostas.
+     Usa 100% (ancho del contenido, sin el scrollbar) para coincidir con el
+     centrado del navbar/hero. */
+  --page-gutter: max(1rem, calc((100% - var(--container-max)) / 2));
+  --radius: 10px;
+  --radius-lg: 32px; /* esquinas grandes (hero, hover de proyectos) */
+  --shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}

@@ -1,0 +1,101 @@
+/* Espacio solo por arriba: el gap entre secciones = 1x token (como turf). */
+.feature {
+  padding: var(--section-space) 0 0;
+}
+
+.feature__inner {
+  /* Al ras del contenedor (1320) igual que el resto de secciones. */
+  padding-inline: var(--page-gutter);
+  display: grid;
+  grid-template-columns: 1.1fr 0.9fr;
+  gap: clamp(2rem, 6vw, 6rem);
+  align-items: center;
+}
+
+/* Imagen a la derecha cuando reverse */
+.feature--reverse .feature__media {
+  order: 2;
+}
+
+/* --- Imagen con esquina en arco --- */
+.feature__media {
+  position: relative;
+  aspect-ratio: 1 / 1.05;
+  overflow: hidden;
+  background-color: var(--color-bg-alt);
+}
+
+.feature__media img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+/* El arco grande en una esquina (radio horizontal % / vertical %). */
+.feature__media--tr {
+  border-top-right-radius: 60% 55%;
+}
+.feature__media--tl {
+  border-top-left-radius: 60% 55%;
+}
+.feature__media--br {
+  border-bottom-right-radius: 60% 55%;
+}
+.feature__media--bl {
+  border-bottom-left-radius: 60% 55%;
+}
+
+/* --- Contenido --- */
+.feature__content {
+  max-width: 440px;
+}
+
+.feature__title {
+  font-size: clamp(2rem, 3vw, 2.8rem);
+  font-weight: 400;
+  line-height: 1.12;
+  letter-spacing: -0.01em;
+  color: var(--color-text);
+  margin-bottom: 1.5rem;
+}
+
+.feature__desc {
+  font-size: 1.15rem;
+  line-height: 1.55;
+  color: var(--color-text);
+}
+
+.feature__btn {
+  display: inline-block;
+  margin-top: 2.25rem;
+  padding: 0.85rem 1.9rem;
+  border: 1px solid var(--color-text);
+  border-radius: 8px;
+  color: var(--color-text);
+  font-size: 1rem;
+  font-weight: 500;
+  transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+.feature__btn:hover {
+  background-color: var(--color-text);
+  color: #ffffff;
+  text-decoration: none;
+}
+
+/* --- Responsive --- */
+@media (max-width: 800px) {
+  .feature__inner {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+
+  .feature--reverse .feature__media {
+    order: 0;
+  }
+
+  .feature__content {
+    max-width: none;
+  }
+}

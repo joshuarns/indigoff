@@ -1,0 +1,16 @@
+.not-found {
+  text-align: center;
+  padding: var(--space-lg) var(--space-sm);
+}
+
+.not-found__code {
+  font-size: 5rem;
+  color: var(--color-primary);
+  margin-bottom: var(--space-xs);
+}
+
+.not-found__link {
+  display: inline-block;
+  margin-top: var(--space-md);
+  font-weight: 600;
+}

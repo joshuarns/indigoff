@@ -1,0 +1,152 @@
+.hero {
+  padding: var(--space-md) clamp(1rem, 3.5vw, 2.5rem) 0;
+}
+
+.hero__viewport {
+  position: relative;
+  max-width: var(--container-max); /* contenedor responsive, como turf */
+  margin: 0 auto;
+  height: clamp(520px, 78vh, 880px);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  background-color: #111;
+}
+
+/* --- Slides (crossfade) --- */
+.hero__slide {
+  position: absolute;
+  inset: 0;
+  background-size: cover;
+  background-position: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.8s ease, visibility 0.8s ease;
+}
+
+.hero__slide.is-active {
+  opacity: 1;
+  visibility: visible;
+}
+
+/* Capa sutil para asegurar legibilidad del texto blanco. */
+.hero__overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    180deg,
+    rgba(0, 0, 0, 0.28) 0%,
+    rgba(0, 0, 0, 0.18) 45%,
+    rgba(0, 0, 0, 0.34) 100%
+  );
+}
+
+/* --- Contenido --- */
+.hero__content {
+  position: relative;
+  z-index: 1;
+  text-align: center;
+  color: #ffffff;
+  padding: 0 var(--space-md);
+  max-width: 780px;
+}
+
+.hero__title {
+  font-size: clamp(2.5rem, 5.5vw, 4.5rem);
+  font-weight: 300;
+  letter-spacing: -0.01em;
+  line-height: 1.05;
+  margin-bottom: var(--space-md);
+  white-space: pre-line; /* respeta los saltos de línea del texto */
+  text-shadow: 0 2px 24px rgba(0, 0, 0, 0.35);
+}
+
+.hero__subtitle {
+  font-size: clamp(1.05rem, 1.8vw, 1.4rem);
+  font-weight: 400;
+  line-height: 1.4;
+  max-width: 620px;
+  margin: 0 auto var(--space-lg);
+  text-shadow: 0 1px 16px rgba(0, 0, 0, 0.25);
+}
+
+/* --- Botones --- */
+.hero__actions {
+  display: flex;
+  gap: var(--space-sm);
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.hero__btn {
+  display: inline-block;
+  padding: 0.85rem 1.6rem;
+  border: 1px solid rgba(255, 255, 255, 0.85);
+  border-radius: 8px;
+  color: #ffffff;
+  font-size: 1rem;
+  font-weight: 500;
+  background-color: transparent;
+  transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+.hero__btn:hover {
+  background-color: #ffffff;
+  color: #111111;
+  text-decoration: none;
+}
+
+/* --- Dots de paginación --- */
+.hero__dots {
+  position: absolute;
+  bottom: 26px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 2;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.hero__dot {
+  position: relative;
+  width: 9px;
+  height: 9px;
+  padding: 0;
+  border: none;
+  border-radius: 999px;
+  background-color: rgba(255, 255, 255, 0.45);
+  cursor: pointer;
+  overflow: hidden;
+  transition: width 0.35s ease, background-color 0.35s ease;
+}
+
+.hero__dot:hover {
+  background-color: rgba(255, 255, 255, 0.7);
+}
+
+/* Activo: se ensancha a píldora y actúa de "riel" del progreso. */
+.hero__dot.is-active {
+  width: 34px;
+  background-color: rgba(255, 255, 255, 0.35);
+}
+
+/* Relleno que crece de izquierda a derecha (ancho controlado por JS). */
+.hero__dot-fill {
+  position: absolute;
+  left: 0;
+  top: 0;
+  height: 100%;
+  width: 0;
+  border-radius: 999px;
+  background-color: rgba(255, 255, 255, 0.95);
+}
+
+@media (max-width: 600px) {
+  .hero__viewport {
+    height: clamp(440px, 70vh, 640px);
+    border-radius: 20px;
+  }
+}
