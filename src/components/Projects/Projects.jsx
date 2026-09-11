@@ -22,7 +22,7 @@ function ArrowIcon({ dir }) {
 function Projects({
   title = 'Where Sound Becomes an Experience',
   description = 'Each project is a bespoke composition of silence and design — acoustic environments crafted for the world’s most distinguished spaces, where every surface is as refined to the ear as it is to the eye.',
-  ctaLabel = 'Peruse our projects',
+  ctaLabel = 'Peruse our portfolio',
   ctaHref = 'https://indigoff.com/proyects/',
 }) {
   const { projects, loading, error } = useProjects({ perPage: 12 });
