@@ -11,7 +11,7 @@
 /* --- Cabecera: título izquierda + párrafo derecha --- */
 .projects__head {
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: 1fr 1.4fr;
   gap: clamp(2rem, 6vw, 6rem);
   align-items: start;
   margin-bottom: clamp(2rem, 4vw, 3.5rem);
@@ -26,10 +26,10 @@
 }
 
 .projects__desc {
-  font-size: clamp(1rem, 1.25vw, 1.25rem);
+  font-size: 1.15rem;
   line-height: 1.5;
   color: var(--color-text);
-  max-width: 520px;
+  max-width: 720px;
 }
 
 /* --- Slider --- */
