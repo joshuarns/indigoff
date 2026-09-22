@@ -1,0 +1,355 @@
+/* Página de producto Fusetex. Usa los tokens del sitio (gutter, ritmo,
+   contenedor, radios). Estética de marca de alto lujo: aire generoso,
+   tipografía ligera y jerarquía tranquila. */
+
+.fx-inner {
+  padding-inline: var(--page-gutter);
+}
+
+/* Etiquetas y títulos de sección compartidos */
+.fx-label {
+  display: block;
+  font-size: 0.8rem;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--color-text-muted);
+  margin-bottom: 1rem;
+}
+
+.fx-section-title {
+  font-size: clamp(1.75rem, 3vw, 2.75rem);
+  font-weight: 300;
+  line-height: 1.12;
+  letter-spacing: -0.01em;
+  color: var(--color-text);
+  max-width: 20ch;
+}
+
+/* --- Hero --- */
+.fx-hero {
+  padding-top: var(--section-space);
+}
+
+.fx-eyebrow {
+  font-size: 1.05rem;
+  font-weight: 600;
+  color: var(--color-text-muted);
+  margin-bottom: 1rem;
+}
+
+.fx-eyebrow-o {
+  position: relative;
+}
+
+.fx-eyebrow-o::after {
+  content: '';
+  position: absolute;
+  top: -0.16em;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 0.16em;
+  height: 0.16em;
+  border-radius: 50%;
+  background-color: #f59e0b;
+}
+
+.fx-hero__title {
+  font-size: clamp(2.6rem, 6vw, 5rem);
+  font-weight: 300;
+  line-height: 1.02;
+  letter-spacing: -0.02em;
+  color: var(--color-text);
+  margin-bottom: clamp(2rem, 4vw, 3.5rem);
+}
+
+.fx-hero__media {
+  aspect-ratio: 16 / 8;
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  background-color: var(--color-bg-alt);
+}
+
+.fx-hero__media img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+/* --- The fabric --- */
+.fx-fabric {
+  padding-top: var(--section-space);
+}
+
+.fx-fabric__text {
+  font-size: clamp(1.15rem, 1.6vw, 1.5rem);
+  line-height: 1.5;
+  color: var(--color-text);
+  max-width: 720px;
+  margin-top: 1.5rem;
+}
+
+/* 4 features numeradas */
+.fx-features {
+  list-style: none;
+  margin: clamp(3rem, 6vw, 5rem) 0 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 2.5rem clamp(1.5rem, 3vw, 2.5rem);
+}
+
+.fx-feature {
+  border-top: 1px solid var(--color-text);
+  padding-top: 1.25rem;
+}
+
+.fx-feature__n {
+  display: block;
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--color-text-muted);
+  margin-bottom: 2.5rem;
+}
+
+.fx-feature__title {
+  font-size: 1.2rem;
+  font-weight: 500;
+  margin-bottom: 0.5rem;
+}
+
+.fx-feature__text {
+  font-size: 0.98rem;
+  line-height: 1.5;
+  color: var(--color-text-muted);
+}
+
+/* --- Composition --- */
+.fx-composition {
+  padding-top: var(--section-space);
+}
+
+.fx-composition__grid {
+  margin-top: clamp(2rem, 4vw, 3rem);
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: clamp(1.5rem, 4vw, 4rem);
+}
+
+.fx-layer {
+  border-top: 1px solid var(--color-border);
+  padding-top: 1.5rem;
+}
+
+.fx-layer__title {
+  font-size: 1.35rem;
+  font-weight: 500;
+  margin-bottom: 0.75rem;
+}
+
+.fx-layer__text {
+  font-size: 1.05rem;
+  line-height: 1.55;
+  color: var(--color-text-muted);
+  max-width: 46ch;
+}
+
+/* --- Acoustic performance + certifications --- */
+.fx-perf {
+  padding-top: var(--section-space);
+}
+
+.fx-perf__grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: clamp(1.5rem, 4vw, 4rem);
+  background-color: var(--color-bg-alt);
+  border-radius: var(--radius-lg);
+  padding: clamp(2rem, 5vw, 4rem);
+}
+
+.fx-stat {
+  display: flex;
+  flex-direction: column;
+}
+
+.fx-stat__value {
+  font-size: clamp(4rem, 10vw, 7rem);
+  font-weight: 300;
+  line-height: 1;
+  letter-spacing: -0.03em;
+  color: var(--color-text);
+}
+
+.fx-stat__unit {
+  font-size: 0.85rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--color-text-muted);
+  margin-top: 1rem;
+}
+
+.fx-stat__note {
+  font-size: 0.95rem;
+  color: var(--color-text-muted);
+  margin-top: 0.75rem;
+}
+
+.fx-cert {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  border-left: 1px solid var(--color-border);
+  padding-left: clamp(1.5rem, 4vw, 4rem);
+}
+
+.fx-cert__title {
+  font-size: clamp(1.4rem, 2.2vw, 2rem);
+  font-weight: 300;
+  margin-bottom: 0.75rem;
+}
+
+.fx-cert__text {
+  font-size: 1.05rem;
+  line-height: 1.5;
+  color: var(--color-text-muted);
+  max-width: 32ch;
+}
+
+/* --- Technical data --- */
+.fx-specs {
+  padding-top: var(--section-space);
+}
+
+.fx-specs__table {
+  margin: clamp(2rem, 4vw, 3rem) 0 0;
+}
+
+.fx-specs__row {
+  display: grid;
+  grid-template-columns: minmax(180px, 0.4fr) 1fr;
+  gap: 1.5rem;
+  padding: 1.1rem 0;
+  border-bottom: 1px solid var(--color-border);
+}
+
+.fx-specs__row:first-child {
+  border-top: 1px solid var(--color-border);
+}
+
+.fx-specs__row dt {
+  font-size: 0.95rem;
+  color: var(--color-text-muted);
+}
+
+.fx-specs__row dd {
+  font-size: 1rem;
+  color: var(--color-text);
+  margin: 0;
+}
+
+/* --- Applications --- */
+.fx-apps {
+  padding-top: var(--section-space);
+}
+
+.fx-apps__title {
+  margin-bottom: clamp(1.5rem, 3vw, 2.5rem);
+}
+
+.fx-apps__grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: clamp(1.5rem, 3vw, 2.5rem);
+}
+
+.fx-app__media {
+  aspect-ratio: 3 / 4;
+  border-radius: 0;
+  overflow: hidden;
+  background-color: var(--color-bg-alt);
+  transition: border-radius 0.4s ease;
+}
+
+.fx-app:hover .fx-app__media {
+  border-radius: var(--radius-lg);
+}
+
+.fx-app__media img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.6s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.fx-app:hover .fx-app__media img {
+  transform: scale(1.05);
+}
+
+.fx-app__title {
+  font-size: 1.25rem;
+  font-weight: 400;
+  margin-top: 1rem;
+}
+
+/* --- CTA --- */
+.fx-cta {
+  padding-top: var(--section-space);
+  display: flex;
+  justify-content: center;
+}
+
+.fx-cta__btn {
+  display: inline-block;
+  padding: 1rem 2.5rem;
+  border: 1px solid var(--color-text);
+  border-radius: 999px;
+  color: var(--color-text);
+  font-size: 1rem;
+  font-weight: 500;
+  transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+.fx-cta__btn:hover {
+  background-color: var(--color-text);
+  color: #ffffff;
+  text-decoration: none;
+}
+
+/* --- Responsive --- */
+@media (max-width: 900px) {
+  .fx-features {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 700px) {
+  .fx-perf__grid {
+    grid-template-columns: 1fr;
+  }
+
+  .fx-cert {
+    border-left: none;
+    border-top: 1px solid var(--color-border);
+    padding-left: 0;
+    padding-top: 2rem;
+  }
+
+  .fx-composition__grid {
+    grid-template-columns: 1fr;
+  }
+
+  .fx-specs__row {
+    grid-template-columns: 1fr;
+    gap: 0.35rem;
+  }
+}
+
+@media (max-width: 520px) {
+  .fx-features {
+    grid-template-columns: 1fr;
+  }
+}

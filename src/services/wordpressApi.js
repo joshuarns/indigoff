@@ -92,6 +92,34 @@ export function getProjects({ perPage = 12 } = {}) {
 }
 
 /**
+ * Obtiene un proyecto (CPT "proyects") por su slug, con imagen destacada.
+ * @param {string} slug
+ * @returns {Promise<Object|null>}
+ */
+export async function getProjectBySlug(slug) {
+  const res = await request(ENDPOINTS.projects, {
+    slug,
+    _embed: DEFAULT_QUERY.embed ? 1 : undefined,
+  });
+  return Array.isArray(res) && res.length > 0 ? res[0] : null;
+}
+
+/**
+ * Obtiene las imágenes adjuntas a un proyecto (galería) desde la biblioteca
+ * de medios de WordPress (media con parent = id del proyecto).
+ * @param {number} projectId
+ * @returns {Promise<Array>}
+ */
+export function getProjectMedia(projectId) {
+  return request(ENDPOINTS.media, {
+    parent: projectId,
+    per_page: 50,
+    orderby: 'menu_order',
+    order: 'asc',
+  });
+}
+
+/**
  * Obtiene el menú de navegación desde WordPress (mu-plugin indigoff/v1).
  * Devuelve los items ya anidados (con children para los desplegables).
  * @param {string} [location=MENU_LOCATION] - Ubicación del menú en WP.

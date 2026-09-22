@@ -1,0 +1,95 @@
+.logos {
+  padding-top: var(--section-space);
+}
+
+.logos__inner {
+  padding-inline: var(--page-gutter);
+}
+
+.logos__title {
+  font-size: 0.8rem;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--color-text-muted);
+  margin-bottom: clamp(1.5rem, 3vw, 2.25rem);
+}
+
+/* Viewport con desvanecido en los bordes. */
+.logos__viewport {
+  overflow: hidden;
+  -webkit-mask-image: linear-gradient(
+    90deg,
+    transparent,
+    #000 8%,
+    #000 92%,
+    transparent
+  );
+  mask-image: linear-gradient(
+    90deg,
+    transparent,
+    #000 8%,
+    #000 92%,
+    transparent
+  );
+}
+
+/* Cinta que se desplaza en loop continuo. */
+.logos__track {
+  display: flex;
+  align-items: center;
+  gap: clamp(2.5rem, 5vw, 4.5rem);
+  width: max-content;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  animation: logos-scroll 120s linear infinite;
+}
+
+.logos__viewport:hover .logos__track {
+  animation-play-state: paused;
+}
+
+.logos__item {
+  flex: 0 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 46px;
+}
+
+.logos__item img {
+  height: 100%;
+  width: auto;
+  max-width: 150px;
+  object-fit: contain;
+  /* Los logos vienen sobre fondo blanco: multiply los integra al fondo. */
+  mix-blend-mode: multiply;
+  filter: grayscale(1);
+  opacity: 0.55;
+  transition: opacity 0.25s ease, filter 0.25s ease;
+}
+
+.logos__item img:hover {
+  filter: grayscale(0);
+  opacity: 1;
+}
+
+@keyframes logos-scroll {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    /* Se mueve la mitad (un set completo) → loop sin cortes. */
+    transform: translateX(-50%);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .logos__track {
+    animation: none;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 2rem;
+  }
+}

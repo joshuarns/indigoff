@@ -1,0 +1,117 @@
+.portfolio {
+  padding-top: var(--section-space);
+}
+
+.portfolio__inner {
+  padding-inline: var(--page-gutter);
+}
+
+/* --- Cabecera: título izquierda + intro derecha --- */
+.portfolio__head {
+  display: grid;
+  grid-template-columns: 1fr 1.1fr;
+  gap: clamp(2rem, 6vw, 6rem);
+  align-items: end;
+}
+
+/* La rejilla toma su propio espacio arriba (después del carrusel de logos). */
+.portfolio__body {
+  padding-top: var(--section-space);
+}
+
+.portfolio__eyebrow {
+  display: block;
+  font-size: 0.8rem;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--color-text-muted);
+  margin-bottom: 1rem;
+}
+
+.portfolio__title {
+  font-size: clamp(2.2rem, 4vw, 3.5rem);
+  font-weight: 300;
+  line-height: 1.05;
+  letter-spacing: -0.02em;
+  color: var(--color-text);
+}
+
+.portfolio__intro {
+  font-size: clamp(1.02rem, 1.3vw, 1.25rem);
+  line-height: 1.55;
+  color: var(--color-text);
+  max-width: 640px;
+}
+
+/* --- Rejilla --- */
+.portfolio__grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: clamp(1.5rem, 3vw, 2.5rem) clamp(1.25rem, 2.5vw, 2rem);
+}
+
+/* --- Tarjeta de proyecto (hover: radius + zoom + subrayado) --- */
+.proj-card {
+  display: block;
+  color: var(--color-text);
+  cursor: pointer;
+}
+
+.proj-card__media {
+  aspect-ratio: 4 / 3;
+  border-radius: 0;
+  overflow: hidden;
+  background-color: var(--color-bg-alt);
+  transition: border-radius 0.4s ease;
+}
+
+.proj-card:hover .proj-card__media {
+  border-radius: var(--radius-lg);
+}
+
+.proj-card__media img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.6s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.proj-card:hover .proj-card__media img {
+  transform: scale(1.05);
+}
+
+.proj-card__title {
+  font-size: 1.15rem;
+  font-weight: 400;
+  margin-top: 0.9rem;
+}
+
+.proj-card:hover .proj-card__title {
+  text-decoration: underline;
+  text-underline-offset: 4px;
+}
+
+.portfolio__error {
+  color: #b91c1c;
+}
+
+/* --- Responsive --- */
+@media (max-width: 900px) {
+  .portfolio__head {
+    grid-template-columns: 1fr;
+    gap: 1.25rem;
+    align-items: start;
+  }
+
+  .portfolio__grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 520px) {
+  .portfolio__grid {
+    grid-template-columns: 1fr;
+  }
+}

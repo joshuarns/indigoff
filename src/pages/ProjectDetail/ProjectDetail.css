@@ -1,0 +1,87 @@
+.pd {
+  padding-top: var(--section-space);
+}
+
+.pd__inner {
+  padding-inline: var(--page-gutter);
+}
+
+.pd__back {
+  display: inline-block;
+  font-size: 0.95rem;
+  font-weight: 500;
+  color: var(--color-text-muted);
+  margin-bottom: 1.5rem;
+  transition: color 0.2s ease;
+}
+
+.pd__back:hover {
+  color: var(--color-text);
+  text-decoration: none;
+}
+
+.pd__title {
+  font-size: clamp(2.4rem, 6vw, 4.5rem);
+  font-weight: 300;
+  line-height: 1.02;
+  letter-spacing: -0.02em;
+  color: var(--color-text);
+  margin-bottom: clamp(2rem, 4vw, 3.5rem);
+}
+
+/* --- Galería --- */
+.pd__gallery {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: clamp(1rem, 2.5vw, 2rem);
+  align-items: start;
+}
+
+.pd__figure {
+  margin: 0;
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  background-color: var(--color-bg-alt);
+}
+
+.pd__figure img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* La primera imagen ocupa el ancho completo (portada del proyecto). */
+.pd__figure:first-child {
+  grid-column: 1 / -1;
+  max-height: 80vh;
+}
+
+.pd__figure:first-child img {
+  height: 100%;
+  max-height: 80vh;
+  object-fit: cover;
+}
+
+.pd__foot {
+  padding-top: var(--section-space);
+}
+
+.pd__error {
+  color: #b91c1c;
+}
+
+/* --- Responsive --- */
+@media (max-width: 700px) {
+  .pd__gallery {
+    grid-template-columns: 1fr;
+  }
+
+  .pd__figure:first-child {
+    max-height: none;
+  }
+
+  .pd__figure:first-child img {
+    max-height: none;
+    height: auto;
+  }
+}

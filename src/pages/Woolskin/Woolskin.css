@@ -1,0 +1,83 @@
+/* Estilos específicos de Woolskin (reutiliza los patrones fx-* de Fusetex). */
+
+/* --- A softer skin for sound: prosa + samples --- */
+.ws-story {
+  padding-top: var(--section-space);
+}
+
+.ws-story__grid {
+  display: grid;
+  grid-template-columns: 0.9fr 1.1fr;
+  gap: clamp(2rem, 5vw, 4.5rem);
+  align-items: center;
+}
+
+.ws-story__media {
+  aspect-ratio: 4 / 5;
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  background-color: var(--color-bg-alt);
+}
+
+.ws-story__media img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.ws-story__text p {
+  font-size: clamp(1.02rem, 1.3vw, 1.2rem);
+  line-height: 1.6;
+  color: var(--color-text);
+  margin-bottom: 1.15rem;
+}
+
+.ws-story__text p:last-child {
+  margin-bottom: 0;
+}
+
+/* Design Flexibility / Natural Character */
+.ws-qualities {
+  margin-top: clamp(3rem, 6vw, 5rem);
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: clamp(1.5rem, 4vw, 4rem);
+}
+
+/* Placeholder para la aplicación sin imagen (Residential). */
+.ws-ph {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background:
+    repeating-linear-gradient(
+      45deg,
+      var(--color-bg-alt),
+      var(--color-bg-alt) 12px,
+      #f2f3f5 12px,
+      #f2f3f5 24px
+    );
+  border: 1px dashed var(--color-border);
+}
+
+.ws-ph span {
+  font-size: 0.9rem;
+  color: var(--color-text-muted);
+  background-color: var(--color-bg);
+  padding: 0.35rem 0.85rem;
+  border-radius: 999px;
+  border: 1px solid var(--color-border);
+}
+
+@media (max-width: 800px) {
+  .ws-story__grid {
+    grid-template-columns: 1fr;
+  }
+
+  .ws-qualities {
+    grid-template-columns: 1fr;
+  }
+}
