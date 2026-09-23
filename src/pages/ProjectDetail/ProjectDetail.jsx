@@ -35,18 +35,28 @@ function ProjectDetail() {
   const name = project.title?.rendered || '';
   const featured = getFeaturedImage(project);
 
-  // Galería: imágenes adjuntas; si no hay, se usa la imagen destacada.
+  // Imágenes ACF del proyecto (image_01/image_2/image_3): cada campo es una
+  // URL o `false` cuando está vacío.
+  const acf = project.acf || {};
+  const acfImages = [acf.image_01, acf.image_2, acf.image_3]
+    .filter((url) => typeof url === 'string' && url)
+    .map((src) => ({ src, alt: name }));
+
+  // Galería: primero las imágenes ACF; si no hay, las adjuntas en la
+  // biblioteca de medios; y como último recurso, la imagen destacada.
   const images =
-    gallery.length > 0
-      ? gallery.map((m) => ({
-          src: m.source_url,
-          alt: m.alt_text || name,
-          w: m.media_details?.width,
-          h: m.media_details?.height,
-        }))
-      : featured
-        ? [{ src: featured, alt: name }]
-        : [];
+    acfImages.length > 0
+      ? acfImages
+      : gallery.length > 0
+        ? gallery.map((m) => ({
+            src: m.source_url,
+            alt: m.alt_text || name,
+            w: m.media_details?.width,
+            h: m.media_details?.height,
+          }))
+        : featured
+          ? [{ src: featured, alt: name }]
+          : [];
 
   return (
     <article className="pd">

@@ -50,7 +50,7 @@
   display: block;
 }
 
-/* La primera imagen ocupa el ancho completo (portada del proyecto). */
+/* La primera imagen ocupa el ancho completo (banner/portada del proyecto). */
 .pd__figure:first-child {
   grid-column: 1 / -1;
   max-height: 80vh;
@@ -63,7 +63,7 @@
 }
 
 .pd__foot {
-  padding-top: var(--section-space);
+  padding-top: var(--space-lg);
 }
 
 .pd__error {

@@ -1,4 +1,5 @@
 import { useRef } from 'react';
+import { Link } from 'react-router-dom';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/css';
 import { useProjects } from '../../hooks/useProjects';
@@ -23,7 +24,7 @@ function Projects({
   title = 'Where Sound Becomes an Experience',
   description = 'Each project is a bespoke composition of silence and design — acoustic environments crafted for the world’s most distinguished spaces, where every surface is as refined to the ear as it is to the eye.',
   ctaLabel = 'Peruse our portfolio',
-  ctaHref = 'https://indigoff.com/proyects/',
+  ctaHref = '/projects',
 }) {
   const { projects, loading, error } = useProjects({ perPage: 12 });
   const swiperRef = useRef(null);
@@ -57,12 +58,7 @@ function Projects({
               const name = project.title?.rendered || '';
               return (
                 <SwiperSlide key={project.id} className="projects__slide">
-                  <a
-                    className="project-card"
-                    href={project.link}
-                    target="_blank"
-                    rel="noreferrer"
-                  >
+                  <Link className="project-card" to={`/projects/${project.slug}`}>
                     <div className="project-card__media">
                       {img && <img src={img} alt={name} loading="lazy" />}
                     </div>
@@ -70,16 +66,16 @@ function Projects({
                       className="project-card__title"
                       dangerouslySetInnerHTML={{ __html: name }}
                     />
-                  </a>
+                  </Link>
                 </SwiperSlide>
               );
             })}
           </Swiper>
 
           <div className="projects__footer projects__inner">
-            <a className="projects__cta" href={ctaHref} target="_blank" rel="noreferrer">
+            <Link className="projects__cta" to={ctaHref}>
               {ctaLabel}
-            </a>
+            </Link>
             <div className="projects__nav">
               <button
                 type="button"
