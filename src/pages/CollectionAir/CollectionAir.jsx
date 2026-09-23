@@ -15,7 +15,8 @@ const CATEGORIES = [
   {
     title: 'Acoustic Ceilings',
     text: 'Full ceiling systems that manage reverberation across large, open interiors.',
-    to: '/indigoff-air/ceilings-air',
+    // El slug en WordPress está escrito "cielings-air" (con esa errata).
+    to: '/indigoff-air/cielings-air',
     image: ceilingsImg,
   },
   {

@@ -114,8 +114,36 @@ export function getProjectMedia(projectId) {
   return request(ENDPOINTS.media, {
     parent: projectId,
     per_page: 50,
-    orderby: 'menu_order',
+    // La colección de adjuntos no admite orderby=menu_order (devuelve 400);
+    // se ordena por fecha ascendente.
+    orderby: 'date',
     order: 'asc',
+  });
+}
+
+/**
+ * Obtiene una categoría de producto (taxonomía "product_cat") por su slug.
+ * @param {string} slug
+ * @returns {Promise<Object|null>}
+ */
+export async function getProductCategoryBySlug(slug) {
+  const res = await request(ENDPOINTS.productCategories, { slug });
+  return Array.isArray(res) && res.length > 0 ? res[0] : null;
+}
+
+/**
+ * Obtiene los productos (CPT WooCommerce "product") de una categoría, con su
+ * imagen destacada.
+ * @param {number} categoryId - ID del término product_cat.
+ * @param {Object} options
+ * @param {number} [options.perPage=24]
+ * @returns {Promise<Array>}
+ */
+export function getProductsByCategory(categoryId, { perPage = 24 } = {}) {
+  return request(ENDPOINTS.products, {
+    product_cat: categoryId,
+    per_page: perPage,
+    _embed: DEFAULT_QUERY.embed ? 1 : undefined,
   });
 }
 

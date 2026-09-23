@@ -10,6 +10,7 @@ import Fusetex from './pages/Fusetex/Fusetex';
 import Woolskin from './pages/Woolskin/Woolskin';
 import Contact from './pages/Contact/Contact';
 import Portfolio from './pages/Portfolio/Portfolio';
+import ProductCategory from './pages/ProductCategory/ProductCategory';
 import ProjectDetail from './pages/ProjectDetail/ProjectDetail';
 import PostDetail from './pages/PostDetail/PostDetail';
 import NotFound from './pages/NotFound/NotFound';
@@ -21,6 +22,7 @@ function App() {
         <Route path="/" element={<Layout />}>
           <Route index element={<Home />} />
           <Route path="indigoff-air" element={<CollectionAir />} />
+          <Route path="indigoff-air/:categorySlug" element={<ProductCategory />} />
           <Route path="indigoff-skin" element={<CollectionSkins />} />
           <Route path="indigoff-glow" element={<CollectionGlow />} />
           <Route path="indigoff-on" element={<CollectionOn />} />

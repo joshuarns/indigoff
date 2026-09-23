@@ -21,6 +21,9 @@ export const ENDPOINTS = {
   media: '/media',
   // CPT de proyectos en WordPress (rest_base "proyects").
   projects: '/proyects',
+  // WooCommerce: productos y su taxonomía de categorías.
+  products: '/product',
+  productCategories: '/product_cat',
 };
 
 // Parámetros por defecto para las peticiones de listados.
