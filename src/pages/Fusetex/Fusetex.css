@@ -265,6 +265,22 @@
   gap: clamp(1.5rem, 3vw, 2.5rem);
 }
 
+.fx-app {
+  display: block;
+  color: var(--color-text);
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.fx-app:hover {
+  text-decoration: none;
+}
+
+.fx-app:hover .fx-app__title {
+  text-decoration: underline;
+  text-underline-offset: 4px;
+}
+
 .fx-app__media {
   aspect-ratio: 3 / 4;
   border-radius: 0;

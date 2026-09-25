@@ -15,13 +15,13 @@ const CATEGORIES = [
   {
     title: 'Floor Lights',
     text: 'Sculptural floor lighting that brings warmth and quiet to any corner.',
-    to: '/indigoff-glow/floor-lamp',
+    to: '/indigoff-glow/floor',
     image: floorImg,
   },
   {
     title: 'Table Lights',
     text: 'Compact acoustic lamps that turn light into an object on every surface.',
-    to: '/indigoff-glow/table-lamp',
+    to: '/indigoff-glow/table',
     image: tableImg,
   },
 ];

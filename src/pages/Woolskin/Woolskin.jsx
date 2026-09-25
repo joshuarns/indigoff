@@ -43,9 +43,10 @@ const QUALITIES = [
 ];
 
 const APPLICATIONS = [
-  { title: 'Commercial', image: commercialImg },
-  { title: 'Corporate', image: corporateImg },
-  { title: 'Residential', image: residentialImg },
+  { title: 'Commercial', image: commercialImg, to: '/indigoff-woolskin/commercial' },
+  // En WordPress esta subcategoría se llama "office".
+  { title: 'Corporate', image: corporateImg, to: '/indigoff-woolskin/office' },
+  { title: 'Residential', image: residentialImg, to: '/indigoff-woolskin/residential' },
 ];
 
 function Woolskin() {
@@ -139,7 +140,7 @@ function Woolskin() {
         <h2 className="fx-section-title fx-apps__title">Applications</h2>
         <div className="fx-apps__grid">
           {APPLICATIONS.map((a) => (
-            <article key={a.title} className="fx-app">
+            <Link key={a.title} to={a.to} className="fx-app">
               <div className="fx-app__media">
                 {a.image ? (
                   <img src={a.image} alt={a.title} />
@@ -150,7 +151,7 @@ function Woolskin() {
                 )}
               </div>
               <h3 className="fx-app__title">{a.title}</h3>
-            </article>
+            </Link>
           ))}
         </div>
       </section>

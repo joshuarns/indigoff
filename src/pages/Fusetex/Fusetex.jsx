@@ -58,9 +58,9 @@ const SPECS = [
 ];
 
 const APPLICATIONS = [
-  { title: 'Commercial', image: commercialImg },
-  { title: 'Corporate', image: corporateImg },
-  { title: 'Residential', image: residentialImg },
+  { title: 'Commercial', image: commercialImg, to: '/fusetex/commercial-indigoff-fusetex' },
+  { title: 'Corporate', image: corporateImg, to: '/fusetex/corporate' },
+  { title: 'Residential', image: residentialImg, to: '/fusetex/residential-indigoff-fusetex' },
 ];
 
 function Fusetex() {
@@ -167,12 +167,12 @@ function Fusetex() {
         <h2 className="fx-section-title fx-apps__title">Applications</h2>
         <div className="fx-apps__grid">
           {APPLICATIONS.map((a) => (
-            <article key={a.title} className="fx-app">
+            <Link key={a.title} to={a.to} className="fx-app">
               <div className="fx-app__media">
                 <img src={a.image} alt={a.title} />
               </div>
               <h3 className="fx-app__title">{a.title}</h3>
-            </article>
+            </Link>
           ))}
         </div>
       </section>

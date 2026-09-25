@@ -15,13 +15,13 @@ const CATEGORIES = [
   {
     title: 'Frames',
     text: 'Framed acoustic systems that turn sound absorption into a refined wall statement.',
-    to: '/indigoff-skin/frames-skin',
+    to: '/indigoff-skin/frames',
     image: framesImg,
   },
   {
     title: 'Walls',
     text: 'Acoustic wall panels that reduce noise and bring material expression to any surface.',
-    to: '/indigoff-skin/walls-skin',
+    to: '/indigoff-skin/wall-skin',
     image: wallsImg,
   },
 ];
