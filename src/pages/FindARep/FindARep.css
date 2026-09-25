@@ -1,0 +1,7 @@
+.find-rep {
+  padding-top: var(--section-space);
+}
+
+.find-rep__inner {
+  padding-inline: var(--page-gutter);
+}

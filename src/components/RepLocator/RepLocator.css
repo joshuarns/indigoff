@@ -1,0 +1,346 @@
+/* Rep Locator — portado del widget original (Leaflet + Turf).
+   Estilos con prefijo #ig-rep-locator para no chocar con el resto del sitio. */
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&display=swap');
+
+#ig-rep-locator {
+  --ig-bg: #f5f1ec;
+  --ig-surface: #ffffff;
+  --ig-border: #d8d4cd;
+  --ig-text: #1a1a18;
+  --ig-muted: #5c5c55;
+  --ig-accent: #7c6ce8;
+  --ig-font: 'DM Sans', system-ui, sans-serif;
+  --ig-radius: 16px;
+  --ig-shadow-lg: 0 12px 40px rgba(0, 0, 0, 0.1);
+  --ig-ease: 220ms cubic-bezier(0.4, 0, 0.2, 1);
+
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  max-width: 100%;
+  height: 700px;
+  font-family: var(--ig-font);
+  background: var(--ig-bg);
+  border-radius: var(--ig-radius);
+  overflow: visible;
+  border: 1px solid var(--ig-border);
+  box-sizing: border-box;
+  position: relative;
+}
+#ig-rep-locator *,
+#ig-rep-locator *::before,
+#ig-rep-locator *::after {
+  box-sizing: border-box;
+}
+
+#ig-rep-locator .ig-sidebar {
+  width: 40%;
+  min-width: 320px;
+  max-width: 520px;
+  background: var(--ig-bg);
+  display: flex;
+  flex-direction: column;
+}
+#ig-rep-locator .ig-sidebar-inner {
+  padding: 60px 50px 40px;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+#ig-rep-locator .ig-title {
+  margin: 0 0 28px;
+  font-size: 2.6rem;
+  font-weight: 600;
+  line-height: 1.05;
+  letter-spacing: -0.02em;
+  color: var(--ig-text);
+}
+#ig-rep-locator .ig-intro {
+  margin: 0 0 36px;
+  font-size: 0.95rem;
+  line-height: 1.55;
+  color: var(--ig-text);
+  max-width: 380px;
+}
+
+#ig-rep-locator .ig-search-block {
+  position: relative;
+}
+#ig-rep-locator .ig-input-wrap {
+  display: flex;
+  align-items: center;
+  border-bottom: 1.5px solid var(--ig-text);
+  padding: 6px 0;
+}
+#ig-rep-locator .ig-input,
+#ig-rep-locator .ig-input:focus,
+#ig-rep-locator .ig-input:hover,
+#ig-rep-locator .ig-input:active {
+  flex: 1;
+  border: none !important;
+  border-radius: 0 !important;
+  background: transparent !important;
+  font-family: var(--ig-font);
+  font-size: 1rem;
+  color: var(--ig-text);
+  padding: 8px 0 !important;
+  outline: none !important;
+  box-shadow: none !important;
+  -webkit-appearance: none !important;
+  appearance: none !important;
+}
+#ig-rep-locator .ig-input::placeholder {
+  color: var(--ig-muted);
+}
+#ig-rep-locator .ig-clear-btn {
+  background: none;
+  border: none;
+  font-family: var(--ig-font);
+  font-size: 0.95rem;
+  color: var(--ig-text);
+  cursor: pointer;
+  padding: 6px 0 6px 12px;
+}
+#ig-rep-locator .ig-clear-btn:hover,
+#ig-rep-locator .ig-clear-btn:focus,
+#ig-rep-locator .ig-clear-btn:active {
+  background: none;
+  color: var(--ig-text);
+  opacity: 0.55;
+  outline: none;
+  box-shadow: none;
+}
+
+#ig-rep-locator .ig-autocomplete {
+  position: absolute;
+  top: calc(100% + 6px);
+  left: 0;
+  right: 0;
+  background: var(--ig-surface);
+  border: 1px solid var(--ig-border);
+  border-radius: 10px;
+  box-shadow: var(--ig-shadow-lg);
+  overflow: hidden;
+  z-index: 1000;
+  max-height: 340px;
+  overflow-y: auto;
+}
+#ig-rep-locator .ig-suggestion {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  padding: 12px 18px;
+  border: none;
+  background: none;
+  text-align: left;
+  cursor: pointer;
+  font-family: var(--ig-font);
+  border-bottom: 1px solid var(--ig-border);
+  transition: background 120ms ease;
+  gap: 2px;
+}
+#ig-rep-locator .ig-suggestion:last-child {
+  border-bottom: none;
+}
+#ig-rep-locator .ig-suggestion:hover,
+#ig-rep-locator .ig-suggestion.ig-active {
+  background: var(--ig-bg);
+  outline: none;
+}
+#ig-rep-locator .ig-sugg-primary {
+  font-size: 1rem;
+  font-weight: 500;
+  color: var(--ig-text);
+}
+#ig-rep-locator .ig-sugg-secondary {
+  font-size: 0.78rem;
+  color: var(--ig-muted);
+}
+#ig-rep-locator .ig-match {
+  background: transparent;
+  color: var(--ig-text);
+  font-weight: 700;
+}
+
+#ig-rep-locator .ig-no-result {
+  margin-top: 20px;
+  padding: 14px 16px;
+  background: #fff;
+  border-left: 3px solid var(--ig-accent);
+  border-radius: 4px;
+  font-size: 0.9rem;
+  color: var(--ig-muted);
+}
+
+#ig-rep-locator .ig-map-wrap {
+  flex: 1;
+  position: relative;
+  min-width: 0;
+  min-height: 400px;
+  background: #e8e8e3;
+}
+#ig-rep-locator .ig-map {
+  width: 100% !important;
+  height: 100% !important;
+  min-height: 400px;
+  background: #e8e8e3;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+}
+
+#ig-rep-locator .ig-rep-card {
+  position: absolute;
+  left: 32px;
+  bottom: 32px;
+  width: 360px;
+  background: var(--ig-surface);
+  border-radius: var(--ig-radius);
+  padding: 28px 32px 30px;
+  box-shadow: var(--ig-shadow-lg);
+  z-index: 500;
+  font-family: var(--ig-font);
+  animation: ig-card-in 280ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+@keyframes ig-card-in {
+  from {
+    opacity: 0;
+    transform: translateY(16px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+#ig-rep-locator .ig-rep-card h2 {
+  margin: 0 0 22px;
+  font-size: 1.65rem;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+  color: var(--ig-text);
+}
+#ig-rep-locator .ig-rep-company {
+  margin: 0 0 8px;
+  font-size: 1rem;
+  font-weight: 500;
+  color: var(--ig-text);
+}
+#ig-rep-locator .ig-rep-line {
+  margin: 0 0 4px;
+  font-size: 0.92rem;
+  color: var(--ig-text);
+}
+#ig-rep-locator .ig-rep-line:last-of-type {
+  margin-bottom: 22px;
+}
+#ig-rep-locator .ig-contact-btn {
+  display: inline-block;
+  padding: 11px 28px;
+  background: var(--ig-surface);
+  color: var(--ig-text);
+  text-decoration: none;
+  font-size: 0.9rem;
+  font-weight: 500;
+  border: 1.5px solid var(--ig-text);
+  border-radius: 24px;
+  transition: background var(--ig-ease), color var(--ig-ease);
+}
+#ig-rep-locator .ig-contact-btn:hover {
+  background: var(--ig-text);
+  color: #fff;
+}
+
+#ig-rep-locator .ig-hidden {
+  display: none !important;
+}
+
+@media (max-width: 880px) {
+  #ig-rep-locator {
+    flex-direction: column;
+    height: auto;
+    min-height: 0;
+  }
+  #ig-rep-locator .ig-sidebar {
+    width: 100%;
+    min-width: 0;
+    max-width: 100%;
+    flex: 0 0 auto;
+    display: block;
+    height: auto;
+    position: relative;
+    z-index: 1001;
+    overflow: visible;
+  }
+  #ig-rep-locator .ig-sidebar-inner {
+    padding: 28px 20px 20px;
+    height: auto;
+    display: block;
+  }
+  #ig-rep-locator .ig-title {
+    font-size: 1.65rem;
+    margin-bottom: 14px;
+    line-height: 1.15;
+  }
+  #ig-rep-locator .ig-intro {
+    font-size: 0.9rem;
+    margin-bottom: 20px;
+    max-width: 100%;
+  }
+  #ig-rep-locator .ig-map-wrap {
+    flex: 0 0 auto;
+    height: 520px;
+    min-height: 520px;
+    width: 100%;
+    display: block;
+    position: relative;
+  }
+  #ig-rep-locator .ig-map {
+    height: 520px;
+    min-height: 520px;
+    width: 100%;
+    position: relative;
+    top: auto;
+    left: auto;
+    right: auto;
+    bottom: auto;
+  }
+  #ig-rep-locator .ig-rep-card {
+    left: 12px;
+    right: 12px;
+    bottom: 12px;
+    width: auto;
+    padding: 18px 20px 20px;
+    max-width: calc(100% - 24px);
+  }
+  #ig-rep-locator .ig-rep-card h2 {
+    font-size: 1.3rem;
+    margin-bottom: 12px;
+  }
+  #ig-rep-locator .ig-rep-company,
+  #ig-rep-locator .ig-rep-line {
+    font-size: 0.88rem;
+  }
+  #ig-rep-locator .ig-rep-line:last-of-type {
+    margin-bottom: 16px;
+  }
+}
+
+@media (max-width: 480px) {
+  #ig-rep-locator .ig-sidebar-inner {
+    padding: 24px 16px 18px;
+  }
+  #ig-rep-locator .ig-title {
+    font-size: 1.45rem;
+  }
+  #ig-rep-locator .ig-intro {
+    font-size: 0.86rem;
+    margin-bottom: 16px;
+  }
+  #ig-rep-locator .ig-map-wrap,
+  #ig-rep-locator .ig-map {
+    height: 460px;
+    min-height: 460px;
+  }
+}

@@ -11,6 +11,7 @@ import Woolskin from './pages/Woolskin/Woolskin';
 import Contact from './pages/Contact/Contact';
 import Possibilities from './pages/Possibilities/Possibilities';
 import Portfolio from './pages/Portfolio/Portfolio';
+import FindARep from './pages/FindARep/FindARep';
 import ProductCategory from './pages/ProductCategory/ProductCategory';
 import ProductDetail from './pages/ProductDetail/ProductDetail';
 import ProjectDetail from './pages/ProjectDetail/ProjectDetail';
@@ -41,6 +42,7 @@ function App() {
           {/* Fckoff es una categoría raíz con productos directos (sin subcats). */}
           <Route path="indigoff-fckoff" element={<ProductCategory slug="fckoff" />} />
           <Route path="contact" element={<Contact />} />
+          <Route path="find-a-rep" element={<FindARep />} />
           <Route path="possibilities" element={<Possibilities />} />
           <Route path="projects" element={<Portfolio />} />
           <Route path="projects/:slug" element={<ProjectDetail />} />

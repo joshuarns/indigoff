@@ -2,7 +2,7 @@
 // La URL base se define en el archivo .env (ver .env.example).
 
 export const WP_API_URL =
-  import.meta.env.VITE_WP_API_URL || 'https://indigoff.com/wp-json/wp/v2';
+  import.meta.env.VITE_WP_API_URL || 'https://cms.indigoff.com/wp-json/wp/v2';
 
 // Raíz de la API (/wp-json), derivada de la URL base quitando "/wp/v2".
 // Se usa para namespaces propios como el del menú (indigoff/v1).
