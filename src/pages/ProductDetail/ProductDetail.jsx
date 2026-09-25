@@ -24,6 +24,17 @@ const COLORS = Object.entries(colorModules)
   })
   .sort((a, b) => a.name.localeCompare(b.name));
 
+// Normaliza un nombre de color para comparar sin importar mayúsculas/espacios.
+const normColor = (s) => s.toLowerCase().replace(/[^a-z0-9]/g, '');
+
+// Devuelve la paleta de colores para una colección: su subconjunto si define
+// `colors`, o todos los colores disponibles.
+function paletteFor(collection) {
+  if (!collection?.colors) return COLORS;
+  const allowed = collection.colors.map(normColor);
+  return COLORS.filter((c) => allowed.includes(normColor(c.name)));
+}
+
 // Convierte el excerpt (HTML con <b>Etiqueta:</b> valor) en pares etiqueta/valor.
 function parseSpecs(html) {
   if (!html) return [];
@@ -71,6 +82,8 @@ function ProductDetail() {
   const thumb = getFeaturedImage(product);
   const pdf = typeof product.acf?.select_pdf === 'string' ? product.acf.select_pdf : null;
   const specs = parseSpecs(product.excerpt?.rendered);
+  const colors = paletteFor(collection);
+  const active = colors[activeColor] ? activeColor : 0;
 
   return (
     <article className="prod">
@@ -134,21 +147,21 @@ function ProductDetail() {
         </div>
 
         {/* --- Colores --- */}
-        {COLORS.length > 0 && (
+        {colors.length > 0 && (
           <section className="prod__colors">
             <div className="prod__colors-head">
               <h2 className="prod__section-title">Colors</h2>
-              <span className="prod__color-active">{COLORS[activeColor]?.name}</span>
+              <span className="prod__color-active">{colors[active]?.name}</span>
             </div>
             <ul className="prod__swatches">
-              {COLORS.map((c, i) => (
+              {colors.map((c, i) => (
                 <li key={c.name}>
                   <button
                     type="button"
-                    className={`swatch ${i === activeColor ? 'is-active' : ''}`}
+                    className={`swatch ${i === active ? 'is-active' : ''}`}
                     onClick={() => setActiveColor(i)}
                     title={c.name}
-                    aria-pressed={i === activeColor}
+                    aria-pressed={i === active}
                   >
                     <span className="swatch__chip">
                       <img src={c.src} alt={c.name} loading="lazy" />

@@ -4,8 +4,9 @@ import { getFeaturedImage } from '../../services/wordpressApi';
 import Loader from '../../components/Loader/Loader';
 import './ProductCategory.css';
 
-function ProductCategory() {
-  const { categorySlug } = useParams();
+function ProductCategory({ slug: slugProp }) {
+  const params = useParams();
+  const categorySlug = slugProp || params.categorySlug;
   const { category, collection, products, loading, error } =
     useProductCategory(categorySlug);
 
@@ -14,19 +15,24 @@ function ProductCategory() {
   const name = category?.name || '';
   const collLabel = collection?.label || 'Indigoff';
   const collRoute = collection?.route || '/';
+  // Si la categoría es la raíz de su colección, esta página ES la colección:
+  // el "volver" apunta al inicio en vez de a sí misma.
+  const isRoot = category && !category.parent;
+  const backTo = isRoot ? '/' : collRoute;
+  const backLabel = isRoot ? 'Home' : collLabel;
 
   return (
     <section className="pcat">
       <div className="pcat__inner">
-        <Link to={collRoute} className="pcat__back">
-          ← {collLabel}
+        <Link to={backTo} className="pcat__back">
+          ← {backLabel}
         </Link>
 
         <header className="pcat__head">
-          <span className="pcat__eyebrow">{collLabel}</span>
+          {!isRoot && <span className="pcat__eyebrow">{collLabel}</span>}
           <h1
             className="pcat__title"
-            dangerouslySetInnerHTML={{ __html: name || 'Productos' }}
+            dangerouslySetInnerHTML={{ __html: isRoot ? collLabel : name || 'Productos' }}
           />
           {category?.description && (
             <p className="pcat__desc">{category.description}</p>

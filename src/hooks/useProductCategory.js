@@ -40,8 +40,10 @@ export function useProductCategory(slug) {
         ]);
         if (!active) return;
         if (Array.isArray(list)) setProducts(list);
-        const root = parents[0];
-        if (root) setCollection(collectionByRootSlug(root.slug));
+        // Si la categoría tiene padre, la colección es el padre; si es una raíz
+        // (p. ej. Fckoff), la colección es ella misma.
+        const rootSlug = parents[0]?.slug || (cat.parent ? null : cat.slug);
+        if (rootSlug) setCollection(collectionByRootSlug(rootSlug));
       })
       .catch((err) => {
         if (active) setError(err.message);

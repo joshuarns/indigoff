@@ -49,13 +49,16 @@ export function useProduct(slug) {
             : terms.find((t) => t.parent) || terms[0];
           if (!active) return;
           if (root) setCollection(collectionByRootSlug(root.slug));
-          if (!primary) return;
-          setCategory(primary);
+          if (primary) setCategory(primary);
 
-          // Relacionados de la misma subcategoría, excluyendo el actual.
-          const list = await getProductsByCategory(primary.id, { perPage: 8 });
-          if (active && Array.isArray(list)) {
-            setRelated(list.filter((p) => p.id !== prod.id).slice(0, 4));
+          // Relacionados: de la subcategoría si existe; si no (categorías raíz
+          // como Fckoff), de la propia raíz. Excluye el producto actual.
+          const relCatId = primary?.id || root?.id;
+          if (relCatId) {
+            const list = await getProductsByCategory(relCatId, { perPage: 8 });
+            if (active && Array.isArray(list)) {
+              setRelated(list.filter((p) => p.id !== prod.id).slice(0, 4));
+            }
           }
         } catch {
           /* categoría/relacionados son opcionales */

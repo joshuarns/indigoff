@@ -37,6 +37,8 @@ function App() {
           <Route path="fusetex/:categorySlug" element={<ProductCategory />} />
           <Route path="indigoff-woolskin" element={<Woolskin />} />
           <Route path="indigoff-woolskin/:categorySlug" element={<ProductCategory />} />
+          {/* Fckoff es una categoría raíz con productos directos (sin subcats). */}
+          <Route path="indigoff-fckoff" element={<ProductCategory slug="fckoff" />} />
           <Route path="contact" element={<Contact />} />
           <Route path="projects" element={<Portfolio />} />
           <Route path="projects/:slug" element={<ProjectDetail />} />

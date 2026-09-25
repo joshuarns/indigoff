@@ -9,19 +9,20 @@ const CATEGORIES = [
   {
     title: 'Pendant Lights',
     text: 'Suspended lighting objects that define zones and shape atmosphere from above.',
-    to: '/indigoff-on/pendant-on',
+    to: '/indigoff-on/pendant-lighting',
     image: pendantImg,
   },
   {
     title: 'Floor Lights',
     text: 'Freestanding light objects that guide movement and ground a space.',
-    to: '/indigoff-on/floor-on',
+    // El slug en WordPress es "pedestal".
+    to: '/indigoff-on/pedestal',
     image: floorImg,
   },
   {
     title: 'Wall Lights',
     text: 'Architectural wall fixtures that treat light as a calm, intentional presence.',
-    to: '/indigoff-on/wall-on',
+    to: '/indigoff-on/wall',
     image: wallImg,
   },
 ];
