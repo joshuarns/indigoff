@@ -1,14 +1,17 @@
-// Hook para una categoría de producto: resuelve el slug a término product_cat
-// y obtiene los productos de esa categoría desde WooCommerce.
+// Hook para una categoría de producto: resuelve el slug a término product_cat,
+// obtiene sus productos y también su colección raíz (para migas de pan).
 
 import { useState, useEffect } from 'react';
 import {
   getProductCategoryBySlug,
   getProductsByCategory,
+  getProductCategoriesByIds,
 } from '../services/wordpressApi';
+import { collectionByRootSlug } from '../config/collections';
 
 export function useProductCategory(slug) {
   const [category, setCategory] = useState(null);
+  const [collection, setCollection] = useState(null);
   const [products, setProducts] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
@@ -18,6 +21,7 @@ export function useProductCategory(slug) {
     setLoading(true);
     setError(null);
     setCategory(null);
+    setCollection(null);
     setProducts([]);
 
     getProductCategoryBySlug(slug)
@@ -28,8 +32,16 @@ export function useProductCategory(slug) {
           return;
         }
         setCategory(cat);
-        const list = await getProductsByCategory(cat.id, { perPage: 24 });
-        if (active && Array.isArray(list)) setProducts(list);
+
+        // Productos de la categoría + colección raíz (por el término padre).
+        const [list, parents] = await Promise.all([
+          getProductsByCategory(cat.id, { perPage: 24 }),
+          cat.parent ? getProductCategoriesByIds([cat.parent]) : Promise.resolve([]),
+        ]);
+        if (!active) return;
+        if (Array.isArray(list)) setProducts(list);
+        const root = parents[0];
+        if (root) setCollection(collectionByRootSlug(root.slug));
       })
       .catch((err) => {
         if (active) setError(err.message);
@@ -43,5 +55,5 @@ export function useProductCategory(slug) {
     };
   }, [slug]);
 
-  return { category, products, loading, error };
+  return { category, collection, products, loading, error };
 }

@@ -61,6 +61,12 @@
 .prod-card {
   display: block;
   color: var(--color-text);
+  cursor: pointer;
+}
+
+.prod-card:hover .prod-card__title {
+  text-decoration: underline;
+  text-underline-offset: 4px;
 }
 
 .prod-card__media {

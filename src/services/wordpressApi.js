@@ -132,6 +132,34 @@ export async function getProductCategoryBySlug(slug) {
 }
 
 /**
+ * Obtiene categorías de producto (taxonomía "product_cat") por sus IDs.
+ * @param {number[]} ids
+ * @returns {Promise<Array>}
+ */
+export function getProductCategoriesByIds(ids = []) {
+  if (!ids.length) return Promise.resolve([]);
+  return request(ENDPOINTS.productCategories, {
+    include: ids.join(','),
+    per_page: 100,
+    _fields: 'id,name,slug,parent',
+  });
+}
+
+/**
+ * Obtiene un producto (CPT WooCommerce "product") por su slug, con su imagen
+ * destacada y datos embebidos.
+ * @param {string} slug
+ * @returns {Promise<Object|null>}
+ */
+export async function getProductBySlug(slug) {
+  const res = await request(ENDPOINTS.products, {
+    slug,
+    _embed: DEFAULT_QUERY.embed ? 1 : undefined,
+  });
+  return Array.isArray(res) && res.length > 0 ? res[0] : null;
+}
+
+/**
  * Obtiene los productos (CPT WooCommerce "product") de una categoría, con su
  * imagen destacada.
  * @param {number} categoryId - ID del término product_cat.
