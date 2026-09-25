@@ -9,6 +9,7 @@ import CollectionGallery from './pages/CollectionGallery/CollectionGallery';
 import Fusetex from './pages/Fusetex/Fusetex';
 import Woolskin from './pages/Woolskin/Woolskin';
 import Contact from './pages/Contact/Contact';
+import Possibilities from './pages/Possibilities/Possibilities';
 import Portfolio from './pages/Portfolio/Portfolio';
 import ProductCategory from './pages/ProductCategory/ProductCategory';
 import ProductDetail from './pages/ProductDetail/ProductDetail';
@@ -40,6 +41,7 @@ function App() {
           {/* Fckoff es una categoría raíz con productos directos (sin subcats). */}
           <Route path="indigoff-fckoff" element={<ProductCategory slug="fckoff" />} />
           <Route path="contact" element={<Contact />} />
+          <Route path="possibilities" element={<Possibilities />} />
           <Route path="projects" element={<Portfolio />} />
           <Route path="projects/:slug" element={<ProjectDetail />} />
           <Route path="post/:slug" element={<PostDetail />} />

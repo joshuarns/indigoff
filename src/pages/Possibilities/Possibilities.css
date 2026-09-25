@@ -1,0 +1,138 @@
+/* Página Possibilities: intro + banner + rejilla de acabados.
+   Sigue los tokens del sitio (gutter, ritmo vertical, radios grandes). */
+
+.poss__intro-inner,
+.poss__hero-inner,
+.poss__finishes-inner {
+  padding-inline: var(--page-gutter);
+}
+
+/* --- Intro --- */
+.poss__intro {
+  padding-top: var(--section-space);
+}
+
+.poss__intro-inner {
+  max-width: 900px;
+}
+
+.poss__eyebrow {
+  font-size: 0.8rem;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--color-text-muted);
+  margin-bottom: 1.25rem;
+}
+
+.poss__title {
+  font-size: clamp(2.4rem, 5vw, 4rem);
+  font-weight: 300;
+  line-height: 1.05;
+  letter-spacing: -0.02em;
+  color: var(--color-text);
+  margin-bottom: 1.75rem;
+}
+
+.poss__desc {
+  font-size: clamp(1.05rem, 1.4vw, 1.3rem);
+  line-height: 1.6;
+  color: var(--color-text);
+  max-width: 780px;
+}
+
+/* --- Banner --- */
+.poss__hero {
+  padding-top: var(--section-space);
+}
+
+.poss__hero-img {
+  aspect-ratio: 16 / 7;
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  background-color: var(--color-bg-alt);
+}
+
+.poss__hero-img img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+/* --- Acabados --- */
+.poss__finishes {
+  padding-top: var(--section-space);
+  padding-bottom: var(--section-space);
+}
+
+.poss__section-title {
+  font-size: clamp(1.6rem, 2.4vw, 2.2rem);
+  font-weight: 400;
+  letter-spacing: -0.01em;
+  color: var(--color-text);
+  margin-bottom: clamp(1.5rem, 3vw, 2.5rem);
+}
+
+.poss__grid {
+  display: grid;
+  /* 5 acabados en un solo renglón en escritorio. */
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  gap: clamp(1.5rem, 2vw, 2rem);
+}
+
+/* --- Tarjeta de acabado (hover: radius + zoom, como el resto del sitio) --- */
+.finish-card {
+  display: block;
+  color: var(--color-text);
+}
+
+.finish-card__media {
+  aspect-ratio: 4 / 5;
+  border-radius: 0;
+  overflow: hidden;
+  background-color: var(--color-bg-alt);
+  transition: border-radius 0.4s ease;
+}
+
+.finish-card:hover .finish-card__media {
+  border-radius: var(--radius-lg);
+}
+
+.finish-card__media img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.6s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.finish-card:hover .finish-card__media img {
+  transform: scale(1.05);
+}
+
+.finish-card__title {
+  font-size: 1.3rem;
+  font-weight: 400;
+  margin-top: 1.1rem;
+}
+
+/* --- Responsive --- */
+@media (max-width: 1100px) {
+  .poss__grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 700px) {
+  .poss__grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 1.5rem;
+  }
+}
+
+@media (max-width: 460px) {
+  .poss__grid {
+    grid-template-columns: 1fr;
+  }
+}
