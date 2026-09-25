@@ -1,0 +1,91 @@
+/* Sección "Featured Finishes" del home (estilo turf: título + 3 tarjetas
+   grandes con nombre y etiqueta). */
+.featfin {
+  padding-top: var(--section-space);
+}
+
+.featfin__inner {
+  padding-inline: var(--page-gutter);
+}
+
+.featfin__title {
+  font-size: clamp(2rem, 4vw, 3.25rem);
+  font-weight: 400;
+  line-height: 1.05;
+  letter-spacing: -0.02em;
+  color: var(--color-text);
+  margin-bottom: clamp(2rem, 4vw, 3.5rem);
+}
+
+.featfin__grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: clamp(1.5rem, 2.5vw, 2.25rem);
+}
+
+.featfin-card {
+  display: block;
+  color: var(--color-text);
+}
+
+.featfin-card__media {
+  aspect-ratio: 1 / 1;
+  overflow: hidden;
+  background-color: var(--color-bg-alt);
+  border-radius: 0;
+  transition: border-radius 0.4s ease;
+}
+
+.featfin-card:hover .featfin-card__media {
+  border-radius: var(--radius-lg);
+}
+
+.featfin-card__media img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.6s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.featfin-card:hover .featfin-card__media img {
+  transform: scale(1.04);
+}
+
+.featfin-card__foot {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-top: 1.1rem;
+}
+
+.featfin-card__name {
+  font-size: clamp(1.35rem, 2vw, 1.75rem);
+  font-weight: 400;
+  letter-spacing: -0.01em;
+}
+
+.featfin-card:hover .featfin-card__name {
+  text-decoration: underline;
+  text-underline-offset: 4px;
+}
+
+.featfin-card__tag {
+  flex-shrink: 0;
+  padding: 0.4rem 0.9rem;
+  border-radius: 999px;
+  background-color: var(--color-bg-alt);
+  border: 1px solid var(--color-border);
+  color: var(--color-text-muted);
+  font-size: 0.85rem;
+  white-space: nowrap;
+}
+
+/* --- Responsive --- */
+@media (max-width: 800px) {
+  .featfin__grid {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+}
