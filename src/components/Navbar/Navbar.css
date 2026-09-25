@@ -49,67 +49,134 @@
 }
 
 .nav-item__link {
+  position: relative;
   color: #111111;
   font-size: 1rem;
   font-weight: 500;
   white-space: nowrap;
 }
 
+/* Subrayado animado en los items de primer nivel. */
+.nav-item__link::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: -6px;
+  height: 2px;
+  background-color: #111111;
+  border-radius: 2px;
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.28s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.nav-item__label:hover .nav-item__link::after,
+.nav-item--has-children:hover .nav-item__link::after {
+  transform: scaleX(1);
+}
+
 .nav-item__link:hover {
   text-decoration: none;
-  color: var(--color-primary);
+  color: #111111;
 }
 
 .nav-item__caret {
-  font-size: 0.7rem;
-  color: #111111;
-  transition: transform 0.15s ease;
+  display: block;
+  color: #9ca3af;
+  transition: transform 0.28s cubic-bezier(0.22, 1, 0.36, 1), color 0.2s ease;
 }
 
 .nav-item--has-children:hover .nav-item__caret {
   transform: rotate(180deg);
+  color: #111111;
 }
 
-/* --- Submenú desplegable --- */
+/* --- Mega-panel desplegable (estilo turf) --- */
 .nav-item__submenu {
   position: absolute;
   top: 100%;
-  left: 0;
-  min-width: 200px;
-  background-color: #ffffff;
-  border: 1px solid var(--color-border);
-  border-radius: var(--radius);
-  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
-  padding: 0.5rem 0;
+  left: -0.75rem;
+  margin: 0;
+  padding: 0.6rem;
   list-style: none;
-  margin: 0.5rem 0 0;
+
+  /* Los items fluyen en columnas balanceadas (máx. 6 por columna): las
+     listas largas como "Categories" se reparten en varias columnas. */
+  display: grid;
+  grid-auto-flow: column;
+  grid-template-rows: repeat(6, auto);
+  gap: 0.15rem 0.35rem;
+
+  background-color: #ffffff;
+  border: 1px solid rgba(0, 0, 0, 0.06);
+  border-radius: 16px;
+  box-shadow:
+    0 2px 6px rgba(0, 0, 0, 0.04),
+    0 18px 44px rgba(0, 0, 0, 0.14);
 
   /* Oculto por defecto; visible al hacer hover/focus en el item padre. */
   opacity: 0;
   visibility: hidden;
-  transform: translateY(6px);
-  transition: opacity 0.15s ease, transform 0.15s ease, visibility 0.15s;
+  transform: translateY(10px) scale(0.99);
+  transform-origin: top left;
+  transition:
+    opacity 0.22s cubic-bezier(0.22, 1, 0.36, 1),
+    transform 0.22s cubic-bezier(0.22, 1, 0.36, 1),
+    visibility 0.22s;
+}
+
+/* Puente invisible: evita que el panel se cierre al cruzar el hueco. */
+.nav-item__submenu::before {
+  content: '';
+  position: absolute;
+  top: -14px;
+  left: 0;
+  right: 0;
+  height: 14px;
 }
 
 .nav-item--has-children:hover .nav-item__submenu,
 .nav-item--has-children:focus-within .nav-item__submenu {
   opacity: 1;
   visibility: visible;
-  transform: translateY(0);
+  transform: translateY(0) scale(1);
 }
 
 .nav-item__sublink {
-  display: block;
-  padding: 0.5rem 1.25rem;
-  color: #111111;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.6rem 0.9rem;
+  min-width: 168px;
+  border-radius: 10px;
+  color: #3f3f46;
   font-size: 0.95rem;
+  font-weight: 500;
   white-space: nowrap;
+  transition: background-color 0.18s ease, color 0.18s ease;
+}
+
+/* Flecha que aparece al pasar el cursor (affordance). */
+.nav-item__sublink::after {
+  content: '→';
+  margin-left: auto;
+  padding-left: 0.75rem;
+  color: #a1a1aa;
+  opacity: 0;
+  transform: translateX(-4px);
+  transition: opacity 0.18s ease, transform 0.18s ease;
 }
 
 .nav-item__sublink:hover {
-  background-color: var(--color-bg-alt);
+  background-color: #f4f4f5;
   text-decoration: none;
-  color: var(--color-primary);
+  color: #111111;
+}
+
+.nav-item__sublink:hover::after {
+  opacity: 1;
+  transform: translateX(0);
 }
 
 /* --- Botón hamburguesa (móvil) --- */
@@ -166,15 +233,30 @@
     justify-content: space-between;
   }
 
-  /* En móvil el submenú se muestra en flujo, no flotante. */
+  /* En móvil el submenú se muestra en flujo, en una sola columna. */
   .nav-item__submenu {
     position: static;
+    display: block;
     opacity: 1;
     visibility: visible;
     transform: none;
     border: none;
+    border-radius: 0;
     box-shadow: none;
-    padding: 0 0 0.5rem 1rem;
+    padding: 0 0 0.5rem 0.75rem;
     margin: 0;
+  }
+
+  .nav-item__submenu::before {
+    display: none;
+  }
+
+  .nav-item__sublink {
+    min-width: 0;
+    color: var(--color-text-muted);
+  }
+
+  .nav-item__sublink::after {
+    display: none;
   }
 }
