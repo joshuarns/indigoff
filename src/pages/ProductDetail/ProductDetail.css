@@ -145,6 +145,69 @@
   text-underline-offset: 4px;
 }
 
+/* --- Downloads --- */
+.prod__downloads {
+  margin-top: 2.25rem;
+}
+
+.prod__downloads-title {
+  font-size: 0.8rem;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--color-text-muted);
+  margin-bottom: 0.75rem;
+}
+
+.prod__downloads-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  border-top: 1px solid var(--color-border);
+}
+
+.dl-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 0.9rem 0.25rem;
+  border-bottom: 1px solid var(--color-border);
+  color: var(--color-text);
+  transition: color 0.2s ease, padding-inline 0.2s ease;
+}
+
+.dl-item:hover {
+  text-decoration: none;
+  color: var(--color-primary, var(--color-text));
+  padding-inline: 0.6rem;
+}
+
+.dl-item__label {
+  font-size: 1rem;
+}
+
+.dl-item__meta {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  color: var(--color-text-muted);
+  flex: 0 0 auto;
+}
+
+.dl-item:hover .dl-item__meta {
+  color: inherit;
+}
+
+.dl-item__ext {
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  padding: 0.2rem 0.5rem;
+  border: 1px solid var(--color-border);
+  border-radius: 999px;
+}
+
 /* --- Colores --- */
 .prod__colors {
   margin-bottom: clamp(3rem, 6vw, 5rem);

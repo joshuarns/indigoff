@@ -35,6 +35,16 @@ function paletteFor(collection) {
   return COLORS.filter((c) => allowed.includes(normColor(c.name)));
 }
 
+// Campos ACF de descarga del producto (cada uno es una URL o `false`).
+// Presentes en todos los productos; se muestran solo los que tienen archivo.
+const DOWNLOAD_FIELDS = [
+  { key: 'select_pdf', label: 'Specification Sheet', ext: 'PDF' },
+  { key: 'dwg', label: 'CAD Drawing', ext: 'DWG' },
+  { key: '3dm', label: 'Rhino 3D Model', ext: '3DM' },
+  { key: 'skp', label: 'SketchUp Model', ext: 'SKP' },
+  { key: 'rvt', label: 'Revit Family', ext: 'RVT' },
+];
+
 // Convierte el excerpt (HTML con <b>Etiqueta:</b> valor) en pares etiqueta/valor.
 function parseSpecs(html) {
   if (!html) return [];
@@ -80,7 +90,11 @@ function ProductDetail() {
   const backLabel = catName || collLabel;
   const hero = product.acf?.hero_banner || getFeaturedImage(product);
   const thumb = getFeaturedImage(product);
-  const pdf = typeof product.acf?.select_pdf === 'string' ? product.acf.select_pdf : null;
+  // Descargas disponibles (campos ACF con URL).
+  const downloads = DOWNLOAD_FIELDS.map((f) => {
+    const url = product.acf?.[f.key];
+    return typeof url === 'string' && url ? { ...f, url } : null;
+  }).filter(Boolean);
   const specs = parseSpecs(product.excerpt?.rendered);
   const colors = paletteFor(collection);
   const active = colors[activeColor] ? activeColor : 0;
@@ -137,12 +151,41 @@ function ProductDetail() {
               <button type="button" className="prod__cta">
                 Add to my list
               </button>
-              {pdf && (
-                <a className="prod__pdf" href={pdf} target="_blank" rel="noreferrer">
-                  Download spec sheet ↓
-                </a>
-              )}
             </div>
+
+            {/* Descargas (PDF, CAD, 3D) */}
+            {downloads.length > 0 && (
+              <div className="prod__downloads">
+                <h2 className="prod__downloads-title">Downloads</h2>
+                <ul className="prod__downloads-list">
+                  {downloads.map((d) => (
+                    <li key={d.key}>
+                      <a
+                        className="dl-item"
+                        href={d.url}
+                        target="_blank"
+                        rel="noreferrer"
+                        download
+                      >
+                        <span className="dl-item__label">{d.label}</span>
+                        <span className="dl-item__meta">
+                          <span className="dl-item__ext">{d.ext}</span>
+                          <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+                            <path
+                              d="M8 2.5v8m0 0L4.5 7M8 10.5 11.5 7M2.5 13.5h11"
+                              stroke="currentColor"
+                              strokeWidth="1.4"
+                              strokeLinecap="round"
+                              strokeLinejoin="round"
+                            />
+                          </svg>
+                        </span>
+                      </a>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            )}
           </div>
         </div>
 
