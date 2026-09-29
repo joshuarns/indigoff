@@ -3,7 +3,9 @@
   border-bottom: 1px solid var(--color-border);
   position: sticky;
   top: 0;
-  z-index: 50;
+  /* Por encima de contenido con z-index alto (p. ej. el mapa de Leaflet en
+     Find a Rep, que llega a 1001) para que el menú no quede tapado. */
+  z-index: 2000;
 }
 
 .navbar__inner {
