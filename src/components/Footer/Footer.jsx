@@ -3,30 +3,43 @@ import logo from '../../assets/img/logo-indigoff-white.svg';
 import './Footer.css';
 
 // Columnas del footer (estilo turf): cada una con encabezado y sus enlaces
-// apilados. Los enlaces son los del navbar, agrupados por tema.
+// apilados. Enlaces reales del sitio, agrupados por tema.
 const FOOTER_COLUMNS = [
   {
-    heading: 'Products',
+    heading: 'Collections',
     links: [
-      { title: 'Collections', path: '/collections' },
-      { title: 'Categories', path: '/categories' },
-      { title: 'Possibilities', path: '/possibilities' },
+      { title: 'Indigoff Air', path: '/indigoff-air' },
+      { title: 'Indigoff Skin', path: '/indigoff-skin' },
+      { title: 'Indigoff Glow', path: '/indigoff-glow' },
+      { title: 'Indigoff On', path: '/indigoff-on' },
+      { title: 'Indigoff Gallery', path: '/indigoff-gallery' },
+      { title: 'Indigoff Fckoff', path: '/indigoff-fckoff' },
     ],
   },
   {
-    heading: 'Inspiration',
-    links: [{ title: 'Portfolio', path: '/portfolio' }],
-  },
-  {
-    heading: 'Resources',
+    heading: 'Materials',
     links: [
-      { title: 'Downloads', path: '/downloads' },
-      { title: 'My list', path: '/my-list' },
+      { title: 'Fusetex', path: '/fusetex' },
+      { title: 'Woolskin', path: '/indigoff-woolskin' },
     ],
   },
   {
-    heading: 'Need a Hand',
-    links: [{ title: 'Contact Us', path: '/contact' }],
+    heading: 'Possibilities',
+    links: [
+      { title: 'Colors', path: '/colors' },
+      { title: 'Print', path: '/printed' },
+      { title: 'Texture', path: '/texture' },
+      { title: 'Engraving', path: '/routing' },
+      { title: 'Embossed', path: '/embossed' },
+    ],
+  },
+  {
+    heading: 'Company',
+    links: [
+      { title: 'Portfolio', path: '/projects' },
+      { title: 'Find a Rep', path: '/find-a-rep' },
+      { title: 'Contact Us', path: '/contact' },
+    ],
   },
 ];
 
