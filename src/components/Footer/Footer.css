@@ -6,7 +6,6 @@
   color: #ffffff;
   border-top-left-radius: var(--radius-lg);
   border-top-right-radius: var(--radius-lg);
-  margin-top: var(--section-space);
 }
 
 /* .container fija `padding: 0 …` (shorthand), que pisaría el vertical;

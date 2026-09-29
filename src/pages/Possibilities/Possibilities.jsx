@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom';
 import banner from '../../assets/img/possibilities-banner.jpg';
 import colorsImg from '../../assets/img/Colors.jpg';
 import printImg from '../../assets/img/Print.png';
@@ -6,13 +7,14 @@ import engravingImg from '../../assets/img/Engraving-.png';
 import embossedImg from '../../assets/img/embossed.jpeg';
 import './Possibilities.css';
 
-// Acabados de indigoff.com/possibilities/ (mismo contenido).
+// Acabados de indigoff.com/possibilities/ (mismo contenido). `to` enlaza a la
+// página del acabado cuando existe.
 const FINISHES = [
-  { title: 'Colors', image: colorsImg },
-  { title: 'Print', image: printImg },
-  { title: 'Texture', image: textureImg },
-  { title: 'Engraving', image: engravingImg },
-  { title: 'Embossed', image: embossedImg },
+  { title: 'Colors', image: colorsImg, to: '/colors' },
+  { title: 'Print', image: printImg, to: '/printed' },
+  { title: 'Texture', image: textureImg, to: '/texture' },
+  { title: 'Engraving', image: engravingImg, to: '/routing' },
+  { title: 'Embossed', image: embossedImg, to: '/embossed' },
 ];
 
 function Possibilities() {
@@ -53,14 +55,23 @@ function Possibilities() {
         <div className="poss__finishes-inner">
           <h2 className="poss__section-title">Finishes</h2>
           <div className="poss__grid">
-            {FINISHES.map((f) => (
-              <article className="finish-card" key={f.title}>
-                <div className="finish-card__media">
-                  <img src={f.image} alt={f.title} loading="lazy" />
-                </div>
-                <h3 className="finish-card__title">{f.title}</h3>
-              </article>
-            ))}
+            {FINISHES.map((f) =>
+              f.to ? (
+                <Link className="finish-card" key={f.title} to={f.to}>
+                  <div className="finish-card__media">
+                    <img src={f.image} alt={f.title} loading="lazy" />
+                  </div>
+                  <h3 className="finish-card__title">{f.title}</h3>
+                </Link>
+              ) : (
+                <article className="finish-card" key={f.title}>
+                  <div className="finish-card__media">
+                    <img src={f.image} alt={f.title} loading="lazy" />
+                  </div>
+                  <h3 className="finish-card__title">{f.title}</h3>
+                </article>
+              )
+            )}
           </div>
         </div>
       </section>

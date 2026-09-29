@@ -1,0 +1,118 @@
+/* Página Engraving (possibilities): intro + banner + galería masonry.
+   Misma línea de diseño que Colors/Print/Texture. */
+
+/* --- Intro --- */
+.eng-intro {
+  padding-top: var(--section-space);
+}
+
+.eng-intro__inner {
+  padding-inline: var(--page-gutter);
+  max-width: 900px;
+}
+
+.eng-intro__back {
+  display: inline-block;
+  font-size: 0.95rem;
+  font-weight: 500;
+  color: var(--color-text-muted);
+  margin-bottom: 1.5rem;
+  transition: color 0.2s ease;
+}
+
+.eng-intro__back:hover {
+  color: var(--color-text);
+  text-decoration: none;
+}
+
+.eng-intro__eyebrow {
+  display: block;
+  font-size: 0.8rem;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--color-text-muted);
+  margin-bottom: 1.25rem;
+}
+
+.eng-intro__title {
+  font-size: clamp(2.4rem, 5vw, 4rem);
+  font-weight: 300;
+  line-height: 1.05;
+  letter-spacing: -0.02em;
+  color: var(--color-text);
+  margin-bottom: 1.75rem;
+}
+
+.eng-intro__desc {
+  font-size: clamp(1.05rem, 1.4vw, 1.3rem);
+  line-height: 1.6;
+  color: var(--color-text);
+  max-width: 780px;
+}
+
+/* --- Banner --- */
+.eng-banner {
+  padding-top: var(--section-space);
+}
+
+.eng-banner__inner {
+  padding-inline: var(--page-gutter);
+}
+
+.eng-banner__media {
+  aspect-ratio: 16 / 7;
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  background-color: var(--color-bg-alt);
+}
+
+.eng-banner__media img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+/* --- Galería masonry (conserva la proporción natural de cada imagen) --- */
+.eng-gallery {
+  padding-top: var(--section-space);
+}
+
+.eng-gallery__inner {
+  padding-inline: var(--page-gutter);
+  column-count: 3;
+  column-gap: clamp(1.25rem, 2.5vw, 2rem);
+}
+
+.eng-gallery__item {
+  break-inside: avoid;
+  margin: 0 0 clamp(1.25rem, 2.5vw, 2rem);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  background-color: var(--color-bg-alt);
+}
+
+.eng-gallery__item img {
+  width: 100%;
+  height: auto;
+  display: block;
+  transition: transform 0.6s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.eng-gallery__item:hover img {
+  transform: scale(1.03);
+}
+
+/* --- Responsive --- */
+@media (max-width: 900px) {
+  .eng-gallery__inner {
+    column-count: 2;
+  }
+}
+
+@media (max-width: 560px) {
+  .eng-gallery__inner {
+    column-count: 1;
+  }
+}

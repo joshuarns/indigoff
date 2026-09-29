@@ -10,6 +10,11 @@ import Fusetex from './pages/Fusetex/Fusetex';
 import Woolskin from './pages/Woolskin/Woolskin';
 import Contact from './pages/Contact/Contact';
 import Possibilities from './pages/Possibilities/Possibilities';
+import Colors from './pages/Colors/Colors';
+import Print from './pages/Print/Print';
+import Texture from './pages/Texture/Texture';
+import Engraving from './pages/Engraving/Engraving';
+import Embossed from './pages/Embossed/Embossed';
 import Portfolio from './pages/Portfolio/Portfolio';
 import FindARep from './pages/FindARep/FindARep';
 import ProductCategory from './pages/ProductCategory/ProductCategory';
@@ -44,6 +49,11 @@ function App() {
           <Route path="contact" element={<Contact />} />
           <Route path="find-a-rep" element={<FindARep />} />
           <Route path="possibilities" element={<Possibilities />} />
+          <Route path="colors" element={<Colors />} />
+          <Route path="printed" element={<Print />} />
+          <Route path="texture" element={<Texture />} />
+          <Route path="routing" element={<Engraving />} />
+          <Route path="embossed" element={<Embossed />} />
           <Route path="projects" element={<Portfolio />} />
           <Route path="projects/:slug" element={<ProjectDetail />} />
           <Route path="post/:slug" element={<PostDetail />} />

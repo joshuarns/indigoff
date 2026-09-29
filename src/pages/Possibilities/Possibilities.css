@@ -63,7 +63,6 @@
 /* --- Acabados --- */
 .poss__finishes {
   padding-top: var(--section-space);
-  padding-bottom: var(--section-space);
 }
 
 .poss__section-title {
@@ -85,6 +84,15 @@
 .finish-card {
   display: block;
   color: var(--color-text);
+}
+
+a.finish-card {
+  cursor: pointer;
+}
+
+a.finish-card:hover .finish-card__title {
+  text-decoration: underline;
+  text-underline-offset: 4px;
 }
 
 .finish-card__media {
