@@ -8,7 +8,7 @@ function PostDetail() {
   const { slug } = useParams();
   const { post, loading, error } = usePost(slug);
 
-  if (loading) return <Loader text="Cargando publicación…" />;
+  if (loading) return <Loader text="Loading article…" />;
 
   if (error) {
     return <p className="post-detail__error">Error: {error}</p>;

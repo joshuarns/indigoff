@@ -18,26 +18,27 @@ export function useProject(slug) {
     setGallery([]);
 
     getProjectBySlug(slug)
-      .then(async (proj) => {
+      .then((proj) => {
         if (!active) return;
-        if (!proj) {
-          setProject(null);
-          return;
-        }
-        setProject(proj);
-        // Galería: imágenes adjuntas al proyecto.
-        try {
-          const media = await getProjectMedia(proj.id);
-          if (active && Array.isArray(media)) setGallery(media);
-        } catch {
-          /* la galería es opcional; ignoramos su error */
+        setProject(proj || null);
+        // El loader se apaga en cuanto llega el proyecto; la galería (media
+        // adjunta) se resuelve en segundo plano como respaldo de las ACF.
+        setLoading(false);
+        if (proj) {
+          getProjectMedia(proj.id)
+            .then((media) => {
+              if (active && Array.isArray(media)) setGallery(media);
+            })
+            .catch(() => {
+              /* la galería es opcional */
+            });
         }
       })
       .catch((err) => {
-        if (active) setError(err.message);
-      })
-      .finally(() => {
-        if (active) setLoading(false);
+        if (active) {
+          setError(err.message);
+          setLoading(false);
+        }
       });
 
     return () => {

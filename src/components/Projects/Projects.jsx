@@ -37,7 +37,7 @@ function Projects({
       </div>
 
       {loading ? (
-        <Loader text="Cargando proyectos…" />
+        <Loader text="Loading projects…" />
       ) : error ? (
         <p className="projects__error projects__inner">
           No se pudieron cargar los proyectos: {error}

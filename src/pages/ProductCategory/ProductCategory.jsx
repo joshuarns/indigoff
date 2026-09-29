@@ -10,7 +10,7 @@ function ProductCategory({ slug: slugProp }) {
   const { category, collection, products, loading, error } =
     useProductCategory(categorySlug);
 
-  if (loading) return <Loader text="Cargando productos…" />;
+  if (loading) return <Loader text="Loading products…" />;
 
   const name = category?.name || '';
   const collLabel = collection?.label || 'Indigoff';

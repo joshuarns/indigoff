@@ -80,7 +80,7 @@ function ProductDetail() {
   const { product, category, collection, related, loading, error } = useProduct(slug);
   const [activeColor, setActiveColor] = useState(0);
 
-  if (loading) return <Loader text="Cargando producto…" />;
+  if (loading) return <Loader text="Loading product…" />;
 
   if (error || !product) {
     return (

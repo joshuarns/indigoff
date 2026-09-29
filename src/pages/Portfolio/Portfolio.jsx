@@ -32,7 +32,7 @@ function Portfolio() {
       {/* --- Rejilla de proyectos --- */}
       <div className="portfolio__inner portfolio__body">
         {loading ? (
-          <Loader text="Cargando proyectos…" />
+          <Loader text="Loading projects…" />
         ) : error ? (
           <p className="portfolio__error">
             No se pudieron cargar los proyectos: {error}

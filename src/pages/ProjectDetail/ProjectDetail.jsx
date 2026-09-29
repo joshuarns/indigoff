@@ -8,7 +8,7 @@ function ProjectDetail() {
   const { slug } = useParams();
   const { project, gallery, loading, error } = useProject(slug);
 
-  if (loading) return <Loader text="Cargando proyecto…" />;
+  if (loading) return <Loader text="Loading project…" />;
 
   if (error) {
     return (
