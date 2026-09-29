@@ -161,12 +161,6 @@ function ProductDetail() {
               </dl>
             )}
 
-            <div className="prod__actions">
-              <button type="button" className="prod__cta">
-                Add to my list
-              </button>
-            </div>
-
             {/* Descargas (PDF, CAD, 3D) */}
             {downloads.length > 0 && (
               <div className="prod__downloads">
@@ -200,6 +194,12 @@ function ProductDetail() {
                 </ul>
               </div>
             )}
+
+            <div className="prod__actions">
+              <button type="button" className="prod__cta">
+                Add to my list
+              </button>
+            </div>
           </div>
         </div>
 

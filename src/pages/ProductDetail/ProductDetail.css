@@ -118,6 +118,7 @@
   align-items: center;
   flex-wrap: wrap;
   gap: 1rem 1.5rem;
+  margin-top: 2.25rem;
 }
 
 .prod__cta {
