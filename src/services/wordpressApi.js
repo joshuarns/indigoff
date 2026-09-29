@@ -176,6 +176,17 @@ export function getProductsByCategory(categoryId, { perPage = 24 } = {}) {
 }
 
 /**
+ * Obtiene el bloque SEO de Yoast (`yoast_head_json`) de una entidad por slug.
+ * @param {string} endpoint - p. ej. '/pages', '/product', '/proyects', '/product_cat'.
+ * @param {string} slug
+ * @returns {Promise<Object|null>}
+ */
+export async function getYoast(endpoint, slug) {
+  const res = await request(endpoint, { slug, _fields: 'yoast_head_json' });
+  return Array.isArray(res) && res[0] ? res[0].yoast_head_json || null : null;
+}
+
+/**
  * Obtiene el menú de navegación desde WordPress (mu-plugin indigoff/v1).
  * Devuelve los items ya anidados (con children para los desplegables).
  * @param {string} [location=MENU_LOCATION] - Ubicación del menú en WP.
