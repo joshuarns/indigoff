@@ -15,8 +15,8 @@ export const heroSlides = [
     image: slide1Img,
     bg: 'linear-gradient(160deg, #2f4858 0%, #1f2f3a 100%)',
     buttons: [
-      { label: 'View Cushion', to: '/collections' },
-      { label: 'View Pillow', to: '/collections' },
+      { label: 'View Cushion', to: '/indigoff-air' },
+      { label: 'View Pillow', to: '/indigoff-skin' },
     ],
   },
   {
@@ -25,7 +25,7 @@ export const heroSlides = [
     subtitle: 'Modular panels designed to fit any space and any acoustic need.',
     image: slide2Img,
     bg: 'linear-gradient(160deg, #b5651d 0%, #8a4a12 100%)',
-    buttons: [{ label: 'Explore Collections', to: '/collections' }],
+    buttons: [{ label: 'Explore Collections', to: '/indigoff-air' }],
   },
   {
     id: 3,
@@ -33,6 +33,6 @@ export const heroSlides = [
     subtitle: 'A full palette to match your brand, your mood, your room.',
     image: slide3Img,
     bg: 'linear-gradient(160deg, #4b5842 0%, #333d2c 100%)',
-    buttons: [{ label: 'View Colors', to: '/categories' }],
+    buttons: [{ label: 'View Colors', to: '/colors' }],
   },
 ];

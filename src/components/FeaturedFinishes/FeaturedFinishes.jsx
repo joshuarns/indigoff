@@ -5,13 +5,14 @@ import textureImg from '../../assets/img/Textures.jpg';
 import './FeaturedFinishes.css';
 
 // Tres possibilities destacadas para el home (estilo "Featured Products").
+// Cada una enlaza a su página de acabado correspondiente.
 const ITEMS = [
-  { title: 'Colors', tag: 'Possibilities', image: colorsImg },
-  { title: 'Print', tag: 'Possibilities', image: printImg },
-  { title: 'Texture', tag: 'Possibilities', image: textureImg },
+  { title: 'Colors', tag: 'Possibilities', image: colorsImg, to: '/colors' },
+  { title: 'Print', tag: 'Possibilities', image: printImg, to: '/printed' },
+  { title: 'Texture', tag: 'Possibilities', image: textureImg, to: '/texture' },
 ];
 
-function FeaturedFinishes({ title = 'Featured Finishes', to = '/possibilities' }) {
+function FeaturedFinishes({ title = 'Featured Finishes' }) {
   return (
     <section className="featfin">
       <div className="featfin__inner">
@@ -19,7 +20,7 @@ function FeaturedFinishes({ title = 'Featured Finishes', to = '/possibilities' }
 
         <div className="featfin__grid">
           {ITEMS.map((item) => (
-            <Link key={item.title} to={to} className="featfin-card">
+            <Link key={item.title} to={item.to} className="featfin-card">
               <div className="featfin-card__media">
                 <img src={item.image} alt={item.title} loading="lazy" />
               </div>

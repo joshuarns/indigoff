@@ -18,7 +18,7 @@ function Home() {
         title="We transform silence into design"
         description="We design bespoke acoustic solutions that merge design with performance. Our panels enhance sound quality, elevate interiors, and transform spaces into immersive environments where design is seen, heard, and felt."
         buttonLabel="Read More"
-        to="/collections"
+        to="/indigoff-air"
         corner="tr"
       />
       <Projects />

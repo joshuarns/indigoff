@@ -12,20 +12,34 @@ const colorModules = import.meta.glob(
   { eager: true, import: 'default' }
 );
 
-const COLORS = Object.entries(colorModules)
-  .map(([path, src]) => {
-    const file = path.split('/').pop().replace(/\.[^.]+$/, '');
-    const name = file
-      .replace(/-\d+$/, '') // quita sufijos como "-1"
-      .replace(/[-_]+/g, ' ') // "Forest-Green" → "Forest Green"
-      .replace(/([a-z])([A-Z])/g, '$1 $2') // "DeepBlue" → "Deep Blue"
-      .trim();
-    return { name, src };
-  })
-  .sort((a, b) => a.name.localeCompare(b.name));
-
 // Normaliza un nombre de color para comparar sin importar mayúsculas/espacios.
 const normColor = (s) => s.toLowerCase().replace(/[^a-z0-9]/g, '');
+
+// Cada color tiene dos imágenes: con sufijo "-1" (textura plana) y sin sufijo
+// (foto del panel). En el producto usamos la TEXTURA; el panel es solo fallback.
+const bySuffix = {};
+for (const [path, src] of Object.entries(colorModules)) {
+  const file = path.split('/').pop().replace(/\.[^.]+$/, '');
+  const hasSuffix = /-\d+$/.test(file);
+  const key = normColor(file.replace(/-\d+$/, ''));
+  bySuffix[key] = bySuffix[key] || {};
+  if (hasSuffix) bySuffix[key].texture = src;
+  else bySuffix[key].panel = src;
+}
+
+// Colores estándar (orden y nombres oficiales de la página Colors).
+const COLOR_NAMES = [
+  'Red', 'Cherry', 'Orange', 'Citrus', 'Green', 'Forest Green',
+  'Moka', 'Ivory', 'White', 'Peach', 'Violet', 'Navy Blue',
+  'Blue', 'Teal', 'Deep Blue', 'Black', 'Oxford', 'Soft Gray',
+];
+
+const COLORS = COLOR_NAMES
+  .map((name) => {
+    const e = bySuffix[normColor(name)] || {};
+    return { name, src: e.texture || e.panel };
+  })
+  .filter((c) => c.src);
 
 // Devuelve la paleta de colores para una colección: su subconjunto si define
 // `colors`, o todos los colores disponibles.

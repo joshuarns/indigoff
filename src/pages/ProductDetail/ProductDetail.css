@@ -293,7 +293,6 @@
 /* --- Relacionados --- */
 .prod__related {
   padding-top: clamp(2rem, 4vw, 3.5rem);
-  padding-bottom: var(--section-space);
 }
 
 .prod__related .prod__section-title {
