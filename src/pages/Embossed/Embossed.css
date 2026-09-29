@@ -172,7 +172,7 @@
 }
 
 /* --- Responsive --- */
-@media (max-width: 860px) {
+@media (max-width: 720px) {
   .emb-picker__inner {
     grid-template-columns: 1fr;
     gap: 2rem;
@@ -181,5 +181,6 @@
   .emb-picker__preview {
     position: static;
     max-width: 460px;
+    margin-inline: auto;
   }
 }
