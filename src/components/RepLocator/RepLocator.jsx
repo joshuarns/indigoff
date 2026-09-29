@@ -631,10 +631,12 @@ function RepLocator() {
     <div id="ig-rep-locator" ref={rootRef}>
       <aside className="ig-sidebar">
         <div className="ig-sidebar-inner">
-          <h1 className="ig-title">Find your friendly rep today</h1>
+          <h1 className="ig-title">Find your local acoustic partner</h1>
           <p className="ig-intro">
-            Your rep can help you tailor and select all of your project needs.
-            Enter your location to find your designated rep&apos;s area of service.
+            Behind every Indigoff project is a local expert. Enter your location
+            to connect with the representative for your area — they&apos;ll help
+            you specify materials, request samples, and shape the right acoustic
+            solution for your space.
           </p>
 
           <div className="ig-search-block">
