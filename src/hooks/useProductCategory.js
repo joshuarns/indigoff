@@ -7,7 +7,7 @@ import {
   getProductsByCategory,
   getProductCategoriesByIds,
 } from '../services/wordpressApi';
-import { collectionByRootSlug } from '../config/collections';
+import { collectionByRootSlug, resolveCategorySlug } from '../config/collections';
 
 export function useProductCategory(slug) {
   const [category, setCategory] = useState(null);
@@ -24,7 +24,8 @@ export function useProductCategory(slug) {
     setCollection(null);
     setProducts([]);
 
-    getProductCategoryBySlug(slug)
+    // El slug del menú puede no coincidir con el real (typos): se traduce.
+    getProductCategoryBySlug(resolveCategorySlug(slug))
       .then(async (cat) => {
         if (!active) return;
         if (!cat) {

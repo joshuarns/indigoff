@@ -46,6 +46,8 @@ function App() {
           <Route path="indigoff-woolskin/:categorySlug" element={<ProductCategory />} />
           {/* Fckoff es una categoría raíz con productos directos (sin subcats). */}
           <Route path="indigoff-fckoff" element={<ProductCategory slug="fckoff" />} />
+          {/* Ceiling Lights es una categoría raíz suelta (fuera de una colección). */}
+          <Route path="ceiling-lights" element={<ProductCategory slug="ceiling-lights" />} />
           <Route path="contact" element={<Contact />} />
           <Route path="find-a-rep" element={<FindARep />} />
           <Route path="possibilities" element={<Possibilities />} />

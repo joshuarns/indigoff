@@ -26,3 +26,20 @@ export const COLLECTIONS = {
 export function collectionByRootSlug(slug) {
   return COLLECTIONS[slug] || null;
 }
+
+// Los enlaces del menú de WordPress usan slugs que no siempre coinciden con el
+// slug real de la categoría (typos o nombres distintos). Este mapa traduce el
+// slug de la URL al slug real de product_cat en el CMS.
+const CATEGORY_SLUG_ALIASES = {
+  'ceilings-air': 'cielings-air', // typo en el término real
+  'frames-skin': 'frames',
+  'walls-skin': 'wall-skin',
+  'floor-lamp': 'floor',
+  'table-lamp': 'table',
+  'ceiling-lights': 'celing-lights', // categoría raíz (typo en el término)
+};
+
+// Resuelve el slug de la URL al slug real de la categoría en WordPress.
+export function resolveCategorySlug(slug) {
+  return CATEGORY_SLUG_ALIASES[slug] || slug;
+}
