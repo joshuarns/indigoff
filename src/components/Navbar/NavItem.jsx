@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import { Link } from 'react-router-dom';
 
 // Decide si un enlace es interno (React Router) o externo (<a>).
@@ -32,30 +33,43 @@ function NavLink({ item, className, onNavigate }) {
 }
 
 // Un item del menú. Si tiene children, muestra el caret y un submenú.
+// En escritorio el submenú se abre con hover; en móvil funciona como acordeón
+// (el estado `open` controla la clase is-open, que el CSS usa solo en móvil).
 function NavItem({ item, onNavigate }) {
   const hasChildren = Array.isArray(item.children) && item.children.length > 0;
+  const [open, setOpen] = useState(false);
+
+  const handleNavigate = () => {
+    setOpen(false);
+    onNavigate?.();
+  };
 
   return (
-    <li className={`nav-item ${hasChildren ? 'nav-item--has-children' : ''}`}>
+    <li
+      className={`nav-item ${hasChildren ? 'nav-item--has-children' : ''} ${
+        open ? 'is-open' : ''
+      }`}
+    >
       <div className="nav-item__label">
-        <NavLink item={item} className="nav-item__link" onNavigate={onNavigate} />
+        <NavLink item={item} className="nav-item__link" onNavigate={handleNavigate} />
         {hasChildren && (
-          <svg
+          <button
+            type="button"
             className="nav-item__caret"
-            width="11"
-            height="11"
-            viewBox="0 0 12 12"
-            fill="none"
-            aria-hidden="true"
+            aria-label={open ? 'Cerrar submenú' : 'Abrir submenú'}
+            aria-expanded={open}
+            onClick={() => setOpen((v) => !v)}
           >
-            <path
-              d="M3 4.5 L6 7.5 L9 4.5"
-              stroke="currentColor"
-              strokeWidth="1.4"
-              strokeLinecap="round"
-              strokeLinejoin="round"
-            />
-          </svg>
+            <svg width="11" height="11" viewBox="0 0 12 12" fill="none" aria-hidden="true">
+              <path
+                d="M3 4.5 L6 7.5 L9 4.5"
+                stroke="currentColor"
+                strokeWidth="1.4"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+              />
+            </svg>
+          </button>
         )}
       </div>
 
@@ -66,7 +80,7 @@ function NavItem({ item, onNavigate }) {
               <NavLink
                 item={child}
                 className="nav-item__sublink"
-                onNavigate={onNavigate}
+                onNavigate={handleNavigate}
               />
             </li>
           ))}
