@@ -1,3 +1,4 @@
+import { useEffect, useRef } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import { useProductCategory } from '../../hooks/useProductCategory';
 import { getFeaturedImage } from '../../services/wordpressApi';
@@ -7,8 +8,23 @@ import './ProductCategory.css';
 function ProductCategory({ slug: slugProp }) {
   const params = useParams();
   const categorySlug = slugProp || params.categorySlug;
-  const { category, collection, products, loading, error } =
+  const { category, collection, products, loading, loadingMore, hasMore, loadMore, error } =
     useProductCategory(categorySlug);
+
+  // Scroll infinito: al ver el sentinel, carga la siguiente página.
+  const sentinelRef = useRef(null);
+  useEffect(() => {
+    const el = sentinelRef.current;
+    if (!el || !hasMore) return undefined;
+    const io = new IntersectionObserver(
+      (entries) => {
+        if (entries[0].isIntersecting) loadMore();
+      },
+      { rootMargin: '600px 0px' } // precarga antes de llegar al final
+    );
+    io.observe(el);
+    return () => io.disconnect();
+  }, [hasMore, loadMore]);
 
   if (loading) return <Loader text="Loading products…" />;
 
@@ -70,6 +86,14 @@ function ProductCategory({ slug: slugProp }) {
                 </Link>
               );
             })}
+          </div>
+        )}
+
+        {/* Sentinel + indicador de carga para el scroll infinito */}
+        {hasMore && <div ref={sentinelRef} className="pcat__sentinel" aria-hidden="true" />}
+        {loadingMore && (
+          <div className="pcat__more" role="status" aria-live="polite">
+            <span className="pcat__more-spinner" />
           </div>
         )}
       </div>

@@ -176,6 +176,39 @@ export function getProductsByCategory(categoryId, { perPage = 24 } = {}) {
 }
 
 /**
+ * Obtiene una página de productos de una categoría, devolviendo también el
+ * total de páginas (header X-WP-TotalPages) para el scroll infinito.
+ * @param {number} categoryId
+ * @param {Object} options
+ * @param {number} [options.page=1]
+ * @param {number} [options.perPage=24]
+ * @returns {Promise<{ items: Array, totalPages: number, total: number }>}
+ */
+export async function getProductsByCategoryPage(
+  categoryId,
+  { page = 1, perPage = 24 } = {}
+) {
+  const url = new URL(`${WP_API_URL}${ENDPOINTS.products}`);
+  url.searchParams.append('product_cat', categoryId);
+  url.searchParams.append('page', page);
+  url.searchParams.append('per_page', perPage);
+  if (DEFAULT_QUERY.embed) url.searchParams.append('_embed', 1);
+
+  const response = await fetch(url.toString());
+  // La API devuelve 400 si se pide una página fuera de rango.
+  if (response.status === 400) return { items: [], totalPages: page - 1, total: 0 };
+  if (!response.ok) {
+    throw new Error(`Error ${response.status} al pedir productos`);
+  }
+  const items = await response.json();
+  return {
+    items: Array.isArray(items) ? items : [],
+    totalPages: Number(response.headers.get('X-WP-TotalPages')) || 1,
+    total: Number(response.headers.get('X-WP-Total')) || items.length,
+  };
+}
+
+/**
  * Obtiene el bloque SEO de Yoast (`yoast_head_json`) de una entidad por slug.
  * @param {string} endpoint - p. ej. '/pages', '/product', '/proyects', '/product_cat'.
  * @param {string} slug
