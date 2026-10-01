@@ -1,4 +1,5 @@
 import { Outlet } from 'react-router-dom';
+import { Analytics } from '@vercel/analytics/react';
 import Navbar from '../Navbar/Navbar';
 import Footer from '../Footer/Footer';
 import RouteSeo from '../Seo/Seo';
@@ -17,6 +18,7 @@ function Layout() {
         <Outlet />
       </main>
       <Footer />
+      <Analytics />
     </div>
   );
 }
