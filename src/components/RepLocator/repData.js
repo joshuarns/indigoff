@@ -83,6 +83,42 @@ export const REPS = [
     color: '#0f7e7e',
     areas: ['Ohio'],
   },
+  {
+    name: 'PSA Reps',
+    contact: 'Carla Andriano Voss',
+    company: '',
+    email: 'carla@psareps.org',
+    phone: '860-324-0407',
+    color: '#d94f70',
+    areas: ['North Carolina'],
+  },
+  {
+    name: 'PSA Reps',
+    contact: 'John Eisaman',
+    company: '',
+    email: 'john@psareps.org',
+    phone: '716-523-5646',
+    color: '#d94f70',
+    areas: ['South Carolina'],
+  },
+  {
+    name: 'PSA Reps',
+    contact: 'Bill Wilson',
+    company: '',
+    email: 'bill@psareps.org',
+    phone: '336-210-2756',
+    color: '#d94f70',
+    areas: ['North Carolina', 'South Carolina'],
+  },
+  {
+    name: 'Grant + Associates',
+    contact: 'Thomas J Oechel',
+    company: '',
+    email: 'thomas@ggrantassociates.com',
+    phone: '858-327-3017',
+    color: '#8a9a2a',
+    areas: ['California'],
+  },
 ];
 
 // Rep por defecto (cuando la búsqueda no coincide con ninguno).
