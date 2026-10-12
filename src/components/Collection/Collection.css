@@ -136,8 +136,7 @@
 }
 
 .cat-card:hover .cat-card__title {
-  text-decoration: underline;
-  text-underline-offset: 4px;
+  text-decoration: none;
 }
 
 .cat-card__text {

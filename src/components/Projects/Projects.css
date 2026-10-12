@@ -78,13 +78,11 @@
   display: inline-block;
   margin-top: 1rem;
   font-size: 1.1rem;
-  text-decoration: none; /* sin subrayar por defecto */
-  text-underline-offset: 4px;
+  text-decoration: none;
 }
 
-/* Hover: aparece el subrayado. */
 .project-card:hover .project-card__title {
-  text-decoration: underline;
+  text-decoration: none;
 }
 
 /* --- Footer: CTA centrada + flechas a la derecha --- */

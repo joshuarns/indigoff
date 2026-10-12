@@ -67,8 +67,7 @@
 }
 
 .featfin-card:hover .featfin-card__name {
-  text-decoration: underline;
-  text-underline-offset: 4px;
+  text-decoration: none;
 }
 
 .featfin-card__tag {

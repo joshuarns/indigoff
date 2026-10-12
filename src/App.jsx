@@ -17,6 +17,7 @@ import Engraving from './pages/Engraving/Engraving';
 import Embossed from './pages/Embossed/Embossed';
 import Portfolio from './pages/Portfolio/Portfolio';
 import FindARep from './pages/FindARep/FindARep';
+import Downloads from './pages/Downloads/Downloads';
 import ProductCategory from './pages/ProductCategory/ProductCategory';
 import ProductDetail from './pages/ProductDetail/ProductDetail';
 import ProjectDetail from './pages/ProjectDetail/ProjectDetail';
@@ -50,6 +51,7 @@ function App() {
           <Route path="ceiling-lights" element={<ProductCategory slug="ceiling-lights" />} />
           <Route path="contact" element={<Contact />} />
           <Route path="find-a-rep" element={<FindARep />} />
+          <Route path="downloads" element={<Downloads />} />
           <Route path="possibilities" element={<Possibilities />} />
           <Route path="colors" element={<Colors />} />
           <Route path="printed" element={<Print />} />

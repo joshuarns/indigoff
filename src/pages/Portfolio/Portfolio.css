@@ -89,8 +89,7 @@
 }
 
 .proj-card:hover .proj-card__title {
-  text-decoration: underline;
-  text-underline-offset: 4px;
+  text-decoration: none;
 }
 
 .portfolio__error {

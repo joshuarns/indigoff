@@ -91,8 +91,7 @@ a.finish-card {
 }
 
 a.finish-card:hover .finish-card__title {
-  text-decoration: underline;
-  text-underline-offset: 4px;
+  text-decoration: none;
 }
 
 .finish-card__media {
