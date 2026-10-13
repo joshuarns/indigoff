@@ -1,5 +1,7 @@
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
+import SectionHero from '../../components/SectionHero/SectionHero';
+import SectionIntro from '../../components/SectionIntro/SectionIntro';
 import heroVideo from '../../assets/img/videoHero.mp4';
 import './Colors.css';
 
@@ -43,32 +45,23 @@ function Colors() {
 
   return (
     <div className="colors">
-      {/* --- Intro (misma línea que Possibilities/Collections) --- */}
-      <section className="colors-intro">
-        <div className="colors-intro__inner">
-          <Link to="/possibilities" className="colors-intro__back">
-            ← Possibilities
-          </Link>
-          <span className="colors-intro__eyebrow">Colors</span>
-          <h1 className="colors-intro__title">Introducing our colorways</h1>
-          <p className="colors-intro__desc">
-            A curated palette designed to interact with light, material, and
-            space. Each color option reinforces the visual qualities of the
-            panel, allowing architects and designers to define atmosphere,
-            accentuate form, or integrate seamlessly with surrounding finishes
-            while maintaining acoustic performance and design coherence.
-          </p>
-        </div>
-      </section>
+      {/* --- Hero banner full-bleed (video) --- */}
+      <SectionHero
+        video={heroVideo}
+        eyebrow="Colors"
+        title="Introducing our colorways"
+      />
 
-      {/* --- Banner de video (redondeado, como las demás portadas) --- */}
-      <section className="colors-banner">
-        <div className="colors-banner__inner">
-          <div className="colors-banner__media">
-            <video src={heroVideo} autoPlay muted loop playsInline />
-          </div>
-        </div>
-      </section>
+      {/* --- Intro (descripción) --- */}
+      <SectionIntro backTo="/possibilities" backLabel="Possibilities" label="Colors">
+        <p>
+          A curated palette designed to interact with light, material, and
+          space. Each color option reinforces the visual qualities of the
+          panel, allowing architects and designers to define atmosphere,
+          accentuate form, or integrate seamlessly with surrounding finishes
+          while maintaining acoustic performance and design coherence.
+        </p>
+      </SectionIntro>
 
       {/* --- Selector: preview grande + grid de swatches --- */}
       <section className="colors-picker">

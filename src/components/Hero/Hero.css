@@ -1,13 +1,16 @@
+/* Hero full-bleed: la foto abarca todo el ancho y el alto de la ventana
+   (bajo el navbar fijo). Contenido anclado abajo, al estilo editorial. */
 .hero {
-  padding: var(--space-md) clamp(1rem, 3.5vw, 2.5rem) 0;
+  padding: 0;
 }
 
 .hero__viewport {
   position: relative;
-  max-width: var(--container-max); /* contenedor responsive, como turf */
-  margin: 0 auto;
-  height: clamp(520px, 78vh, 880px);
-  border-radius: var(--radius-lg);
+  width: 100%;
+  /* Alto de ventana menos la altura del navbar (min-height 88px). */
+  height: calc(100vh - 88px);
+  height: calc(100svh - 88px);
+  min-height: 520px;
   overflow: hidden;
   background-color: #111;
 }
@@ -19,7 +22,7 @@
   background-size: cover;
   background-position: center;
   display: flex;
-  align-items: center;
+  align-items: flex-end;
   justify-content: center;
   opacity: 0;
   visibility: hidden;
@@ -31,71 +34,82 @@
   visibility: visible;
 }
 
-/* Capa sutil para asegurar legibilidad del texto blanco. */
+/* Degradado inferior para la legibilidad del texto blanco. */
 .hero__overlay {
   position: absolute;
   inset: 0;
   background: linear-gradient(
     180deg,
-    rgba(0, 0, 0, 0.28) 0%,
-    rgba(0, 0, 0, 0.18) 45%,
-    rgba(0, 0, 0, 0.34) 100%
+    rgba(0, 0, 0, 0.12) 0%,
+    rgba(0, 0, 0, 0) 35%,
+    rgba(0, 0, 0, 0.28) 70%,
+    rgba(0, 0, 0, 0.6) 100%
   );
 }
 
-/* --- Contenido --- */
+/* --- Contenido (abajo, centrado) --- */
 .hero__content {
   position: relative;
   z-index: 1;
   text-align: center;
   color: #ffffff;
-  padding: 0 var(--space-md);
-  max-width: 780px;
-}
-
-.hero__title {
-  font-size: clamp(2.5rem, 5.5vw, 4.5rem);
-  font-weight: 300;
-  letter-spacing: -0.01em;
-  line-height: 1.05;
-  margin-bottom: var(--space-md);
-  white-space: pre-line; /* respeta los saltos de línea del texto */
-  text-shadow: 0 2px 24px rgba(0, 0, 0, 0.35);
+  padding: 0 var(--space-md) clamp(3rem, 7vh, 6.5rem);
+  max-width: 1000px;
 }
 
 .hero__subtitle {
-  font-size: clamp(1.05rem, 1.8vw, 1.4rem);
+  font-size: clamp(0.95rem, 1.4vw, 1.2rem);
   font-weight: 400;
   line-height: 1.4;
-  max-width: 620px;
-  margin: 0 auto var(--space-lg);
-  text-shadow: 0 1px 16px rgba(0, 0, 0, 0.25);
+  letter-spacing: 0.01em;
+  max-width: 640px;
+  margin: 0 auto 1rem;
+  opacity: 0.92;
+  text-shadow: 0 1px 16px rgba(0, 0, 0, 0.35);
 }
 
-/* --- Botones --- */
+.hero__title {
+  font-size: clamp(2.6rem, 6vw, 5.25rem);
+  font-weight: 300;
+  letter-spacing: -0.015em;
+  line-height: 1.02;
+  margin-bottom: clamp(1.5rem, 3vh, 2.5rem);
+  white-space: pre-line; /* respeta los saltos de línea del texto */
+  text-shadow: 0 2px 28px rgba(0, 0, 0, 0.4);
+}
+
+/* --- Enlaces (estilo flecha) --- */
 .hero__actions {
   display: flex;
-  gap: var(--space-sm);
+  gap: clamp(1.25rem, 4vw, 2.75rem);
   justify-content: center;
   flex-wrap: wrap;
 }
 
 .hero__btn {
-  display: inline-block;
-  padding: 0.85rem 1.6rem;
-  border: 1px solid rgba(255, 255, 255, 0.85);
-  border-radius: 8px;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
   color: #ffffff;
-  font-size: 1rem;
-  font-weight: 500;
-  background-color: transparent;
-  transition: background-color 0.2s ease, color 0.2s ease;
+  font-size: 0.95rem;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  padding-bottom: 4px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.55);
+  transition: border-color 0.25s ease, gap 0.25s ease;
 }
 
 .hero__btn:hover {
-  background-color: #ffffff;
-  color: #111111;
   text-decoration: none;
+  border-color: #ffffff;
+  gap: 0.85rem;
+}
+
+.hero__btn-arrow {
+  font-size: 1.15em;
+  line-height: 1;
+  transform: translateY(-1px);
 }
 
 /* --- Dots de paginación --- */
@@ -146,7 +160,12 @@
 
 @media (max-width: 600px) {
   .hero__viewport {
-    height: clamp(440px, 70vh, 640px);
-    border-radius: 20px;
+    height: calc(100vh - 72px);
+    height: calc(100svh - 72px);
+    min-height: 480px;
+  }
+
+  .hero__content {
+    padding-bottom: clamp(3.5rem, 9vh, 5rem);
   }
 }

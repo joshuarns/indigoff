@@ -1,4 +1,5 @@
 import { Link } from 'react-router-dom';
+import SectionHero from '../../components/SectionHero/SectionHero';
 import portada from '../../assets/img/woolskin-portada.jpg';
 import samplesImg from '../../assets/img/SamplesWoolskin.jpg';
 import commercialImg from '../../assets/img/woolskin-commercial.jpg';
@@ -52,22 +53,13 @@ const APPLICATIONS = [
 function Woolskin() {
   return (
     <div className="fusetex woolskin">
-      {/* --- Hero --- */}
-      <section className="fx-hero">
-        <div className="fx-inner">
-          <p className="fx-eyebrow">
-            indig<span className="fx-eyebrow-o">o</span>ff Woolskin
-          </p>
-          <h1 className="fx-hero__title">
-            Acoustic Wool Panels With A Softer Architectural Skin
-          </h1>
-        </div>
-        <div className="fx-inner">
-          <div className="fx-hero__media">
-            <img src={portada} alt="Woolskin — Acoustic Wool Panels" />
-          </div>
-        </div>
-      </section>
+      {/* --- Hero banner full-bleed (primero la imagen, luego el contenido) --- */}
+      <SectionHero
+        image={portada}
+        imageAlt="Woolskin — Acoustic Wool Panels"
+        eyebrow="Indigoff Woolskin"
+        title="Acoustic Wool Panels With A Softer Architectural Skin"
+      />
 
       {/* --- The wool --- */}
       <section className="fx-fabric fx-inner">

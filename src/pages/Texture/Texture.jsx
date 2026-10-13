@@ -1,6 +1,8 @@
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import OtherPossibilities from '../../components/OtherPossibilities/OtherPossibilities';
+import SectionHero from '../../components/SectionHero/SectionHero';
+import SectionIntro from '../../components/SectionIntro/SectionIntro';
 import banner from '../../assets/img/texture-hero-banner.jpg';
 import './Texture.css';
 
@@ -62,34 +64,24 @@ function Texture() {
   return (
     <div className="tex">
       {/* --- Intro --- */}
-      <section className="tex-intro">
-        <div className="tex-intro__inner">
-          <Link to="/possibilities" className="tex-intro__back">
-            ← Possibilities
-          </Link>
-          <span className="tex-intro__eyebrow">Texture</span>
-          <h1 className="tex-intro__title">
-            The look of material and the quiet of design
-          </h1>
-          <p className="tex-intro__desc">
-            Printed textures recreate the sensation of materiality: stone,
-            textile, grain, or abstract surfaces without adding visual weight.
-            They bring depth and atmosphere to large wall fields while
-            maintaining a clean architectural language. A subtle way to add
-            richness, warmth, and cohesion, while the panel continues to reduce
-            echo and elevate comfort.
-          </p>
-        </div>
-      </section>
+      <SectionHero
+        image={banner}
+        imageAlt="Wood-textured acoustic panel wall"
+        eyebrow="Texture"
+        title="The look of material and the quiet of design"
+      />
 
-      {/* --- Banner --- */}
-      <section className="tex-banner">
-        <div className="tex-banner__inner">
-          <div className="tex-banner__media">
-            <img src={banner} alt="Wood-textured acoustic panel wall" />
-          </div>
-        </div>
-      </section>
+      <SectionIntro backTo="/possibilities" backLabel="Possibilities" label="Texture">
+        <p>
+          Printed textures recreate the sensation of materiality: stone,
+          textile, grain, or abstract surfaces without adding visual weight.
+          They bring depth and atmosphere to large wall fields while
+          maintaining a clean architectural language. A subtle way to add
+          richness, warmth, and cohesion, while the panel continues to reduce
+          echo and elevate comfort.
+        </p>
+      </SectionIntro>
+
 
       {/* --- Selector: preview + familias de swatches --- */}
       <section className="tex-picker">

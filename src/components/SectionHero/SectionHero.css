@@ -1,0 +1,79 @@
+/* Hero full-bleed de sección: el medio abarca todo el ancho y el alto de la
+   ventana (bajo el navbar fijo), con el contenido anclado abajo. Mismo
+   lenguaje que el hero del home. */
+.section-hero {
+  position: relative;
+  width: 100%;
+  height: calc(100vh - 88px);
+  height: calc(100svh - 88px);
+  min-height: 520px;
+  overflow: hidden;
+  background-color: #111;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+}
+
+.section-hero__media {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+/* Degradado inferior para la legibilidad del texto blanco. */
+.section-hero__overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    180deg,
+    rgba(0, 0, 0, 0.12) 0%,
+    rgba(0, 0, 0, 0) 35%,
+    rgba(0, 0, 0, 0.28) 70%,
+    rgba(0, 0, 0, 0.6) 100%
+  );
+}
+
+/* --- Contenido (abajo, centrado) --- */
+.section-hero__content {
+  position: relative;
+  z-index: 1;
+  text-align: center;
+  color: #ffffff;
+  padding: 0 var(--space-md) clamp(3rem, 7vh, 6.5rem);
+  max-width: 1000px;
+}
+
+.section-hero__eyebrow {
+  font-size: clamp(0.8rem, 1vw, 0.95rem);
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  margin: 0 0 1rem;
+  opacity: 0.92;
+  text-shadow: 0 1px 16px rgba(0, 0, 0, 0.35);
+}
+
+.section-hero__title {
+  font-size: clamp(2.6rem, 6vw, 5.25rem);
+  font-weight: 300;
+  letter-spacing: -0.015em;
+  line-height: 1.02;
+  margin: 0;
+  white-space: pre-line;
+  text-shadow: 0 2px 28px rgba(0, 0, 0, 0.4);
+}
+
+@media (max-width: 600px) {
+  .section-hero {
+    height: calc(100vh - 72px);
+    height: calc(100svh - 72px);
+    min-height: 480px;
+  }
+
+  .section-hero__content {
+    padding-bottom: clamp(3.5rem, 9vh, 5rem);
+  }
+}

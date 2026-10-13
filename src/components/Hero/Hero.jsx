@@ -5,18 +5,26 @@ import './Hero.css';
 
 const AUTOPLAY_MS = 6000;
 
-// Renderiza un botón interno (Link) o externo (<a>) según sus props.
+// Renderiza un enlace interno (Link) o externo (<a>) con estilo "flecha".
 function HeroButton({ button }) {
+  const inner = (
+    <>
+      <span className="hero__btn-label">{button.label}</span>
+      <span className="hero__btn-arrow" aria-hidden="true">
+        ›
+      </span>
+    </>
+  );
   if (button.to) {
     return (
       <Link to={button.to} className="hero__btn">
-        {button.label}
+        {inner}
       </Link>
     );
   }
   return (
     <a href={button.href} className="hero__btn" target="_blank" rel="noreferrer">
-      {button.label}
+      {inner}
     </a>
   );
 }
@@ -95,10 +103,10 @@ function Hero({ slides = heroSlides }) {
           >
             <div className="hero__overlay" />
             <div className="hero__content">
-              <h1 className="hero__title">{slide.title}</h1>
               {slide.subtitle && (
                 <p className="hero__subtitle">{slide.subtitle}</p>
               )}
+              <h1 className="hero__title">{slide.title}</h1>
               {slide.buttons?.length > 0 && (
                 <div className="hero__actions">
                   {slide.buttons.map((button) => (

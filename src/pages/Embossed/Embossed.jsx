@@ -1,6 +1,8 @@
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import OtherPossibilities from '../../components/OtherPossibilities/OtherPossibilities';
+import SectionHero from '../../components/SectionHero/SectionHero';
+import SectionIntro from '../../components/SectionIntro/SectionIntro';
 import banner from '../../assets/img/embossed-hero-banner.jpg';
 import './Embossed.css';
 
@@ -30,33 +32,23 @@ function Embossed() {
   return (
     <div className="emb">
       {/* --- Intro --- */}
-      <section className="emb-intro">
-        <div className="emb-intro__inner">
-          <Link to="/possibilities" className="emb-intro__back">
-            ← Possibilities
-          </Link>
-          <span className="emb-intro__eyebrow">Embossed</span>
-          <h1 className="emb-intro__title">
-            Sculpted depth that you feel in the room
-          </h1>
-          <p className="emb-intro__desc">
-            Dimensionality through raised forms and soft relief, creating a
-            richer play of texture and presence. It’s an approach for spaces
-            that need tactility and visual warmth without clutter. The panel
-            becomes almost sculptural, shaping the atmosphere through depth,
-            touch, and a quieter soundscape.
-          </p>
-        </div>
-      </section>
+      <SectionHero
+        image={banner}
+        imageAlt="Embossed acoustic panel"
+        eyebrow="Embossed"
+        title="Sculpted depth that you feel in the room"
+      />
 
-      {/* --- Banner --- */}
-      <section className="emb-banner">
-        <div className="emb-banner__inner">
-          <div className="emb-banner__media">
-            <img src={banner} alt="Embossed acoustic panel" />
-          </div>
-        </div>
-      </section>
+      <SectionIntro backTo="/possibilities" backLabel="Possibilities" label="Embossed">
+        <p>
+          Dimensionality through raised forms and soft relief, creating a
+          richer play of texture and presence. It’s an approach for spaces
+          that need tactility and visual warmth without clutter. The panel
+          becomes almost sculptural, shaping the atmosphere through depth,
+          touch, and a quieter soundscape.
+        </p>
+      </SectionIntro>
+
 
       {/* --- Selector: preview + modelos --- */}
       <section className="emb-picker">

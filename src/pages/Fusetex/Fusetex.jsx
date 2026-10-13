@@ -1,4 +1,5 @@
 import { Link } from 'react-router-dom';
+import SectionHero from '../../components/SectionHero/SectionHero';
 import portada from '../../assets/img/fusetex-portada.jpg';
 import commercialImg from '../../assets/img/fusetex-comercial.jpg';
 import corporateImg from '../../assets/img/fusetex-corporate.jpg';
@@ -66,20 +67,13 @@ const APPLICATIONS = [
 function Fusetex() {
   return (
     <div className="fusetex">
-      {/* --- Hero --- */}
-      <section className="fx-hero">
-        <div className="fx-inner">
-          <p className="fx-eyebrow">
-            indig<span className="fx-eyebrow-o">o</span>ff Fusetex
-          </p>
-          <h1 className="fx-hero__title">Acoustic Wallcovering</h1>
-        </div>
-        <div className="fx-inner">
-          <div className="fx-hero__media">
-            <img src={portada} alt="Fusetex — Acoustic Wallcovering" />
-          </div>
-        </div>
-      </section>
+      {/* --- Hero banner full-bleed (primero la imagen, luego el contenido) --- */}
+      <SectionHero
+        image={portada}
+        imageAlt="Fusetex — Acoustic Wallcovering"
+        eyebrow="Indigoff Fusetex"
+        title="Acoustic Wallcovering"
+      />
 
       {/* --- The fabric --- */}
       <section className="fx-fabric fx-inner">

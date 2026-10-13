@@ -1,0 +1,74 @@
+/* Intro de sección en dos columnas para aprovechar el ancho del contenedor
+   (evita el gran vacío a la derecha de una descripción angosta). */
+.section-intro {
+  padding-top: var(--section-space);
+}
+
+.section-intro__inner {
+  padding-inline: var(--page-gutter);
+  display: grid;
+  grid-template-columns: minmax(180px, 0.7fr) minmax(0, 2fr);
+  gap: clamp(2rem, 6vw, 6rem);
+  align-items: start;
+}
+
+/* Sin columna de apoyo: la descripción ocupa el ancho por sí sola. */
+.section-intro__inner--single {
+  grid-template-columns: 1fr;
+}
+
+/* --- Columna de apoyo --- */
+.section-intro__aside {
+  display: flex;
+  flex-direction: column;
+  gap: 0.85rem;
+  padding-top: 0.4rem;
+}
+
+.section-intro__back {
+  font-size: 0.95rem;
+  color: var(--color-text-muted);
+  transition: color 0.2s ease;
+}
+
+.section-intro__back:hover {
+  color: var(--color-text);
+  text-decoration: none;
+}
+
+.section-intro__label {
+  font-size: 0.8rem;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--color-text-muted);
+}
+
+/* --- Descripción --- */
+.section-intro__body p {
+  font-size: clamp(1.2rem, 1.7vw, 1.6rem);
+  line-height: 1.5;
+  letter-spacing: -0.01em;
+  color: var(--color-text);
+  margin: 0 0 1.25rem;
+  max-width: 60ch;
+}
+
+.section-intro__body p:last-child {
+  margin-bottom: 0;
+}
+
+/* --- Responsive --- */
+@media (max-width: 760px) {
+  .section-intro__inner {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+
+  .section-intro__aside {
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    padding-top: 0;
+  }
+}

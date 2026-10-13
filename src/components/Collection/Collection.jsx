@@ -1,4 +1,6 @@
 import { Link } from 'react-router-dom';
+import SectionHero from '../SectionHero/SectionHero';
+import SectionIntro from '../SectionIntro/SectionIntro';
 import './Collection.css';
 
 // Placeholder de imagen reutilizable (hasta cargar las imágenes reales).
@@ -27,29 +29,18 @@ function Collection({
 }) {
   return (
     <div className="collection">
-      {/* --- Intro --- */}
-      <section className="collection__intro">
-        <div className="collection__intro-inner">
-          <p className="collection__eyebrow">
-            indig<span className="collection__eyebrow-o">o</span>ff {brandLabel}
-          </p>
-          <h1 className="collection__title">{title}</h1>
-          <p className="collection__desc">{description}</p>
-        </div>
-      </section>
+      {/* --- Hero banner full-bleed (primero la imagen, luego el contenido) --- */}
+      <SectionHero
+        image={cover || undefined}
+        imageAlt={coverAlt}
+        eyebrow={`Indigoff ${brandLabel}`}
+        title={title}
+      />
 
-      {/* --- Imagen principal --- */}
-      <section className="collection__hero-media">
-        <div className="collection__hero-media-inner">
-          <div className="collection__hero-img">
-            {cover ? (
-              <img src={cover} alt={coverAlt} />
-            ) : (
-              <ImagePlaceholder ratio="16 / 7" label="Imagen de portada" />
-            )}
-          </div>
-        </div>
-      </section>
+      {/* --- Intro (descripción) --- */}
+      <SectionIntro label={`Indigoff ${brandLabel}`}>
+        <p>{description}</p>
+      </SectionIntro>
 
       {/* --- Categorías --- */}
       <section className="collection__categories">
