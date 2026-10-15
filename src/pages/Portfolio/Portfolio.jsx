@@ -14,14 +14,15 @@ function Portfolio() {
       {/* --- Cabecera --- */}
       <header className="portfolio__head portfolio__inner">
         <div className="portfolio__head-left">
-          <span className="portfolio__eyebrow">Selected environments</span>
-          <h1 className="portfolio__title">Spaces composed for quiet</h1>
+          <span className="portfolio__eyebrow">Custom Acoustic Solutions</span>
+          <h1 className="portfolio__title">Acoustic Design Portfolio</h1>
         </div>
         <p className="portfolio__intro">
-          Each project brings together architecture, acoustics, and material
-          expression with absolute intent. From hospitality to cultural and
-          commercial settings, these installations show how quiet can elevate
-          the atmosphere and the experience of a space.
+          Our projects are built at the intersection of architecture, acoustics,
+          and intention. From offices and hospitality spaces to cultural and
+          commercial environments, each installation show how acoustic solutions
+          can shape atmosphere, elevate experience, and support the way spaces
+          are truly used.
         </p>
       </header>
 
