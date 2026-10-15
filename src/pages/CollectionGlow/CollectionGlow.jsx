@@ -30,8 +30,8 @@ function CollectionGlow() {
   return (
     <Collection
       brandLabel="Glow"
-      title="Light, softened by acoustics"
-      description="Indigoff Glow joins illumination and acoustic performance in finely resolved objects. Each piece softens reverberation while creating warmth, atmosphere, and a distinctly sculptural presence."
+      title="Acoustic Lighting Solutions"
+      description="Indigoff Glow includes acoustic lighting fixtures, pendant lights, floor lights, and table lights designed to manage sound while shaping atmosphere through illumination. Built for hospitality, workplace, residential, studio, and design-driven interiors, each solution helps soften reverberation, create visual warmth, and turn light into both a sculptural object and an acoustic tool."
       cover={portada}
       coverAlt="Indigoff Glow — Acoustic Lighting Solutions"
       categories={CATEGORIES}

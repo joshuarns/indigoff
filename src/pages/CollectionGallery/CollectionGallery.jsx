@@ -23,8 +23,8 @@ function CollectionGallery() {
   return (
     <Collection
       brandLabel="Gallery"
-      title="Acoustic art, composed for the wall"
-      description="Indigoff Gallery turns acoustic performance into collectible visual work. Murals and canvases soften the room while bringing texture, identity, and a curated point of view to the architectural envelope."
+      title="Acoustic Art for Walls"
+      description="Indigoff Gallery transforms acoustic performance into collectible wall art. The collection includes acoustic murals and canvas pieces designed to soften sound while bringing identity, texture, and curated visual presence to interiors. Built for hospitality, workplace, commercial, and statement spaces, each piece turns sound control into an expressive architectural feature."
       cover={portada}
       coverAlt="Indigoff Gallery — Acoustic Art for Walls"
       categories={CATEGORIES}

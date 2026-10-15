@@ -31,8 +31,8 @@ function CollectionAir() {
   return (
     <Collection
       brandLabel="Air"
-      title="Acoustic compositions for the ceiling plane"
-      description="Indigoff Air brings baffles, ceiling systems, and cloud forms into a singular architectural language. Each element calibrates sound while lending rhythm, scale, and composure to the room below."
+      title="Acoustic Ceiling Solutions"
+      description="Indigoff Air includes suspended acoustic baffles, ceiling systems, and cloud forms designed to manage sound while adding architectural rhythm overhead. Built for commercial, hospitality, workplace, education, and public interiors, each solution helps soften noise without compromising design intent."
       cover={portada}
       coverAlt="Indigoff Air — Acoustic Ceiling Solutions"
       categories={CATEGORIES}

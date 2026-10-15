@@ -20,16 +20,18 @@ function Print() {
         image={banner}
         imageAlt="Printed acoustic panel — botanical wall"
         eyebrow="Print"
-        title="An acoustic surface with a signature"
+        title="Personalization with a visual signature"
       />
 
       {/* --- Intro (descripción) --- */}
       <SectionIntro backTo="/possibilities" backLabel="Possibilities" label="Print">
         <p>
-          Print brings image, pattern, and art direction to acoustic surfaces.
-          A wall becomes a tailored composition—visually arresting, quietly
-          functional, and resolved with the same care as the rest of the
-          interior. Designed for spaces that ask more of every surface.
+          Printed acoustic panels merge sound control with graphic presence.
+          Soften the room while carrying imagery, patterns, or branded
+          compositions that make the wall feel intentional, never utilitarian.
+          Ideal for lobbies, corridors, meeting areas, and hospitality spaces,
+          they let acoustics become part of the visual narrative: calm,
+          curated, and unmistakably designed.
         </p>
       </SectionIntro>
 

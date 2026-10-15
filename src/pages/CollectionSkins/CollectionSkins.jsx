@@ -30,8 +30,8 @@ function CollectionSkins() {
   return (
     <Collection
       brandLabel="Skins"
-      title="Acoustic surfaces with material presence"
-      description="Indigoff Skin reconsiders the wall as a tactile, acoustic surface. Panels, frames, and dividers bring quiet, depth, and a composed sense of materiality to interiors of every scale."
+      title="Acoustic Wall Solutions"
+      description="Indigoff Skin includes acoustic wall panels, framed acoustic systems, and spatial dividers designed to manage sound while enhancing vertical surfaces. Built for commercial, hospitality, workplace, education, and public interiors, each solution helps reduce noise, improve focus, and bring refined material expression to walls and interior partitions."
       cover={portada}
       coverAlt="Indigoff Skins — Acoustic Wall Solutions"
       categories={CATEGORIES}

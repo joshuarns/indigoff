@@ -27,17 +27,21 @@ function Possibilities() {
         image={banner}
         imageAlt="Indigoff — acoustic finishes and treatments"
         eyebrow="Possibilities"
-        title="A material language for quieter interiors"
+        title="Acoustic finishes designed as a material language"
       />
 
       {/* --- Intro (descripción) --- */}
       <SectionIntro label="Possibilities">
         <p>
-          Indigoff finishes allow acoustic performance to become inseparable
-          from the architecture. Color, texture, print, and crafted relief are
-          considered as part of a complete material palette—giving each surface
-          its own tone, depth, and point of view. The result is an interior
-          that feels quieter, richer, and entirely its own.
+          Indigoff treatments and finishes are meant to turn acoustic panels
+          into a true part of the architecture. Beyond performance, they offer
+          a wide range of surface possibilities: tones, textures, patterns, and
+          crafted details, so sound control can align with the identity of each
+          space. From subtle, minimal applications to bold, expressive
+          compositions, these options let you shape how a room feels and how it
+          looks at the same time. The result is a more complete design: quieter
+          environments with visual coherence, tactile depth, and a calm,
+          intentional presence.
         </p>
       </SectionIntro>
 

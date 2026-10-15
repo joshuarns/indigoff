@@ -31,8 +31,8 @@ function CollectionOn() {
   return (
     <Collection
       brandLabel="On"
-      title="Lighting objects of quiet distinction"
-      description="Indigoff On is a collection of architectural light objects for ceiling, wall, and floor. Each piece gives light a deliberate role: defining atmosphere, guiding movement, and lending a room its lasting mood."
+      title="Architectural Lighting Objects"
+      description="Indigoff On is a curated collection of lighting objects designed to shape atmosphere through ceiling, wall, and floor typologies. Built for hospitality, workplace, residential, commercial, and public interiors, each piece treats light as an architectural tool that guides movement, defines zones, and brings a calmer, more intentional presence to the room."
       cover={portada}
       coverAlt="Indigoff On — Architectural Lighting Objects"
       categories={CATEGORIES}

@@ -49,16 +49,17 @@ function Colors() {
       <SectionHero
         video={heroVideo}
         eyebrow="Colors"
-        title="A palette with presence"
+        title="Introducing our colorways"
       />
 
       {/* --- Intro (descripción) --- */}
       <SectionIntro backTo="/possibilities" backLabel="Possibilities" label="Colors">
         <p>
-          A curated spectrum shaped for architecture. Each colorway responds
-          to light, material, and proportion, allowing the acoustic surface to
-          recede with restraint or hold the room with confidence. Performance
-          remains precise; the expression is entirely yours.
+          A curated palette designed to interact with light, material, and
+          space. Each color option reinforces the visual qualities of the
+          panel, allowing architects and designers to define atmosphere,
+          accentuate form, or integrate seamlessly with surrounding finishes
+          while maintaining acoustic performance and design coherence.
         </p>
       </SectionIntro>
 

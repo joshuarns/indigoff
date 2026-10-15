@@ -15,13 +15,13 @@ const FEATURES = [
   },
   {
     n: '02',
-    title: 'Velvet finish',
-    text: 'A soft-touch PES velvet with a supple, tactile character.',
+    title: 'Velvet surface',
+    text: 'Soft-touch PES velvet — durable, elegant and tactile.',
   },
   {
     n: '03',
     title: 'Recycled PET core',
-    text: 'A considered core with ≥ 60% recycled content and a fully recyclable backing.',
+    text: '≥ 60% recycled content and a 100% recyclable backing.',
   },
   {
     n: '04',
@@ -33,7 +33,7 @@ const FEATURES = [
 const COMPOSITION = [
   {
     title: 'Velvet surface',
-    text: 'Soft-touch velvet fabric with a refined hand and a considered range of colorways.',
+    text: 'Premium, soft-touch velvet fabric. Durable, elegant and available in a wide range of colors.',
   },
   {
     title: 'PET acoustic backing',
@@ -72,7 +72,7 @@ function Fusetex() {
         image={portada}
         imageAlt="Fusetex — Acoustic Wallcovering"
         eyebrow="Indigoff Fusetex"
-        title="A velvet acoustic wallcovering"
+        title="Acoustic Wallcovering"
       />
 
       {/* --- The fabric --- */}
@@ -80,14 +80,14 @@ function Fusetex() {
         <div className="fx-fabric__lead">
           <span className="fx-label">The fabric</span>
           <h2 className="fx-section-title">
-            A refined acoustic skin, made for calm.
+            A premium acoustic skin, engineered for calm.
           </h2>
         </div>
         <p className="fx-fabric__text">
-          Fusetex pairs a high-performance recycled PET acoustic backing with
-          a velvet surface of exceptional tactility. The result is a wallcovering
-          that brings sound absorption, material warmth, and enduring elegance
-          into one seamless architectural finish.
+          Fusetex is a premium acoustic wallcovering built from a
+          high-performance recycled PET acoustic backing beneath a refined
+          velvet surface. It delivers outstanding sound absorption, tactile
+          luxury and timeless design to elevate any interior.
         </p>
 
         <ul className="fx-features">
@@ -106,7 +106,7 @@ function Fusetex() {
         <div className="fx-composition__head">
           <span className="fx-label">Composition</span>
           <h2 className="fx-section-title">
-            Composed on the surface, precise beneath it.
+            Refined on the surface, engineered underneath.
           </h2>
         </div>
         <div className="fx-composition__grid">
@@ -134,7 +134,7 @@ function Fusetex() {
             <span className="fx-label">Standards &amp; Certifications</span>
             <h3 className="fx-cert__title">EN ISO 11654 — Class B</h3>
             <p className="fx-cert__text">
-              Exceptional sound absorption for interiors that demand composure.
+              Excellent sound absorption for improved acoustic comfort.
             </p>
           </div>
         </div>

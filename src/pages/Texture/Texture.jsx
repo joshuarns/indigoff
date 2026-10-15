@@ -68,15 +68,17 @@ function Texture() {
         image={banner}
         imageAlt="Wood-textured acoustic panel wall"
         eyebrow="Texture"
-        title="Material character, quietly expressed"
+        title="The look of material and the quiet of design"
       />
 
       <SectionIntro backTo="/possibilities" backLabel="Possibilities" label="Texture">
         <p>
-          Printed textures translate the character of stone, timber, textile,
-          and abstract surfaces into an acoustic finish of remarkable depth.
-          They bring warmth and visual continuity to expansive walls while
-          preserving the calm, clarity, and restraint of the architecture.
+          Printed textures recreate the sensation of materiality: stone,
+          textile, grain, or abstract surfaces without adding visual weight.
+          They bring depth and atmosphere to large wall fields while
+          maintaining a clean architectural language. A subtle way to add
+          richness, warmth, and cohesion, while the panel continues to reduce
+          echo and elevate comfort.
         </p>
       </SectionIntro>
 
