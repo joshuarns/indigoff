@@ -25,7 +25,7 @@ function Collection({
   cover = null,
   coverAlt = '',
   categories = [],
-  sectionTitle = 'Categories',
+  sectionTitle = 'Explore the collection',
 }) {
   return (
     <div className="collection">
@@ -58,7 +58,7 @@ function Collection({
                 </div>
                 <h3 className="cat-card__title">{cat.title}</h3>
                 <p className="cat-card__text">{cat.text}</p>
-                <span className="cat-card__link">Explore →</span>
+                <span className="cat-card__link">Discover →</span>
               </Link>
             ))}
           </div>

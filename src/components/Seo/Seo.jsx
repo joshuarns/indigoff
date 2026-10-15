@@ -30,10 +30,10 @@ function decodeEntities(str) {
 
 // SEO por defecto (home y fallback cuando una ruta no tiene entidad en WP).
 const DEFAULT_SEO = {
-  title: 'Indigoff | Custom Acoustic Panels, Baffles & Sound Solutions',
+  title: 'Indigoff | Bespoke Acoustic Environments',
   description:
-    'Indigoff designs custom acoustic panels, baffles, ceilings, lighting and sound solutions that merge refined design with acoustic performance.',
-  og_site_name: 'Indigoff | Custom Acoustic Panels, Baffles & Sound Solutions',
+    'Indigoff creates bespoke acoustic panels, baffles, lighting, and material finishes for interiors of quiet distinction.',
+  og_site_name: 'Indigoff | Bespoke Acoustic Environments',
   og_type: 'website',
   og_locale: 'en_US',
   og_url: `https://${PUBLIC}/`,

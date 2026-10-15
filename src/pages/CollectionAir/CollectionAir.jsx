@@ -8,20 +8,20 @@ import cloudsImg from '../../assets/img/air-acoustic-clouds.png';
 const CATEGORIES = [
   {
     title: 'Acoustic Baffles',
-    text: 'Suspended vertical panels that absorb sound and add architectural rhythm overhead.',
+    text: 'Suspended elements that bring measured rhythm, acoustic clarity, and sculptural presence overhead.',
     to: '/indigoff-air/baffles-air',
     image: bafflesImg,
   },
   {
     title: 'Acoustic Ceilings',
-    text: 'Full ceiling systems that manage reverberation across large, open interiors.',
+    text: 'Composed ceiling planes that temper reverberation across expansive interiors.',
     // El slug en WordPress está escrito "cielings-air" (con esa errata).
     to: '/indigoff-air/cielings-air',
     image: ceilingsImg,
   },
   {
     title: 'Acoustic Clouds',
-    text: 'Floating cloud forms that soften noise while sculpting the space above.',
+    text: 'Floating forms that soften the acoustic field while refining the ceilingscape.',
     to: '/indigoff-air/clouds-air',
     image: cloudsImg,
   },
@@ -31,8 +31,8 @@ function CollectionAir() {
   return (
     <Collection
       brandLabel="Air"
-      title="Acoustic Ceiling Solutions"
-      description="Indigoff Air includes suspended acoustic baffles, ceiling systems, and cloud forms designed to manage sound while adding architectural rhythm overhead. Built for commercial, hospitality, workplace, education, and public interiors, each solution helps soften noise without compromising design intent."
+      title="Acoustic compositions for the ceiling plane"
+      description="Indigoff Air brings baffles, ceiling systems, and cloud forms into a singular architectural language. Each element calibrates sound while lending rhythm, scale, and composure to the room below."
       cover={portada}
       coverAlt="Indigoff Air — Acoustic Ceiling Solutions"
       categories={CATEGORIES}

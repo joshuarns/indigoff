@@ -7,13 +7,13 @@ import canvasImg from '../../assets/img/canvas.jpg';
 const CATEGORIES = [
   {
     title: 'Murals',
-    text: 'Large-scale acoustic murals that turn whole walls into identity and texture.',
+    text: 'Large-scale acoustic works that give an entire wall texture, identity, and resonance.',
     to: '/indigoff-gallery/murals',
     image: muralsImg,
   },
   {
     title: 'Canvas',
-    text: 'Framed acoustic canvas pieces that soften sound as collectible wall art.',
+    text: 'Framed acoustic canvases that pair visual depth with measured quiet.',
     to: '/indigoff-gallery/canvas',
     image: canvasImg,
   },
@@ -23,8 +23,8 @@ function CollectionGallery() {
   return (
     <Collection
       brandLabel="Gallery"
-      title="Acoustic Art for Walls"
-      description="Indigoff Gallery transforms acoustic performance into collectible wall art. The collection includes acoustic murals and canvas pieces designed to soften sound while bringing identity, texture, and curated visual presence to interiors. Built for hospitality, workplace, commercial, and statement spaces, each piece turns sound control into an expressive architectural feature."
+      title="Acoustic art, composed for the wall"
+      description="Indigoff Gallery turns acoustic performance into collectible visual work. Murals and canvases soften the room while bringing texture, identity, and a curated point of view to the architectural envelope."
       cover={portada}
       coverAlt="Indigoff Gallery — Acoustic Art for Walls"
       categories={CATEGORIES}

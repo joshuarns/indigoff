@@ -39,11 +39,11 @@ function Contact() {
       <div className="contact__inner">
         {/* --- Columna izquierda: info --- */}
         <div className="contact__info">
-          <h1 className="contact__title">Contact Indigoff</h1>
+          <h1 className="contact__title">Begin a conversation</h1>
           <p className="contact__intro">
-            Tell us about your project and our team will help you find the right
-            acoustic solution. Contact INDIGOFF for quotes, specification
-            support, product information, samples, or representative assistance.
+            Tell us about your project. Our team will guide you through the
+            right acoustic expression, from material selection and samples to
+            specification support and bespoke requirements.
           </p>
           <a className="contact__email" href="mailto:info@indigoff.com">
             info@indigoff.com
@@ -54,10 +54,10 @@ function Contact() {
         <div className="contact__form-wrap">
           {sent ? (
             <div className="contact__success" role="status">
-              <h2>Thank you.</h2>
+              <h2>Thank you for your enquiry.</h2>
               <p>
-                We’ve received your message and our team will get back to you
-                shortly.
+                Your message has been received. A member of our team will be in
+                touch shortly.
               </p>
             </div>
           ) : (
@@ -128,7 +128,7 @@ function Contact() {
               </div>
 
               <button type="submit" className="contact__submit">
-                Send
+                Submit enquiry
               </button>
             </form>
           )}

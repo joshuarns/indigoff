@@ -27,28 +27,24 @@ function Possibilities() {
         image={banner}
         imageAlt="Indigoff — acoustic finishes and treatments"
         eyebrow="Possibilities"
-        title="Acoustic finishes designed as a material language"
+        title="A material language for quieter interiors"
       />
 
       {/* --- Intro (descripción) --- */}
       <SectionIntro label="Possibilities">
         <p>
-          Indigoff treatments and finishes are meant to turn acoustic panels
-          into a true part of the architecture. Beyond performance, they offer
-          a wide range of surface possibilities: tones, textures, patterns, and
-          crafted details, so sound control can align with the identity of each
-          space. From subtle, minimal applications to bold, expressive
-          compositions, these options let you shape how a room feels and how it
-          looks at the same time. The result is a more complete design: quieter
-          environments with visual coherence, tactile depth, and a calm,
-          intentional presence.
+          Indigoff finishes allow acoustic performance to become inseparable
+          from the architecture. Color, texture, print, and crafted relief are
+          considered as part of a complete material palette—giving each surface
+          its own tone, depth, and point of view. The result is an interior
+          that feels quieter, richer, and entirely its own.
         </p>
       </SectionIntro>
 
       {/* --- Acabados --- */}
       <section className="poss__finishes">
         <div className="poss__finishes-inner">
-          <h2 className="poss__section-title">Finishes</h2>
+          <h2 className="poss__section-title">Surface expressions</h2>
           <div className="poss__grid">
             {FINISHES.map((f) =>
               f.to ? (

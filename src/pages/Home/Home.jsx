@@ -15,9 +15,9 @@ function Home() {
       <Feature
         image={featurePlaceholder}
         imageAlt="Wood Textures"
-        title="We transform silence into design"
-        description="We design bespoke acoustic solutions that merge design with performance. Our panels enhance sound quality, elevate interiors, and transform spaces into immersive environments where design is seen, heard, and felt."
-        buttonLabel="Read More"
+        title="Silence, shaped with intention"
+        description="Indigoff creates bespoke acoustic elements where technical performance is resolved with material sensitivity, proportion, and enduring architectural presence."
+        buttonLabel="Discover Indigoff Air"
         to="/indigoff-air"
         corner="tr"
       />

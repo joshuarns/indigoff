@@ -22,17 +22,16 @@ function Engraving() {
         image={banner}
         imageAlt="Engraved acoustic panel"
         eyebrow="Engraving"
-        title="Lines, shadows, and acoustic rhythm"
+        title="Precision carved into the surface"
       />
 
       <SectionIntro backTo="/possibilities" backLabel="Possibilities" label="Engraving">
         <p>
-          Engraving introduces precision into the surface: grooves, patterns,
-          linear and organic compositions that catch light and create
-          controlled shadow. It transforms the panel into a tactile
-          architectural element quietly expressive, minimal, and refined. The
-          result is a wall that feels designed in relief, enhancing both
-          spatial character and acoustic calm.
+          Engraving gives the acoustic panel a disciplined graphic language.
+          Fine lines, carved patterns, and measured relief catch the light and
+          create a sense of depth that changes through the day. The result is
+          a tactile architectural surface, expressive in the most restrained
+          way.
         </p>
       </SectionIntro>
 

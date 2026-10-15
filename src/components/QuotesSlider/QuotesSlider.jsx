@@ -33,8 +33,8 @@ function QuoteCard({ quote }) {
 }
 
 function QuotesSlider({
-  title = 'Customize the applications that best suit your style and your spaces.',
-  description = 'Each Indigoff creation blends modern function with a refined spirit made to live with you, shape to you, and reflect your unique sense of harmony.',
+  title = 'Designed for spaces where every detail carries weight.',
+  description = 'Each Indigoff piece brings acoustic precision, considered materiality, and a quiet sense of permanence to the interior.',
   quotes = defaultQuotes,
 }) {
   const swiperRef = useRef(null);

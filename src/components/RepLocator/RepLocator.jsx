@@ -631,12 +631,12 @@ function RepLocator() {
     <div id="ig-rep-locator" ref={rootRef}>
       <aside className="ig-sidebar">
         <div className="ig-sidebar-inner">
-          <h1 className="ig-title">Find your local acoustic partner</h1>
+          <h1 className="ig-title">Find your local Indigoff partner</h1>
           <p className="ig-intro">
-            Behind every Indigoff project is a local expert. Enter your location
-            to connect with the representative for your area — they&apos;ll help
-            you specify materials, request samples, and shape the right acoustic
-            solution for your space.
+            Our local partners bring product knowledge and specification support
+            to every Indigoff project. Enter your location to connect with the
+            representative for your area and begin a more considered material
+            conversation.
           </p>
 
           <div className="ig-search-block">
@@ -645,7 +645,7 @@ function RepLocator() {
                 type="text"
                 id="ig-search"
                 className="ig-input"
-                placeholder="Enter Your Location"
+                placeholder="Enter your location"
                 autoComplete="off"
                 spellCheck="false"
               />
@@ -657,7 +657,7 @@ function RepLocator() {
           </div>
 
           <div id="ig-no-result" className="ig-no-result ig-hidden">
-            <p>No designated rep found for this area.</p>
+            <p>There is no designated partner in this area.</p>
           </div>
         </div>
       </aside>

@@ -12,34 +12,34 @@ import './Woolskin.css';
 const FEATURES = [
   {
     n: '01',
-    title: 'Organic Absorption',
-    text: 'Natural fibers that breathe and regulate moisture.',
+    title: 'Natural absorption',
+    text: 'Wool fibers that lend the interior a breathable, naturally composed finish.',
   },
   {
     n: '02',
     title: 'Soft Reverberation Control',
-    text: 'Designed to calm reflections and create quieter, more comfortable interiors.',
+    text: 'Designed to temper reflections and create rooms of deeper comfort.',
   },
   {
     n: '03',
     title: 'Thermal Insulation',
-    text: 'Energy efficiency combined with acoustic comfort.',
+    text: 'A considered balance of thermal comfort and acoustic ease.',
   },
   {
     n: '04',
     title: 'Visual Comfort',
-    text: 'Reduces the harshness of hard surfaces while creating a calmer atmosphere.',
+    text: 'Softens hard surfaces and gives the room a more composed atmosphere.',
   },
 ];
 
 const QUALITIES = [
   {
     title: 'Design Flexibility',
-    text: 'Adaptable to commercial, residential, office, hospitality, and educational spaces.',
+    text: 'Equally at home in hospitality, workplace, residential, and cultural interiors.',
   },
   {
     title: 'Natural Character',
-    text: 'A wool-based material with an organic look, soft touch, and premium presence.',
+    text: 'A wool-based surface with organic depth, a soft hand, and a quiet presence.',
   },
 ];
 
@@ -58,7 +58,7 @@ function Woolskin() {
         image={portada}
         imageAlt="Woolskin — Acoustic Wool Panels"
         eyebrow="Indigoff Woolskin"
-        title="Acoustic Wool Panels With A Softer Architectural Skin"
+        title="Wool acoustic panels with an architectural softness"
       />
 
       {/* --- The wool --- */}
@@ -68,11 +68,10 @@ function Woolskin() {
           <h2 className="fx-section-title">A softer architectural skin.</h2>
         </div>
         <p className="fx-fabric__text">
-          Woolskin is Indigoff’s acoustic panel collection made from wool felt,
-          designed to bring warmth, texture, and sound control into
-          architectural spaces. Its soft textile surface absorbs unwanted noise
-          while adding a refined visual layer to walls, ceilings, and custom
-          interior applications.
+          Woolskin is Indigoff’s wool-felt acoustic collection, composed to
+          bring warmth, texture, and measured quiet to architectural spaces.
+          Its soft textile surface absorbs unwanted sound while lending walls,
+          ceilings, and tailored applications a refined visual depth.
         </p>
 
         <ul className="fx-features">
@@ -95,24 +94,21 @@ function Woolskin() {
           <div className="ws-story__text">
             <span className="fx-label">A Softer Skin For Sound</span>
             <p>
-              More than a decorative finish, Woolskin works as an acoustic skin
-              for interiors. Its materiality helps reduce echo, soften
-              reverberation, and improve the overall sound experience in
-              commercial, residential, hospitality, educational, and office
-              environments.
+              More than a finish, Woolskin becomes an acoustic skin for the
+              interior. Its natural materiality reduces echo and softens
+              reverberation while giving hospitality, workplace, residential,
+              and cultural spaces a more intimate sense of comfort.
             </p>
             <p>
-              Each panel is crafted to feel natural, matte, and tactile. The
-              wool surface gives depth to color, enhances light and shadow, and
-              creates a calm, premium atmosphere without the hard or synthetic
-              appearance of conventional acoustic materials.
+              Each panel is made to feel natural, matte, and tactile. The wool
+              surface deepens color, enriches light and shadow, and offers a
+              level of warmth seldom found in conventional acoustic materials.
             </p>
             <p>
-              Through routed patterns, layered compositions, modular geometries,
-              and custom color combinations, Woolskin allows designers to shape
-              both sound and space. It can be subtle and minimal, bold and
-              sculptural, or fully integrated into the architectural language of
-              a project.
+              Routed patterns, layered compositions, modular geometries, and
+              tailored colorways allow Woolskin to shape both sound and space.
+              It can remain understated or become sculptural, always integrated
+              with the architectural character of the project.
             </p>
           </div>
         </div>
@@ -151,7 +147,7 @@ function Woolskin() {
       {/* --- CTA --- */}
       <section className="fx-cta fx-inner">
         <Link to="/contact" className="fx-cta__btn">
-          Request a sample
+          Request a material sample
         </Link>
       </section>
     </div>

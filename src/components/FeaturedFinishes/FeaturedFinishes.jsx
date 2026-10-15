@@ -12,7 +12,7 @@ const ITEMS = [
   { title: 'Texture', tag: 'Possibilities', image: textureImg, to: '/texture' },
 ];
 
-function FeaturedFinishes({ title = 'Featured Finishes' }) {
+function FeaturedFinishes({ title = 'Material expressions' }) {
   return (
     <section className="featfin">
       <div className="featfin__inner">

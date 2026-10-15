@@ -36,16 +36,15 @@ function Embossed() {
         image={banner}
         imageAlt="Embossed acoustic panel"
         eyebrow="Embossed"
-        title="Sculpted depth that you feel in the room"
+        title="Relief with a quiet presence"
       />
 
       <SectionIntro backTo="/possibilities" backLabel="Possibilities" label="Embossed">
         <p>
-          Dimensionality through raised forms and soft relief, creating a
-          richer play of texture and presence. It’s an approach for spaces
-          that need tactility and visual warmth without clutter. The panel
-          becomes almost sculptural, shaping the atmosphere through depth,
-          touch, and a quieter soundscape.
+          Embossed forms bring soft dimensionality to the acoustic plane.
+          Light moves across the relief, revealing texture and shadow without
+          disturbing the room’s composure. A sculptural expression of comfort,
+          depth, and acoustic calm.
         </p>
       </SectionIntro>
 

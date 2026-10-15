@@ -17,7 +17,7 @@ const FINISHES = [
 ];
 
 // Muestra los demás acabados (excluye `exclude`) como enlaces.
-function OtherPossibilities({ exclude, title = 'Possibilities' }) {
+function OtherPossibilities({ exclude, title = 'Further expressions' }) {
   const items = FINISHES.filter((f) => f.title !== exclude);
 
   return (
@@ -37,11 +37,11 @@ function OtherPossibilities({ exclude, title = 'Possibilities' }) {
 
         <p className="other-poss__closing">
           <span className="other-poss__closing-lead">
-            Where performance and material work in harmony.
+            Material expression, resolved with acoustic precision.
           </span>{' '}
           <span className="other-poss__closing-rest">
-            Acoustic systems engineered to absorb sound and refine the
-            environment.
+            Explore finishes designed to lend depth, character, and quiet to
+            the architectural envelope.
           </span>
         </p>
       </div>

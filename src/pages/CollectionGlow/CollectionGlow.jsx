@@ -8,19 +8,19 @@ import tableImg from '../../assets/img/glow-table.png';
 const CATEGORIES = [
   {
     title: 'Pendant Lights',
-    text: 'Suspended acoustic fixtures that shape atmosphere and absorb sound overhead.',
+    text: 'Suspended luminous forms that temper sound and set the tone from above.',
     to: '/indigoff-glow/pendant-lamp',
     image: pendantImg,
   },
   {
     title: 'Floor Lights',
-    text: 'Sculptural floor lighting that brings warmth and quiet to any corner.',
+    text: 'Sculptural floor pieces that lend warmth, intimacy, and acoustic ease.',
     to: '/indigoff-glow/floor',
     image: floorImg,
   },
   {
     title: 'Table Lights',
-    text: 'Compact acoustic lamps that turn light into an object on every surface.',
+    text: 'Intimate light objects that bring acoustic comfort to the finest details.',
     to: '/indigoff-glow/table',
     image: tableImg,
   },
@@ -30,8 +30,8 @@ function CollectionGlow() {
   return (
     <Collection
       brandLabel="Glow"
-      title="Acoustic Lighting Solutions"
-      description="Indigoff Glow includes acoustic lighting fixtures, pendant lights, floor lights, and table lights designed to manage sound while shaping atmosphere through illumination. Built for hospitality, workplace, residential, studio, and design-driven interiors, each solution helps soften reverberation, create visual warmth, and turn light into both a sculptural object and an acoustic tool."
+      title="Light, softened by acoustics"
+      description="Indigoff Glow joins illumination and acoustic performance in finely resolved objects. Each piece softens reverberation while creating warmth, atmosphere, and a distinctly sculptural presence."
       cover={portada}
       coverAlt="Indigoff Glow — Acoustic Lighting Solutions"
       categories={CATEGORIES}

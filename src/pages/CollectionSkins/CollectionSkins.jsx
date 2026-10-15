@@ -8,19 +8,19 @@ import wallsImg from '../../assets/img/skin-walls.jpg';
 const CATEGORIES = [
   {
     title: 'Dividers',
-    text: 'Freestanding acoustic partitions that shape space and control sound between areas.',
+    text: 'Freestanding partitions that articulate space with poise and acoustic discretion.',
     to: '/indigoff-skin/dividers',
     image: dividersImg,
   },
   {
     title: 'Frames',
-    text: 'Framed acoustic systems that turn sound absorption into a refined wall statement.',
+    text: 'Framed acoustic compositions with the presence of a carefully placed artwork.',
     to: '/indigoff-skin/frames',
     image: framesImg,
   },
   {
     title: 'Walls',
-    text: 'Acoustic wall panels that reduce noise and bring material expression to any surface.',
+    text: 'Wall panels that combine acoustic restraint with a rich material expression.',
     to: '/indigoff-skin/wall-skin',
     image: wallsImg,
   },
@@ -30,8 +30,8 @@ function CollectionSkins() {
   return (
     <Collection
       brandLabel="Skins"
-      title="Acoustic Wall Solutions"
-      description="Indigoff Skin includes acoustic wall panels, framed acoustic systems, and spatial dividers designed to manage sound while enhancing vertical surfaces. Built for commercial, hospitality, workplace, education, and public interiors, each solution helps reduce noise, improve focus, and bring refined material expression to walls and interior partitions."
+      title="Acoustic surfaces with material presence"
+      description="Indigoff Skin reconsiders the wall as a tactile, acoustic surface. Panels, frames, and dividers bring quiet, depth, and a composed sense of materiality to interiors of every scale."
       cover={portada}
       coverAlt="Indigoff Skins — Acoustic Wall Solutions"
       categories={CATEGORIES}

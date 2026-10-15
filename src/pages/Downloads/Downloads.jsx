@@ -10,13 +10,13 @@ function Downloads() {
       {/* --- Encabezado --- */}
       <header className="downloads__head downloads__inner">
         <div className="downloads__head-left">
-          <span className="downloads__eyebrow">Resources</span>
-          <h1 className="downloads__title">Downloads</h1>
+          <span className="downloads__eyebrow">Specification library</span>
+          <h1 className="downloads__title">Technical resources</h1>
         </div>
         <p className="downloads__intro">
-          Specification sheets and 3D models for our acoustic systems. Download
-          technical data (PDF) and ready-to-use 3D files to bring Indigoff into
-          your drawings and renders.
+          Specification sheets and 3D models for Indigoff collections. Access
+          the technical information and design files needed to integrate each
+          piece seamlessly into your project.
         </p>
       </header>
 
