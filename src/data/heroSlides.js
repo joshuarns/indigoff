@@ -10,8 +10,6 @@ export const heroSlides = [
   {
     id: 1,
     title: 'silence,\nconsidered',
-    subtitle:
-      'Bespoke acoustic environments for interiors of distinction.',
     image: slide1Img,
     bg: 'linear-gradient(160deg, #2f4858 0%, #1f2f3a 100%)',
     buttons: [
@@ -22,7 +20,6 @@ export const heroSlides = [
   {
     id: 2,
     title: 'Shape the atmosphere',
-    subtitle: 'Architectural acoustic systems, tailored to the character of each space.',
     image: slide2Img,
     bg: 'linear-gradient(160deg, #b5651d 0%, #8a4a12 100%)',
     buttons: [{ label: 'Explore Collections', to: '/indigoff-air' }],
@@ -30,7 +27,6 @@ export const heroSlides = [
   {
     id: 3,
     title: 'A studied palette',
-    subtitle: 'Curated colorways that bring depth, tone, and restraint to every surface.',
     image: slide3Img,
     bg: 'linear-gradient(160deg, #4b5842 0%, #333d2c 100%)',
     buttons: [{ label: 'View Colors', to: '/colors' }],
