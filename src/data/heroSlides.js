@@ -15,8 +15,8 @@ export const heroSlides = [
     image: slide1Img,
     bg: 'linear-gradient(160deg, #2f4858 0%, #1f2f3a 100%)',
     buttons: [
-      { label: 'View Cushion', to: '/indigoff-air' },
-      { label: 'View Pillow', to: '/indigoff-skin' },
+      { label: 'View Baffles', to: '/indigoff-air/baffles-air' },
+      { label: 'View Clouds', to: '/indigoff-air/clouds-air' },
     ],
   },
   {
