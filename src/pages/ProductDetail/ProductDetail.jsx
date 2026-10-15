@@ -195,11 +195,13 @@ function ProductDetail() {
               </div>
             )}
 
+            {/* Botón "Add to my list" deshabilitado por ahora.
             <div className="prod__actions">
               <button type="button" className="prod__cta">
                 Add to my list
               </button>
             </div>
+            */}
           </div>
         </div>
 

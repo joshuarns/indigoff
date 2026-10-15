@@ -13,7 +13,8 @@ const FALLBACK_MENU = [
   { id: 4, title: 'Portfolio', path: '/portfolio', children: [] },
   { id: 5, title: 'Downloads', path: '/downloads', children: [] },
   { id: 6, title: 'Contact Us', path: '/contact', children: [] },
-  { id: 7, title: 'My list', path: '/my-list', children: [] },
+  // Deshabilitado por ahora (el botón "Add to my list" está comentado).
+  // { id: 7, title: 'My list', path: '/my-list', children: [] },
 ];
 
 export function useMenu(location) {
