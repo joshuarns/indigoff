@@ -1,4 +1,4 @@
-import { useState, useEffect, useRef, useCallback } from 'react';
+import { useState, useEffect, useCallback } from 'react';
 import { Link } from 'react-router-dom';
 import { heroContent, heroImages } from '../../data/heroSlides';
 import './Hero.css';
@@ -33,34 +33,16 @@ function HeroButton({ button }) {
 // (crossfade + Ken Burns). Solo las imágenes rotan; el texto no cambia.
 function Hero({ content = heroContent, images = heroImages }) {
   const [active, setActive] = useState(0);
-  const [paused, setPaused] = useState(false);
-
-  // Refs para controlar el progreso sin re-renderizar en cada frame.
-  const fillRef = useRef(null); // relleno del dot activo
-  const pausedRef = useRef(false);
-
-  useEffect(() => {
-    pausedRef.current = paused;
-  }, [paused]);
-
-  const goTo = useCallback(
-    (index) => setActive((index + images.length) % images.length),
-    [images.length]
-  );
 
   const next = useCallback(
     () => setActive((prev) => (prev + 1) % images.length),
     [images.length]
   );
 
-  // Barra de progreso + auto-avance. Se reinicia al cambiar la imagen activa.
-  // Usa setInterval + delta real (Date.now) para ser fiable también cuando la
-  // pestaña está en segundo plano; en pausa (hover) el progreso se congela.
+  // Auto-avance del slideshow de fondo. Usa setInterval + delta real (Date.now)
+  // para ser fiable también cuando la pestaña está en segundo plano.
   useEffect(() => {
     if (images.length <= 1) return undefined;
-
-    const fill = fillRef.current;
-    if (fill) fill.style.width = '0%';
 
     let elapsed = 0;
     let last = Date.now();
@@ -70,27 +52,18 @@ function Hero({ content = heroContent, images = heroImages }) {
       const dt = now - last;
       last = now;
 
-      if (pausedRef.current) return; // congelado mientras el cursor está encima
-
       elapsed += dt;
-      const progress = Math.min(elapsed / AUTOPLAY_MS, 1);
-      if (fill) fill.style.width = `${progress * 100}%`;
-      if (progress >= 1) {
+      if (elapsed >= AUTOPLAY_MS) {
         clearInterval(id);
         next();
       }
-    }, 40);
+    }, 100);
 
     return () => clearInterval(id);
   }, [active, next, images.length]);
 
   return (
-    <section
-      className="hero"
-      onMouseEnter={() => setPaused(true)}
-      onMouseLeave={() => setPaused(false)}
-      aria-roledescription="carousel"
-    >
+    <section className="hero" aria-roledescription="carousel">
       <div className="hero__viewport">
         {/* Slideshow de imágenes de fondo (crossfade + Ken Burns). */}
         <div className="hero__slides" aria-hidden="true">
@@ -122,26 +95,6 @@ function Hero({ content = heroContent, images = heroImages }) {
           )}
         </div>
 
-        {/* Dots: indican la imagen activa; el activo se llena como progreso. */}
-        {images.length > 1 && (
-          <div className="hero__dots" role="tablist" aria-label="Background images">
-            {images.map((_, i) => {
-              const isActive = i === active;
-              return (
-                <button
-                  key={i}
-                  className={`hero__dot ${isActive ? 'is-active' : ''}`}
-                  aria-label={`Imagen ${i + 1}`}
-                  aria-selected={isActive}
-                  role="tab"
-                  onClick={() => goTo(i)}
-                >
-                  {isActive && <span className="hero__dot-fill" ref={fillRef} />}
-                </button>
-              );
-            })}
-          </div>
-        )}
       </div>
     </section>
   );

@@ -148,52 +148,6 @@
   transform: translateY(-1px);
 }
 
-/* --- Dots de paginación --- */
-.hero__dots {
-  position: absolute;
-  bottom: 26px;
-  left: 50%;
-  transform: translateX(-50%);
-  z-index: 2;
-  display: flex;
-  align-items: center;
-  gap: 8px;
-}
-
-.hero__dot {
-  position: relative;
-  width: 9px;
-  height: 9px;
-  padding: 0;
-  border: none;
-  border-radius: 999px;
-  background-color: rgba(255, 255, 255, 0.45);
-  cursor: pointer;
-  overflow: hidden;
-  transition: width 0.35s ease, background-color 0.35s ease;
-}
-
-.hero__dot:hover {
-  background-color: rgba(255, 255, 255, 0.7);
-}
-
-/* Activo: se ensancha a píldora y actúa de "riel" del progreso. */
-.hero__dot.is-active {
-  width: 34px;
-  background-color: rgba(255, 255, 255, 0.35);
-}
-
-/* Relleno que crece de izquierda a derecha (ancho controlado por JS). */
-.hero__dot-fill {
-  position: absolute;
-  left: 0;
-  top: 0;
-  height: 100%;
-  width: 0;
-  border-radius: 999px;
-  background-color: rgba(255, 255, 255, 0.95);
-}
-
 @media (max-width: 600px) {
   .hero__viewport {
     height: calc(100vh - 72px);
