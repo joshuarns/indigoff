@@ -209,6 +209,50 @@ export async function getProductsByCategoryPage(
 }
 
 /**
+ * Trae TODOS los productos de forma ligera (solo los campos necesarios) para
+ * armar el índice de descargas. Pagina de a 100 usando X-WP-TotalPages.
+ * @returns {Promise<Array>} productos con { id, slug, title, acf, product_cat }
+ */
+export async function getAllProductsLite() {
+  const perPage = 100;
+  const fields = 'id,slug,title,acf,product_cat';
+  let page = 1;
+  let totalPages = 1;
+  const all = [];
+
+  do {
+    const url = new URL(`${WP_API_URL}${ENDPOINTS.products}`);
+    url.searchParams.append('per_page', perPage);
+    url.searchParams.append('page', page);
+    url.searchParams.append('_fields', fields);
+
+    const response = await fetch(url.toString());
+    if (response.status === 400) break; // página fuera de rango
+    if (!response.ok) {
+      throw new Error(`Error ${response.status} al pedir productos`);
+    }
+    const items = await response.json();
+    if (Array.isArray(items)) all.push(...items);
+    totalPages = Number(response.headers.get('X-WP-TotalPages')) || 1;
+    page += 1;
+  } while (page <= totalPages);
+
+  return all;
+}
+
+/**
+ * Trae todas las categorías de producto (id, name, slug, parent) para poder
+ * resolver a qué colección pertenece cada producto.
+ * @returns {Promise<Array>}
+ */
+export async function getAllProductCategories() {
+  return request(ENDPOINTS.productCategories, {
+    per_page: 100,
+    _fields: 'id,name,slug,parent',
+  });
+}
+
+/**
  * Obtiene el bloque SEO de Yoast (`yoast_head_json`) de una entidad por slug.
  * @param {string} endpoint - p. ej. '/pages', '/product', '/proyects', '/product_cat'.
  * @param {string} slug

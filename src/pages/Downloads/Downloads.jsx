@@ -1,10 +1,13 @@
-import { DOWNLOAD_GROUPS } from './downloadsData';
+import { Link } from 'react-router-dom';
+import { useDownloads } from '../../hooks/useDownloads';
+import Loader from '../../components/Loader/Loader';
 import './Downloads.css';
 
-// Página de descargas. La información viene del sitio anterior
-// (cms.indigoff.com/downloads/) pero adaptada a nuestro lenguaje de diseño:
-// encabezado con eyebrow + título + descripción y grupos con filas de pills.
+// Página de descargas: consume TODOS los productos del CMS y muestra los que
+// tienen archivos de descarga (campos ACF), agrupados por colección.
 function Downloads() {
+  const { groups, loading, error } = useDownloads();
+
   return (
     <section className="downloads">
       {/* --- Encabezado --- */}
@@ -22,42 +25,43 @@ function Downloads() {
 
       {/* --- Grupos --- */}
       <div className="downloads__inner downloads__body">
-        <div className="downloads__grid">
-          {DOWNLOAD_GROUPS.map((group) => (
-            <div key={group.title} className="dl-group">
-              <h2 className="dl-group__title">{group.title}</h2>
-              <ul className="dl-group__list">
-                {group.rows.map((row) => (
-                  <li key={row.name} className="dl-row">
-                    <span className="dl-row__name">{row.name}</span>
-                    <span className="dl-row__files">
-                      {row.pdf && (
-                        <a
-                          className="dl-pill"
-                          href={row.pdf}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                        >
-                          PDF
-                        </a>
-                      )}
-                      {row.model && (
-                        <a
-                          className="dl-pill"
-                          href={row.model}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                        >
-                          3D
-                        </a>
-                      )}
-                    </span>
-                  </li>
-                ))}
-              </ul>
-            </div>
-          ))}
-        </div>
+        {loading ? (
+          <Loader text="Loading downloads…" />
+        ) : error ? (
+          <p className="downloads__error">Downloads could not be loaded.</p>
+        ) : groups.length === 0 ? (
+          <p className="downloads__error">No downloads available yet.</p>
+        ) : (
+          <div className="downloads__grid">
+            {groups.map((group) => (
+              <div key={group.slug} className="dl-group">
+                <h2 className="dl-group__title">{group.title}</h2>
+                <ul className="dl-group__list">
+                  {group.rows.map((row) => (
+                    <li key={row.id} className="dl-row">
+                      <Link className="dl-row__name" to={`/producto/${row.slug}`}>
+                        {row.name}
+                      </Link>
+                      <span className="dl-row__files">
+                        {row.files.map((file) => (
+                          <a
+                            key={file.ext}
+                            className="dl-pill"
+                            href={file.url}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                          >
+                            {file.ext}
+                          </a>
+                        ))}
+                      </span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            ))}
+          </div>
+        )}
       </div>
     </section>
   );

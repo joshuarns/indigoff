@@ -92,6 +92,18 @@
 .dl-row__name {
   font-size: 1rem;
   color: var(--color-text);
+  transition: color 0.2s ease;
+}
+
+a.dl-row__name:hover {
+  color: var(--color-text-muted);
+  text-decoration: none;
+}
+
+.downloads__error {
+  font-size: 1.05rem;
+  color: var(--color-text-muted);
+  padding-block: 1rem;
 }
 
 .dl-row__files {
