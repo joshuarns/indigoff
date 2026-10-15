@@ -1,34 +1,19 @@
-// Slides del hero. Edita aquí los textos, botones e imágenes.
+// Hero del home: un solo contenido fijo (título + botones) y un slideshow de
+// imágenes de fondo que rotan con crossfade + efecto Ken Burns.
 //
-// buttons: hasta 2 botones. `to` para rutas internas, `href` para externas.
+// - heroContent: el texto y los botones (no cambian).
+// - heroImages: las imágenes que se van alternando de fondo.
 
-import slide1Img from '../assets/img/28452.png';
-import slide2Img from '../assets/img/6829456.png';
-import slide3Img from '../assets/img/4728403.png';
+import img1 from '../assets/img/28452.png';
+import img2 from '../assets/img/6829456.png';
+import img3 from '../assets/img/4728403.png';
 
-export const heroSlides = [
-  {
-    id: 1,
-    title: 'silence,\nconsidered',
-    image: slide1Img,
-    bg: 'linear-gradient(160deg, #2f4858 0%, #1f2f3a 100%)',
-    buttons: [
-      { label: 'View Baffles', to: '/indigoff-air/baffles-air' },
-      { label: 'View Clouds', to: '/indigoff-air/clouds-air' },
-    ],
-  },
-  {
-    id: 2,
-    title: 'Shape the atmosphere',
-    image: slide2Img,
-    bg: 'linear-gradient(160deg, #b5651d 0%, #8a4a12 100%)',
-    buttons: [{ label: 'Explore Collections', to: '/indigoff-air' }],
-  },
-  {
-    id: 3,
-    title: 'A studied palette',
-    image: slide3Img,
-    bg: 'linear-gradient(160deg, #4b5842 0%, #333d2c 100%)',
-    buttons: [{ label: 'View Colors', to: '/colors' }],
-  },
-];
+export const heroContent = {
+  title: 'silence,\nconsidered',
+  buttons: [
+    { label: 'View Baffles', to: '/indigoff-air/baffles-air' },
+    { label: 'View Clouds', to: '/indigoff-air/clouds-air' },
+  ],
+};
+
+export const heroImages = [img1, img2, img3];

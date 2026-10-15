@@ -1,6 +1,6 @@
 import { useState, useEffect, useRef, useCallback } from 'react';
 import { Link } from 'react-router-dom';
-import { heroSlides } from '../../data/heroSlides';
+import { heroContent, heroImages } from '../../data/heroSlides';
 import './Hero.css';
 
 const AUTOPLAY_MS = 6000;
@@ -29,7 +29,9 @@ function HeroButton({ button }) {
   );
 }
 
-function Hero({ slides = heroSlides }) {
+// Hero del home: un solo contenido fijo con un slideshow de imágenes de fondo
+// (crossfade + Ken Burns). Solo las imágenes rotan; el texto no cambia.
+function Hero({ content = heroContent, images = heroImages }) {
   const [active, setActive] = useState(0);
   const [paused, setPaused] = useState(false);
 
@@ -42,20 +44,20 @@ function Hero({ slides = heroSlides }) {
   }, [paused]);
 
   const goTo = useCallback(
-    (index) => setActive((index + slides.length) % slides.length),
-    [slides.length]
+    (index) => setActive((index + images.length) % images.length),
+    [images.length]
   );
 
   const next = useCallback(
-    () => setActive((prev) => (prev + 1) % slides.length),
-    [slides.length]
+    () => setActive((prev) => (prev + 1) % images.length),
+    [images.length]
   );
 
-  // Barra de progreso + auto-avance. Se reinicia al cambiar el slide activo.
+  // Barra de progreso + auto-avance. Se reinicia al cambiar la imagen activa.
   // Usa setInterval + delta real (Date.now) para ser fiable también cuando la
   // pestaña está en segundo plano; en pausa (hover) el progreso se congela.
   useEffect(() => {
-    if (slides.length <= 1) return undefined;
+    if (images.length <= 1) return undefined;
 
     const fill = fillRef.current;
     if (fill) fill.style.width = '0%';
@@ -80,7 +82,7 @@ function Hero({ slides = heroSlides }) {
     }, 40);
 
     return () => clearInterval(id);
-  }, [active, next, slides.length]);
+  }, [active, next, images.length]);
 
   return (
     <section
@@ -90,54 +92,56 @@ function Hero({ slides = heroSlides }) {
       aria-roledescription="carousel"
     >
       <div className="hero__viewport">
-        {slides.map((slide, i) => (
-          <div
-            key={slide.id}
-            className={`hero__slide ${i === active ? 'is-active' : ''}`}
-            style={
-              slide.image
-                ? { backgroundImage: `url(${slide.image})` }
-                : { backgroundImage: slide.bg }
-            }
-            aria-hidden={i !== active}
-          >
-            <div className="hero__overlay" />
-            <div className="hero__content">
-              {slide.subtitle && (
-                <p className="hero__subtitle">{slide.subtitle}</p>
-              )}
-              <h1 className="hero__title">{slide.title}</h1>
-              {slide.buttons?.length > 0 && (
-                <div className="hero__actions">
-                  {slide.buttons.map((button) => (
-                    <HeroButton key={button.label} button={button} />
-                  ))}
-                </div>
-              )}
+        {/* Slideshow de imágenes de fondo (crossfade + Ken Burns). */}
+        <div className="hero__slides" aria-hidden="true">
+          {images.map((img, i) => (
+            <div
+              key={i}
+              className={`hero__slide ${i === active ? 'is-active' : ''}`}
+            >
+              <div
+                className="hero__slide-media"
+                style={{ backgroundImage: `url(${img})` }}
+              />
             </div>
-          </div>
-        ))}
-
-        {/* Dots: el activo es una píldora que se llena como barra de progreso. */}
-        <div className="hero__dots" role="tablist" aria-label="Slides">
-          {slides.map((slide, i) => {
-            const isActive = i === active;
-            return (
-              <button
-                key={slide.id}
-                className={`hero__dot ${isActive ? 'is-active' : ''}`}
-                aria-label={`Ir al slide ${i + 1}`}
-                aria-selected={isActive}
-                role="tab"
-                onClick={() => goTo(i)}
-              >
-                {isActive && slides.length > 1 && (
-                  <span className="hero__dot-fill" ref={fillRef} />
-                )}
-              </button>
-            );
-          })}
+          ))}
         </div>
+
+        {/* Capa de legibilidad. */}
+        <div className="hero__overlay" />
+
+        {/* Contenido fijo (un solo hero). */}
+        <div className="hero__content">
+          <h1 className="hero__title">{content.title}</h1>
+          {content.buttons?.length > 0 && (
+            <div className="hero__actions">
+              {content.buttons.map((button) => (
+                <HeroButton key={button.label} button={button} />
+              ))}
+            </div>
+          )}
+        </div>
+
+        {/* Dots: indican la imagen activa; el activo se llena como progreso. */}
+        {images.length > 1 && (
+          <div className="hero__dots" role="tablist" aria-label="Background images">
+            {images.map((_, i) => {
+              const isActive = i === active;
+              return (
+                <button
+                  key={i}
+                  className={`hero__dot ${isActive ? 'is-active' : ''}`}
+                  aria-label={`Imagen ${i + 1}`}
+                  aria-selected={isActive}
+                  role="tab"
+                  onClick={() => goTo(i)}
+                >
+                  {isActive && <span className="hero__dot-fill" ref={fillRef} />}
+                </button>
+              );
+            })}
+          </div>
+        )}
       </div>
     </section>
   );

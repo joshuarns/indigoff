@@ -13,25 +13,61 @@
   min-height: 520px;
   overflow: hidden;
   background-color: #111;
-}
-
-/* --- Slides (crossfade) --- */
-.hero__slide {
-  position: absolute;
-  inset: 0;
-  background-size: cover;
-  background-position: center;
+  /* El contenido fijo se ancla abajo-centro; los slides van detrás (absolutos). */
   display: flex;
   align-items: flex-end;
   justify-content: center;
+}
+
+/* --- Slideshow de imágenes de fondo (crossfade) --- */
+.hero__slides {
+  position: absolute;
+  inset: 0;
+}
+
+.hero__slide {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
   opacity: 0;
   visibility: hidden;
-  transition: opacity 0.8s ease, visibility 0.8s ease;
+  transition: opacity 1.2s ease, visibility 1.2s ease;
 }
 
 .hero__slide.is-active {
   opacity: 1;
   visibility: visible;
+}
+
+/* Capa que lleva la imagen y recibe el Ken Burns (zoom/paneo lento). */
+.hero__slide-media {
+  position: absolute;
+  inset: 0;
+  background-size: cover;
+  background-position: center;
+  transform: scale(1.05);
+  will-change: transform;
+}
+
+/* Al activarse, la imagen hace un zoom-in lento con un leve paneo. */
+.hero__slide.is-active .hero__slide-media {
+  animation: hero-kenburns 8s ease-out forwards;
+}
+
+@keyframes hero-kenburns {
+  from {
+    transform: scale(1.05) translate(0, 0);
+  }
+  to {
+    transform: scale(1.16) translate(-1.6%, -1.4%);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero__slide.is-active .hero__slide-media {
+    animation: none;
+    transform: scale(1.05);
+  }
 }
 
 /* Degradado inferior para la legibilidad del texto blanco. */
