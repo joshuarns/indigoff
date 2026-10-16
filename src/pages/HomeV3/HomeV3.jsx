@@ -1,10 +1,11 @@
 import { Link } from 'react-router-dom';
-import { heroContent, heroImages } from '../../data/heroSlides';
+import { heroContent } from '../../data/heroSlides';
 import { quotes } from '../../data/quotes';
 import { useProjects } from '../../hooks/useProjects';
 import { getFeaturedImage } from '../../services/wordpressApi';
 import Loader from '../../components/Loader/Loader';
 import featureImg from '../../assets/img/4728403.png';
+import heroImage from '../../assets/img/indigoff-air-portada.jpg';
 import colorsImg from '../../assets/img/Colors.jpg';
 import printImg from '../../assets/img/Print.png';
 import textureImg from '../../assets/img/Textures.jpg';
@@ -59,7 +60,7 @@ function HeroV3() {
         </div>
       </div>
       <div className="hv3-hero__image">
-        <img src={heroImages[0]} alt="Indigoff" />
+        <img src={heroImage} alt="Indigoff" />
       </div>
       <div className="hv3-hero__note" aria-hidden="true">01 / 03</div>
     </section>

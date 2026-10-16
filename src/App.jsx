@@ -1,6 +1,7 @@
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import Layout from './components/Layout/Layout';
 import LayoutV2 from './components/Layout/LayoutV2';
+import LayoutV3 from './components/Layout/LayoutV3';
 import Home from './pages/Home/Home';
 import HomeV2 from './pages/HomeV2/HomeV2';
 import HomeV3 from './pages/HomeV3/HomeV3';
@@ -70,6 +71,8 @@ function App() {
         {/* Propuesta de rediseño: home-v2 usa su propio layout (NavbarV2). */}
         <Route element={<LayoutV2 />}>
           <Route path="home-v2" element={<HomeV2 />} />
+        </Route>
+        <Route element={<LayoutV3 />}>
           <Route path="home-v3" element={<HomeV3 />} />
         </Route>
       </Routes>
