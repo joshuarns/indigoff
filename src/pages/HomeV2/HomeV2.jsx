@@ -204,7 +204,7 @@ function Collections() {
 //  PROYECTOS — rejilla editorial (texto de Projects)
 // ======================================================================
 function ProjectsV2() {
-  const { projects, loading, error } = useProjects({ perPage: 7 });
+  const { projects, loading, error } = useProjects({ perPage: 4 });
 
   return (
     <section className="hv2-projects">
@@ -251,9 +251,9 @@ function ProjectsV2() {
                 );
               })()}
 
-              {/* Resto de proyectos (rejilla uniforme). */}
+              {/* Tres proyectos complementarios bajo el destacado. */}
               <div className="hv2-projects__grid">
-                {projects.slice(1).map((project) => {
+                {projects.slice(1, 4).map((project) => {
                   const img = getFeaturedImage(project);
                   const name = project.title?.rendered || '';
                   return (
