@@ -1,6 +1,8 @@
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import Layout from './components/Layout/Layout';
+import LayoutV2 from './components/Layout/LayoutV2';
 import Home from './pages/Home/Home';
+import HomeV2 from './pages/HomeV2/HomeV2';
 import CollectionAir from './pages/CollectionAir/CollectionAir';
 import CollectionSkins from './pages/CollectionSkins/CollectionSkins';
 import CollectionGlow from './pages/CollectionGlow/CollectionGlow';
@@ -62,6 +64,11 @@ function App() {
           <Route path="projects/:slug" element={<ProjectDetail />} />
           <Route path="post/:slug" element={<PostDetail />} />
           <Route path="*" element={<NotFound />} />
+        </Route>
+
+        {/* Propuesta de rediseño: home-v2 usa su propio layout (NavbarV2). */}
+        <Route element={<LayoutV2 />}>
+          <Route path="home-v2" element={<HomeV2 />} />
         </Route>
       </Routes>
     </BrowserRouter>

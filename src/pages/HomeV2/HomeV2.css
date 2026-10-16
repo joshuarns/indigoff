@@ -1,0 +1,443 @@
+/* ======================================================================
+   HOME V2 — propuesta de rediseño editorial / alto lujo.
+   Totalmente autocontenida (prefijo hv2-). Reutiliza los textos y recursos
+   del home actual; no introduce copy nuevo.
+   ====================================================================== */
+.hv2 {
+  /* Paleta propia de la propuesta: tinta profunda + papel cálido. */
+  --ink: #15171a;
+  --ink-soft: #4a4d52;
+  --paper: #f5f3ef;
+  --paper-deep: #ebe7e0;
+  --line: rgba(21, 23, 26, 0.14);
+  --hv2-gutter: max(1.25rem, calc((100% - var(--container-max)) / 2));
+
+  color: var(--ink);
+  background: var(--color-bg);
+}
+
+.hv2-container {
+  width: 100%;
+  padding-inline: var(--hv2-gutter);
+}
+
+/* --- Tipografía compartida --- */
+.hv2-eyebrow {
+  display: inline-block;
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--ink-soft);
+  margin-bottom: 1.4rem;
+}
+.hv2-eyebrow--light { color: rgba(255, 255, 255, 0.82); }
+
+.hv2-display {
+  font-weight: 300;
+  letter-spacing: -0.02em;
+  line-height: 1.04;
+  font-size: clamp(2.6rem, 5.2vw, 4.75rem);
+}
+.hv2-display--md { font-size: clamp(2rem, 3.6vw, 3.25rem); line-height: 1.08; }
+.hv2-display--sm { font-size: clamp(1.6rem, 2.6vw, 2.35rem); line-height: 1.12; }
+
+.hv2-lead {
+  font-size: clamp(1.1rem, 1.4vw, 1.3rem);
+  line-height: 1.7;
+  color: var(--ink-soft);
+  max-width: 46ch;
+}
+.hv2-body {
+  font-size: 1.15rem;
+  line-height: 1.75;
+  color: var(--ink-soft);
+  max-width: 54ch;
+}
+
+/* --- Enlace con flecha --- */
+.hv2-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  font-size: 0.82rem;
+  font-weight: 600;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--ink);
+  padding-bottom: 5px;
+  border-bottom: 1px solid var(--ink);
+  transition: gap 0.3s ease, opacity 0.3s ease;
+}
+.hv2-link:hover { gap: 1.05rem; text-decoration: none; }
+.hv2-link--light { color: #fff; border-color: rgba(255, 255, 255, 0.6); }
+.hv2-link--light:hover { border-color: #fff; }
+.hv2-arrow {
+  display: inline-block;
+  transition: transform 0.3s ease;
+}
+.hv2-link:hover .hv2-arrow { transform: translateX(3px); }
+
+/* ======================================================================
+   HERO
+   ====================================================================== */
+.hv2-hero {
+  position: relative;
+  height: 100vh;
+  height: 100svh;
+  min-height: 600px;
+  overflow: hidden;
+  background: #111;
+  color: #fff;
+}
+.hv2-hero__slides { position: absolute; inset: 0; }
+.hv2-hero__slide {
+  position: absolute;
+  inset: 0;
+  background-size: cover;
+  background-position: center;
+  opacity: 0;
+  transform: scale(1.06);
+  transition: opacity 1.4s ease;
+}
+.hv2-hero__slide.is-active {
+  opacity: 1;
+  animation: hv2-kenburns 7s ease-out forwards;
+}
+@keyframes hv2-kenburns {
+  from { transform: scale(1.06); }
+  to { transform: scale(1.14); }
+}
+.hv2-hero__scrim {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    90deg,
+    rgba(0, 0, 0, 0.55) 0%,
+    rgba(0, 0, 0, 0.2) 45%,
+    rgba(0, 0, 0, 0) 75%
+  ),
+  linear-gradient(180deg, rgba(0, 0, 0, 0) 55%, rgba(0, 0, 0, 0.55) 100%);
+}
+
+.hv2-hero__inner {
+  position: relative;
+  z-index: 1;
+  height: 100%;
+  padding: 0 var(--hv2-gutter) clamp(2.5rem, 6vh, 5rem);
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 2rem;
+}
+.hv2-hero__content { max-width: 720px; }
+.hv2-hero__title {
+  font-weight: 300;
+  font-size: clamp(3rem, 8vw, 7rem);
+  line-height: 0.98;
+  letter-spacing: -0.03em;
+  white-space: pre-line;
+  text-transform: lowercase;
+  text-shadow: 0 2px 40px rgba(0, 0, 0, 0.35);
+}
+.hv2-hero__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: clamp(1.25rem, 3vw, 2.5rem);
+  margin-top: clamp(1.75rem, 4vh, 3rem);
+}
+
+/* Índice de slides */
+.hv2-hero__index {
+  display: flex;
+  flex-direction: column;
+  gap: 0.9rem;
+  padding-bottom: 0.4rem;
+}
+.hv2-hero__tick {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: rgba(255, 255, 255, 0.6);
+  transition: color 0.3s ease;
+}
+.hv2-hero__tick.is-active { color: #fff; }
+.hv2-hero__tick-num {
+  font-size: 0.72rem;
+  letter-spacing: 0.14em;
+  font-variant-numeric: tabular-nums;
+}
+.hv2-hero__tick-bar {
+  width: 46px;
+  height: 1px;
+  background: rgba(255, 255, 255, 0.4);
+  transition: width 0.3s ease, background 0.3s ease;
+}
+.hv2-hero__tick.is-active .hv2-hero__tick-bar {
+  width: 72px;
+  background: #fff;
+}
+
+/* ======================================================================
+   MANIFIESTO
+   ====================================================================== */
+.hv2-manifesto { padding-block: var(--section-space); }
+.hv2-manifesto__grid {
+  display: grid;
+  grid-template-columns: 1fr 0.92fr;
+  gap: clamp(2.5rem, 6vw, 6rem);
+  align-items: center;
+}
+.hv2-manifesto__text .hv2-display { margin-bottom: 1.75rem; }
+.hv2-manifesto__text .hv2-lead { margin-bottom: 2.5rem; }
+.hv2-manifesto__media {
+  aspect-ratio: 4 / 5;
+  overflow: hidden;
+}
+.hv2-manifesto__media img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* ======================================================================
+   COLECCIONES (placas)
+   ====================================================================== */
+.hv2-collections {
+  padding-block: var(--section-space);
+  background: var(--paper);
+  border-top: 1px solid var(--line);
+}
+.hv2-collections__head {
+  display: grid;
+  grid-template-columns: 1.4fr 1fr;
+  gap: clamp(2rem, 5vw, 5rem);
+  align-items: end;
+  margin-bottom: clamp(2.5rem, 5vw, 4rem);
+}
+
+.hv2-plates {
+  display: flex;
+  gap: 1px;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  padding-inline: var(--hv2-gutter);
+  background: var(--line);
+  scrollbar-width: none;
+}
+.hv2-plates::-webkit-scrollbar { display: none; }
+.hv2-plate {
+  position: relative;
+  flex: 0 0 clamp(260px, 30vw, 380px);
+  scroll-snap-align: start;
+  background: var(--paper);
+  color: var(--ink);
+  display: block;
+}
+.hv2-plate__media {
+  aspect-ratio: 3 / 4;
+  background-size: cover;
+  background-position: center;
+  transition: transform 0.6s ease;
+}
+a.hv2-plate:hover .hv2-plate__media { transform: scale(1.04); }
+.hv2-plate__foot {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1.1rem 1.25rem 1.3rem;
+}
+.hv2-plate__brand {
+  font-size: 1.15rem;
+  font-weight: 300;
+  letter-spacing: 0.01em;
+}
+.hv2-plate .hv2-arrow {
+  color: var(--ink-soft);
+  opacity: 0;
+  transform: translateX(-4px);
+  transition: opacity 0.3s ease, transform 0.3s ease;
+}
+a.hv2-plate:hover .hv2-arrow { opacity: 1; transform: translateX(0); }
+
+/* ======================================================================
+   PROYECTOS
+   ====================================================================== */
+.hv2-projects { padding-block: var(--section-space); }
+.hv2-projects__head {
+  display: grid;
+  grid-template-columns: 1.4fr 1fr;
+  gap: clamp(2rem, 5vw, 5rem);
+  align-items: end;
+  margin-bottom: clamp(2.5rem, 5vw, 4rem);
+}
+.hv2-projects__head .hv2-display { margin-top: 0.25rem; }
+
+.hv2-proj { display: block; color: var(--ink); }
+.hv2-proj__media {
+  aspect-ratio: 3 / 4;
+  overflow: hidden;
+  background: var(--paper-deep);
+}
+.hv2-proj__media img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.7s ease;
+}
+.hv2-proj:hover .hv2-proj__media img { transform: scale(1.05); }
+.hv2-proj__title {
+  display: block;
+  margin-top: 1rem;
+  font-size: 1.05rem;
+  font-weight: 400;
+  letter-spacing: 0.01em;
+}
+
+/* Proyecto destacado: banner ancho. */
+.hv2-proj--lead { margin-bottom: clamp(1.25rem, 2.2vw, 2rem); }
+.hv2-proj--lead .hv2-proj__media { aspect-ratio: 16 / 7; }
+.hv2-proj--lead .hv2-proj__title { font-size: 1.35rem; }
+
+.hv2-projects__grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: clamp(1.25rem, 2.2vw, 2rem);
+}
+
+.hv2-projects__foot {
+  margin-top: clamp(2.5rem, 4vw, 3.5rem);
+  display: flex;
+  justify-content: center;
+}
+
+/* ======================================================================
+   ACABADOS
+   ====================================================================== */
+.hv2-finishes {
+  padding-block: var(--section-space);
+  background: var(--ink);
+  color: #fff;
+}
+.hv2-finishes__title { color: #fff; margin-bottom: clamp(2rem, 4vw, 3rem); }
+.hv2-finishes__grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: clamp(1.25rem, 2.2vw, 2rem);
+}
+.hv2-finish { display: block; color: #fff; }
+.hv2-finish__media {
+  aspect-ratio: 4 / 5;
+  overflow: hidden;
+  background: #22252a;
+}
+.hv2-finish__media img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.7s ease;
+}
+.hv2-finish:hover .hv2-finish__media img { transform: scale(1.05); }
+.hv2-finish__foot {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  padding-top: 1.1rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.18);
+  margin-top: 1.1rem;
+}
+.hv2-finish__name { font-size: 1.3rem; font-weight: 300; }
+.hv2-finish__tag {
+  font-size: 0.7rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.6);
+}
+
+/* ======================================================================
+   CLIENTES
+   ====================================================================== */
+.hv2-clients {
+  padding-block: var(--section-space);
+  background: var(--paper);
+  border-top: 1px solid var(--line);
+}
+.hv2-clients__title {
+  text-align: center;
+  margin-bottom: clamp(2.5rem, 5vw, 4rem);
+}
+.hv2-clients__grid {
+  list-style: none;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 1px;
+  background: var(--line);
+  border: 1px solid var(--line);
+}
+.hv2-clients__logo {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: clamp(1.5rem, 3vw, 2.75rem);
+  background: var(--paper);
+  aspect-ratio: 3 / 2;
+}
+.hv2-clients__logo img {
+  max-width: 100%;
+  max-height: 46px;
+  width: auto;
+  object-fit: contain;
+  filter: grayscale(1);
+  opacity: 0.55;
+  mix-blend-mode: multiply;
+  transition: opacity 0.3s ease, filter 0.3s ease;
+}
+.hv2-clients__logo:hover img { opacity: 1; filter: grayscale(0); }
+
+.hv2-error { color: var(--color-text-muted); }
+
+/* La última sección (clientes) tiene fondo papel y ya aporta su propio espacio
+   inferior. Anulamos el padding-bottom que layout__main añade por defecto para
+   evitar una franja blanca entre el papel y el footer. */
+.layout__main:has(> .hv2) { padding-bottom: 0; }
+
+/* ======================================================================
+   RESPONSIVE
+   ====================================================================== */
+@media (max-width: 1024px) {
+  .hv2-collections__head,
+  .hv2-projects__head { grid-template-columns: 1fr; gap: 1.5rem; }
+  .hv2-clients__grid { grid-template-columns: repeat(4, 1fr); }
+}
+
+@media (max-width: 820px) {
+  .hv2-manifesto__grid { grid-template-columns: 1fr; gap: 2.5rem; }
+  .hv2-manifesto__media { aspect-ratio: 16 / 11; order: -1; }
+  .hv2-projects__grid { grid-template-columns: repeat(2, 1fr); }
+  .hv2-proj--lead .hv2-proj__media { aspect-ratio: 16 / 9; }
+  .hv2-finishes__grid { grid-template-columns: 1fr; max-width: 460px; }
+}
+
+@media (max-width: 600px) {
+  .hv2-hero { min-height: 560px; }
+  .hv2-hero__inner { flex-direction: column; align-items: flex-start; gap: 1.75rem; }
+  .hv2-hero__index { flex-direction: row; align-self: flex-start; }
+  .hv2-hero__tick-bar { width: 28px; }
+  .hv2-hero__tick.is-active .hv2-hero__tick-bar { width: 40px; }
+  .hv2-projects__grid { grid-template-columns: 1fr; }
+  .hv2-proj--lead .hv2-proj__media { aspect-ratio: 4 / 3; }
+  .hv2-clients__grid { grid-template-columns: repeat(2, 1fr); }
+  .hv2-plate { flex-basis: 78vw; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hv2-hero__slide.is-active { animation: none; transform: scale(1.06); }
+  .hv2-hero__slide,
+  .hv2-plate__media,
+  .hv2-proj__media img,
+  .hv2-finish__media img { transition: none; }
+}

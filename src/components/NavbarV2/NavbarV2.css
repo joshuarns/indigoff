@@ -1,0 +1,306 @@
+/* ======================================================================
+   NAVBAR V2 — overlay editorial de alto lujo.
+   Transparente sobre el hero (texto blanco) → sólido al hacer scroll
+   (papel + tinta). Clases nv2- para no colisionar con el navbar principal.
+   ====================================================================== */
+.nv2 {
+  --nv2-ink: #15171a;
+  --nv2-paper: #ffffff;
+
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 2000;
+  transition: background-color 0.4s ease, box-shadow 0.4s ease,
+    border-color 0.4s ease;
+  border-bottom: 1px solid transparent;
+}
+
+.nv2__inner {
+  width: 100%;
+  max-width: var(--container-max);
+  margin: 0 auto;
+  padding: 0 var(--page-gutter);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-lg);
+  min-height: 92px;
+  transition: min-height 0.4s ease;
+}
+
+/* --- Estados --- */
+.nv2.is-solid {
+  background-color: var(--nv2-paper);
+  border-bottom-color: rgba(21, 23, 26, 0.1);
+  box-shadow: 0 10px 40px rgba(21, 23, 26, 0.06);
+}
+.nv2.is-solid .nv2__inner { min-height: 76px; }
+
+/* Color del texto según estado. */
+.nv2.is-top { color: #fff; }
+.nv2.is-solid { color: var(--nv2-ink); }
+
+/* --- Logo --- */
+.nv2__logo {
+  display: inline-flex;
+  align-items: center;
+  line-height: 0;
+  flex-shrink: 0;
+}
+.nv2__logo-img {
+  height: 30px;
+  width: auto;
+  display: block;
+}
+
+/* --- Navegación (escritorio) --- */
+.nv2__nav { display: flex; }
+.nv2__list {
+  display: flex;
+  align-items: center;
+  gap: clamp(1.25rem, 2.8vw, 2.75rem);
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.nv2-item { position: relative; }
+.nv2-item__label {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  cursor: pointer;
+}
+.nv2-item__link {
+  position: relative;
+  color: inherit;
+  font-size: 0.78rem;
+  font-weight: 600;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  white-space: nowrap;
+  padding: 0.3rem 0;
+  transition: opacity 0.25s ease;
+}
+.nv2-item__link:hover { text-decoration: none; color: inherit; }
+
+/* Subrayado fino que crece desde la izquierda. */
+.nv2-item__link::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: -2px;
+  height: 1px;
+  background-color: currentColor;
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.3s cubic-bezier(0.22, 1, 0.36, 1);
+}
+.nv2-item__label:hover .nv2-item__link::after,
+.nv2-item--has-children:hover .nv2-item__link::after {
+  transform: scaleX(1);
+}
+
+.nv2-item__caret {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  border: none;
+  background: none;
+  color: currentColor;
+  opacity: 0.6;
+  cursor: pointer;
+  transition: transform 0.3s cubic-bezier(0.22, 1, 0.36, 1), opacity 0.2s ease;
+}
+.nv2-item--has-children:hover .nv2-item__caret {
+  transform: rotate(180deg);
+  opacity: 1;
+}
+
+/* --- Mega-panel (escritorio) --- */
+.nv2-item__submenu {
+  position: absolute;
+  top: calc(100% + 14px);
+  left: -1rem;
+  margin: 0;
+  padding: 0.5rem;
+  list-style: none;
+
+  display: grid;
+  grid-auto-flow: column;
+  grid-template-rows: repeat(6, auto);
+  gap: 0.1rem 0.25rem;
+
+  background-color: #fff;
+  color: var(--nv2-ink);
+  border-top: 2px solid var(--nv2-ink);
+  box-shadow: 0 24px 60px rgba(21, 23, 26, 0.16);
+
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(8px);
+  transition: opacity 0.24s cubic-bezier(0.22, 1, 0.36, 1),
+    transform 0.24s cubic-bezier(0.22, 1, 0.36, 1), visibility 0.24s;
+}
+/* Puente invisible para no perder el hover en el hueco. */
+.nv2-item__submenu::before {
+  content: '';
+  position: absolute;
+  top: -16px;
+  left: 0;
+  right: 0;
+  height: 16px;
+}
+.nv2-item--has-children:hover .nv2-item__submenu,
+.nv2-item--has-children:focus-within .nv2-item__submenu {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+
+.nv2-item__sublink {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.65rem 1rem;
+  min-width: 190px;
+  color: #4a4d52;
+  font-size: 0.82rem;
+  font-weight: 500;
+  letter-spacing: 0.04em;
+  white-space: nowrap;
+  transition: background-color 0.18s ease, color 0.18s ease;
+}
+.nv2-item__sublink::after {
+  content: '→';
+  margin-left: auto;
+  padding-left: 1rem;
+  opacity: 0;
+  transform: translateX(-4px);
+  transition: opacity 0.18s ease, transform 0.18s ease;
+}
+.nv2-item__sublink:hover {
+  background-color: #f5f3ef;
+  color: var(--nv2-ink);
+  text-decoration: none;
+}
+.nv2-item__sublink:hover::after { opacity: 0.6; transform: translateX(0); }
+
+/* --- Botón hamburguesa (móvil) --- */
+.nv2__toggle {
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  gap: 6px;
+  width: 30px;
+  height: 30px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  color: inherit;
+}
+.nv2__toggle span {
+  display: block;
+  height: 1.5px;
+  width: 26px;
+  background-color: currentColor;
+  transition: transform 0.3s ease, opacity 0.3s ease;
+}
+.nv2.is-open .nv2__toggle span:nth-child(1) { transform: translateY(3.75px) rotate(45deg); }
+.nv2.is-open .nv2__toggle span:nth-child(2) { transform: translateY(-3.75px) rotate(-45deg); }
+
+/* ======================================================================
+   RESPONSIVE / DRAWER MÓVIL
+   ====================================================================== */
+@media (max-width: 900px) {
+  .nv2__toggle { display: flex; }
+
+  /* En móvil la barra siempre tiene texto legible sobre el drawer/estado. */
+  .nv2__nav {
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    width: min(88vw, 420px);
+    background: var(--nv2-paper);
+    color: var(--nv2-ink);
+    padding: calc(76px + 1.5rem) var(--space-md) var(--space-lg);
+    overflow-y: auto;
+    transform: translateX(100%);
+    transition: transform 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+    box-shadow: -20px 0 60px rgba(21, 23, 26, 0.18);
+  }
+  .nv2.is-open .nv2__nav { transform: translateX(0); }
+
+  .nv2__list {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 0;
+  }
+
+  .nv2-item { border-bottom: 1px solid rgba(21, 23, 26, 0.08); }
+  .nv2-item__label {
+    padding: 1rem 0;
+    justify-content: space-between;
+  }
+  .nv2-item__link {
+    font-size: 0.95rem;
+    letter-spacing: 0.08em;
+    padding: 0;
+  }
+  .nv2-item__link::after { display: none; }
+  .nv2-item__caret {
+    padding: 0.6rem;
+    margin: -0.6rem -0.6rem -0.6rem 0.6rem;
+    opacity: 0.5;
+  }
+
+  /* Acordeón. */
+  .nv2-item__submenu {
+    position: static;
+    display: none;
+    grid-auto-flow: row;
+    grid-template-rows: none;
+    opacity: 1;
+    visibility: visible;
+    transform: none;
+    border-top: none;
+    box-shadow: none;
+    background: none;
+    padding: 0 0 0.75rem 0.5rem;
+  }
+  .nv2-item.is-open > .nv2-item__submenu { display: grid; }
+  .nv2-item.is-open .nv2-item__caret { transform: rotate(180deg); opacity: 1; }
+  .nv2-item__submenu::before { display: none; }
+
+  .nv2-item__sublink {
+    min-width: 0;
+    padding: 0.55rem 0;
+    color: #6b7280;
+  }
+  .nv2-item__sublink::after { display: none; }
+}
+
+/* Backdrop del drawer. */
+.nv2::after {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background: rgba(21, 23, 26, 0.45);
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.4s ease, visibility 0.4s ease;
+  z-index: -1;
+}
+@media (max-width: 900px) {
+  .nv2.is-open::after { opacity: 1; visibility: visible; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .nv2, .nv2__inner, .nv2__nav, .nv2-item__submenu { transition: none; }
+}
