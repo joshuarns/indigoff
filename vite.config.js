@@ -48,7 +48,7 @@ function preloadHome() {
         `if (location.pathname === "/") {` +
         `${JSON.stringify(modules)}.forEach(function (h) {` +
         `var m = document.createElement("link"); m.href = h;` +
-        `if (h.slice(-4) === ".css") { m.rel = "preload"; m.as = "style"; } else m.rel = "modulepreload";` +
+        `if (h.slice(-4) === ".css") { m.rel = "preload"; m.as = "style"; m.crossOrigin = "anonymous"; } else m.rel = "modulepreload";` +
         `document.head.appendChild(m); }); }`;
       // Esqueleto del hero: la foto se pinta con el HTML, sin esperar a que React arranque.
       // Va fuera de #root y detrás de la página (z-index -1): cuando React renderiza, el fondo de la página lo tapa.
